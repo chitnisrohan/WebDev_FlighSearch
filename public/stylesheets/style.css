@@ -4,6 +4,10 @@ body {
     font-family: Sansita;
 }
 
+.rc-no-padding {
+    padding: 0;
+}
+
 .rc-white-background {
     background-color: white;
     opacity: 0.9;
@@ -58,18 +62,25 @@ body {
 }
 
 
-
-
 .wbdv-margin-top-register {
     margin-top: 50px;
 }
 
 .wbdv-banner-font {
     font-size: 25px;
+    color: white;
 }
 
 .wbdv-font-color-white {
     color: white;
+}
+
+.rc-black-shade-agent-notification {
+    z-index: 1;
+    background-color: black;
+    height:auto;
+    opacity: 0.8;
+    margin-bottom: 30px;
 }
 
 .wbdv-black-shade {
@@ -118,8 +129,32 @@ body img {
     opacity: 0.7;
 }
 
+.rc-agent-notify-font-size {
+    font-size: 16px; !important;
+}
+
+.list-group-item {
+    border: hidden;
+}
+
 #searchButton {
     margin-top: 5px;
+}
+
+#filterMessageButton .btn-default {
+    background-color: lightslategray;
+    border-radius: 12px;
+    color: white;
+    font-size: 15px;
+}
+
+#sendMessageButton .form-control {
+    border-radius: 12px;
+    font-size: 15px;
+}
+
+.rc-small-top-margin {
+    margin-top: 3px;
 }
 
 .form-group {

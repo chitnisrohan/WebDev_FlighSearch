@@ -26,6 +26,11 @@
                 templateUrl: "views/user/templates/profile.view.client.html",
                 controller: "ProfileController",
                 controllerAs: "model"
+            })
+            .when("/agentNotification" , {
+                templateUrl: "views/user/templates/agent.notification.view.client.html",
+                controller: "AgentNotificationController",
+                controllerAs: "model"
             });
     }
 })();
