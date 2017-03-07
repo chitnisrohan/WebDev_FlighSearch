@@ -1,0 +1,158 @@
+body {
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: Sansita;
+}
+
+.rc-white-background {
+    background-color: white;
+    opacity: 0.9;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.rc-black-background {
+    background-color: black;
+    opacity: 0.8;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.rc-font-color-black {
+    color: black;
+}
+
+.wbdv-margin-top-login {
+    margin-top: 50px;
+}
+
+.rc-partner-image {
+    background: url("/images/54687-O81FJ1.jpg");
+    height: 250px;
+    width: 250px;
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    opacity: 1;
+}
+
+.rc-deal-image {
+    background: url("/images/deals.jpg");
+    height: 250px;
+    width: 250px;
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.rc-member-image {
+    background: url("/images/becomeamember.jpg");
+    height: 250px;
+    width: 250px;
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+
+
+.wbdv-margin-top-register {
+    margin-top: 50px;
+}
+
+.wbdv-banner-font {
+    font-size: 25px;
+}
+
+.wbdv-font-color-white {
+    color: white;
+}
+
+.wbdv-black-shade {
+    z-index: 1;
+    background-color: black;
+    height:auto;
+    opacity: 0.8;
+    margin-bottom: 30px;
+}
+
+.wbdv-button {
+    background-color: orangered;
+    font-size: 1.2em;
+    color: white;
+}
+
+.wbdv-margin-top {
+    margin-top: 20px;
+}
+
+.wbdv-font-family {
+  font-family: Sansita;
+}
+
+.wbdv-left-right-margin {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.wbdv-padding {
+    padding: 10px;
+}
+
+.page1 {
+    position: relative;
+    z-index: 3;
+    margin-bottom: 20px;
+}
+
+body img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 735px;
+    opacity: 0.7;
+}
+
+#searchButton {
+    margin-top: 5px;
+}
+
+.form-group {
+    margin-bottom: 5px;
+}
+
+.form-control {
+    border-radius: 0px;
+}
+
+a {
+  color: black;
+}
+
+#loginform .form-control {
+    border-radius: 5px;
+}
+
+
+.ss-button-margin{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.ss-top-margin{
+    margin-top: 20px;
+}
+
+.ss-btn-highlight-off{
+    outline: none !important;
+    background: transparent;
+}
+
+.ss-btn-top-margin{
+    margin-top: 9px;
+}

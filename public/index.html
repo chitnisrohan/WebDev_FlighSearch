@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="FlightSearchApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no width=device-width">
+
+    <link href="stylesheets/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet"/>
+    <link href="stylesheets/style.css" rel="stylesheet"/>
+    <link href ='https://fonts.googleapis.com/css?family=Sansita' rel='stylesheet' type='text/css'>
+    <script
+            src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous"></script>
+    <script src="javascripts/bootstrap.js"></script>
+
+    <link href="stylesheets/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet"/>
+
+    <script src="javascripts/angular.js"></script>
+    <script src="javascripts/angular-route.js"></script>
+    <script src="javascripts/jquery-3.1.1.js"></script>
+    <script src="javascripts/jquery-ui.js"></script>
+    <script src="javascripts/jqueryui_touch.js"></script>
+
+    <script src="app.js"></script>
+
+    <!--Config-->
+    <script src="config.js"></script>
+
+    <!--Controllers-->
+    <script src="views/flights/controllers/search.controller.client.js"></script>
+    <script src="views/user/controller/login.controller.client.js"></script>
+    <script src="views/user/controller/register.controller.client.js"></script>
+
+    <title>Flight Search</title>
+</head>
+<body>
+<div ng-view>
+</div>
+</body>
+</html>
