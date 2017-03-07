@@ -4,6 +4,11 @@ body {
     font-family: Sansita;
 }
 
+.rc-background-agent-notification {
+    background :url('/images/pexels-photo-296886.jpeg');
+    height: 735px;
+}
+
 .rc-no-padding {
     padding: 0;
 }
@@ -69,6 +74,11 @@ body {
 .wbdv-banner-font {
     font-size: 25px;
     color: white;
+}
+
+.rc-nav-agent-notification {
+    background-color: black;
+    opacity: 0.8;
 }
 
 .wbdv-font-color-white {
