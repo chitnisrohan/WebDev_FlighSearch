@@ -4,9 +4,55 @@ body {
     font-family: Sansita;
 }
 
+.rc-background-user-history {
+    background: url('/images/63494133-flight-wallpapers.jpg');
+    background-size: cover;
+    /*background-position: 100%;*/
+    /*background:repeat;*/
+    position: absolute;
+    /*height: 100vh;*/
+    top:0;
+    left:0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.rc-background-user-notification {
+
+    background: url('/images/stock-photo-discount-price-promotion-special-cheap-concept-329739470.jpg');
+    /*height: 735px;*/
+    background-size: cover;
+    /*background-position: 100%;*/
+    /*background:repeat;*/
+    position: absolute;
+    /*height: 100vh;*/
+    top:0;
+    left:0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
 .rc-background-agent-notification {
-    background :url('/images/pexels-photo-296886.jpeg');
-    height: 735px;
+    /*background :url('/images/pexels-photo-296886.jpeg');*/
+    background: url('/images/writing-notes-idea-conference.jpg');
+    /*height: 735px;*/
+    background-size: cover;
+    /*background-position: 100%;*/
+    /*background:repeat;*/
+    position: absolute;
+    /*height: 100vh;*/
+    top:0;
+    left:0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.rc-z-index-dropdown {
+    z-index: 1000 !important;
+}
+
+.rc-drop-menu {
+    z-index: 1000 !important;
 }
 
 .rc-no-padding {
@@ -76,6 +122,11 @@ body {
     color: white;
 }
 
+.rc-black-banner {
+    font-size: 25px;
+    color: black;
+}
+
 .rc-nav-agent-notification {
     background-color: black;
     opacity: 0.8;
@@ -124,6 +175,10 @@ body {
     padding: 10px;
 }
 
+.wbdv-font-color-blue {
+    color: royalblue;
+}
+
 .page1 {
     position: relative;
     z-index: 3;
@@ -135,8 +190,24 @@ body img {
     left: 0;
     top: 0;
     width: 100%;
-    height: 735px;
+    /*height: 735px;*/
     opacity: 0.7;
+    background-size: cover;
+}
+
+.rc-highlight-selected {
+    width: 100vw;
+    background-color: darkgray;
+}
+
+
+
+.rc-link-top-margin {
+    margin-top: 30px;
+}
+
+.rc-link-left-margin {
+    margin-left: 20px;
 }
 
 .rc-agent-notify-font-size {
@@ -152,7 +223,7 @@ body img {
 }
 
 #filterMessageButton .btn-default {
-    background-color: lightslategray;
+    background-color: coral;
     border-radius: 12px;
     color: white;
     font-size: 15px;
@@ -200,4 +271,88 @@ a {
 
 .ss-btn-top-margin{
     margin-top: 9px;
+}
+
+.rc-delete-alert-button {
+    color: red;
+}
+
+.rc-background-profile {
+    background: url("/images/pexels-photo-27987.jpg");
+    background-size: cover;
+    /*background-position: 100%;*/
+    /*background:repeat;*/
+    position: absolute;
+    /*height: 100vh;*/
+    top:0;
+    left:0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.ss-top-padding{
+    padding-top: 0px;
+}
+
+.rc-form-font-size {
+    font-size: 17px;
+}
+
+.ss-navbar-padding{
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.ss-black-bg-high{
+    height:100vh;
+    background-color: black;
+    /*height: 500px;*/
+    opacity: 0.8;
+    /*position: relative;*/
+    /*background-size: cover;*/
+    min-height: 100%;
+    /*min-width: 100%;*/
+}
+
+.ss-black-bg {
+    background-color: black;
+    opacity: 0.8;
+}
+
+.ss-whitefont{
+    color: white;
+}
+
+.ss-no-border{
+    border: hidden;
+}
+
+.ss-black-navbar{
+    background-color: black;
+    opacity: 0.8;
+}
+
+.ss-white-font{
+    color: white;
+}
+
+
+ul.list-group li.selected-page {
+    background-color: rgba(255,255,255,0.2);
+}
+
+ul.list-group li.selected {
+    background-color:red;
+}
+
+.rc-link-right-margin {
+    margin-right: 9px;
+}
+
+a.hover {
+    cursor: hand;
+}
+
+.rc-text-decoration {
+    text-decoration: none !important;
 }
