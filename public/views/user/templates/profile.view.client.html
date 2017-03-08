@@ -1,92 +1,152 @@
-<nav class="nav">
+<div class="rc-no-padding rc-background-profile">
+<nav class="nav ss-black-navbar ss-navbar-padding" style="opacity: 0.7">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-1"></div>
-            <div class="col-xs-12 col-sm-10">
-                <div class="row">
-                    <div class="col-sm-2"></div>
-                    <div class="col-sm-8">
-                        <div class="dropdown pull-right" >
-                            <button class="btn dropdown-toggle ss-btn-highlight-off ss-btn-top-margin"
-                                    type="button" data-toggle="dropdown">
-                                <span class="glyphicon glyphicon-align-justify"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Profile</a></li>
-                                <li><a href="#">Alerts</a></li>
-                                <li><a href="#/agentNotification">Notifications</a></li>
-                                <li><a href="#/">Logout</a></li>
-                            </ul>
-                        </div>
-                        <a class="navbar-brand pull-left" href="#/">
-                            <strong class="wbdv-font-family">
-                                Your Profile
-                            </strong>
-                        </a>
-                    </div>
-                    <div class="col-sm-2"></div>
-                </div>
+            <!--<div class="col-sm-1"></div>-->
+            <!--<div class="col-xs-12 col-sm-10">-->
+            <div class="col-sm-3">
             </div>
-            <div class="col-sm-1"></div>
+            <div class="col-sm-9 rc-drop-menu">
+                <!--<div class="row">-->
+                <!--<div class="col-sm-2"></div>-->
+                <!--<div class="col-sm-8">-->
+                <div class="dropdown pull-right rc-drop-menu rc-drop-menu">
+                    <button class="btn dropdown-toggle ss-btn-highlight-off ss-btn-top-margin rc-drop-menu"
+                            type="button" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-align-justify ss-white-font"></span>
+                    </button>
+                    <ul class="dropdown-menu rc-z-index-dropdown rc-drop-menu">
+                        <li><a href="#/" class="rc-drop-menu">Search Flights</a></li>
+                        <li><a class="rc-drop-menu">Profile</a></li>
+                        <li><a href="#/userHistory" class="rc-drop-menu">History</a></li>
+                        <li><a href="#/userNotification" class="rc-drop-menu">Notifications</a></li>
+                        <li><a href="#/" class="rc-drop-menu">Logout</a></li>
+                    </ul>
+                </div>
+
+                <!--<a class="navbar-brand pull-left" href="#/">-->
+                    <!--<strong class="wbdv-font-family ss-white-font">-->
+                        <!--Your Profile-->
+                    <!--</strong>-->
+                <strong class="navbar-brand visible-xs rc-agent-notify-font-size
+                    wbdv-font-color-white rc-form-font-size pull-left">
+                    Profile
+                </strong>
+                <strong class="navbar-brand pull-left wbdv-font-family wbdv-banner-font wbdv-font-color-white hidden-xs">
+                    Profile
+                </strong>
+                <!--</a>-->
+
+                <!--<a class="navbar-brand pull-right" href="#/login">-->
+                <!--<i class="fa fa-user-circle-o visible-xs"-->
+                <!--aria-hidden="true"></i>-->
+                <!--<strong class="wbdv-font-family hidden-xs">-->
+                <!--Login-->
+                <!--</strong>-->
+                <!--</a>-->
+                <!--</div>-->
+                <!--<div class="col-sm-2"></div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="col-sm-1"></div>-->
+            </div>
         </div>
     </div>
 </nav>
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-1"></div>
-        <div class="col-xs-12 col-sm-10">
-            <div class="row">
-                <div class="col-sm-2"></div>
-                <div id="loginform" class="col-sm-8 fa-border">
-                    <form>
-                        <div class="form-group wbdv-left-right-margin">
-                            <label for="username">Username</label>
-                            <input type="text"
-                                   class="form-control"
-                                   id="username"
-                                   placeholder="Username">
-                        </div>
-                        <div class="form-group wbdv-left-right-margin">
-                            <label for="firstName">First Name</label>
-                            <input type="text"
-                                   class="form-control"
-                                   id="firstName"
-                                   placeholder="First Name">
-                        </div>
-                        <div class="form-group wbdv-left-right-margin">
-                            <label for="lastName">Last Name</label>
-                            <input type="text"
-                                   class="form-control"
-                                   id="lastName"
-                                   placeholder="Last Name">
-                        </div>
-                        <div class="form-group wbdv-left-right-margin">
-                            <label for="email">Email ID</label>
-                            <input type="email"
-                                   class="form-control"
-                                   id="email"
-                                   placeholder="Email ID">
-                        </div>
-                        <div class="form-group wbdv-left-right-margin">
-                            <label for="password">Password</label>
-                            <input type="password"
-                                   class="form-control"
-                                   id="password"
-                                   placeholder="Password">
-                        </div>
-                        <div class="wbdv-left-right-margin">
-                            <a class="btn btn-success btn-block ss-button-margin"
-                               href="#/profile">
-                                Update Profile
-                            </a>
-                        </div>
-                        <!--<a class="wbdv-left-right-margin pull-right" href="#/login">Already A Member?</a>-->
-                    </form>
-                </div>
-                <div class="col-sm-2"></div>
-            </div>
+    <div class="row ">
+        <!--<div class="col-sm-1"></div>-->
+        <div class="col-sm-3 ss-whitefont hidden-xs ss-black-bg-high" style="opacity: 0.7">
+            <ul class="list-group list-unstyled ss-black-bg">
+                <li class="list-group-item  ss-black-bg ss-no-border">
+                    <a href="#/"
+                       class="ss-whitefont wbdv-banner-font rc-link-left-margin rc-text-decoration">
+                        <i class="rc-link-left-margin rc-link-right-margin fa fa-plane"
+                           aria-hidden="true"></i>
+                        Search Flights
+                    </a>
+                </li>
+                <li class="list-group-item ss-black-bg ss-no-border selected-page">
+                    <a class="ss-whitefont wbdv-banner-font rc-link-left-margin rc-text-decoration">
+                        <i class="rc-link-left-margin rc-link-right-margin fa fa-user-circle-o"
+                           aria-hidden="true"></i>
+                        Profile
+                     </a>
+                </li>
+                <li class="list-group-item  ss-black-bg ss-no-border">
+                    <a href="#/userHistory"
+                       class="ss-whitefont wbdv-banner-font rc-link-left-margin rc-text-decoration">
+                        <i class="rc-link-left-margin rc-link-right-margin fa fa-bell"
+                           aria-hidden="true"></i>
+                        History
+                    </a>
+                </li>
+                <li class="list-group-item  ss-black-bg ss-no-border">
+                    <a href="#/userNotification"
+                       class="ss-whitefont wbdv-banner-font rc-link-left-margin rc-text-decoration">
+                        <i class="rc-link-left-margin rc-link-right-margin fa fa-exclamation-circle"
+                           aria-hidden="true"></i>
+                        Notifications
+                    </a>
+                </li>
+            </ul>
         </div>
-        <div class="col-sm-1"></div>
+        <div class="col-sm-9">
+            <!--<div class="row">-->
+            <!--<div class="col-sm-2"></div>-->
+            <!--<div id="loginform" class="col-sm-8 fa-border">-->
+            <div id="loginform" style="opacity: 0.9">
+                <form>
+                    <br>
+                    <div class="form-group wbdv-left-right-margin wbdv-font-color-white">
+                        <label for="username" class="rc-form-font-size">Username</label>
+                        <input type="text"
+                               class="form-control"
+                               id="username"
+                               placeholder="Username">
+                    </div>
+                    <div class="form-group wbdv-left-right-margin wbdv-font-color-white">
+                        <label for="firstName" class="rc-form-font-size">First Name</label>
+                        <input type="text"
+                               class="form-control"
+                               id="firstName"
+                               placeholder="First Name">
+                    </div>
+                    <div class="form-group wbdv-left-right-margin wbdv-font-color-white">
+                        <label for="lastName" class="rc-form-font-size">Last Name</label>
+                        <input type="text"
+                               class="form-control"
+                               id="lastName"
+                               placeholder="Last Name">
+                    </div>
+                    <div class="form-group wbdv-left-right-margin wbdv-font-color-white">
+                        <label for="email" class="rc-form-font-size">Email ID</label>
+                        <input type="email"
+                               class="form-control"
+                               id="email"
+                               placeholder="Email ID">
+                    </div>
+                    <div class="form-group wbdv-left-right-margin wbdv-font-color-white">
+                        <label for="password" class="rc-form-font-size">Password</label>
+                        <input type="password"
+                               class="form-control"
+                               id="password"
+                               placeholder="Password">
+                    </div>
+                    <div class="wbdv-left-right-margin">
+                        <a class="btn wbdv-button rc-form-font-size btn-block ss-button-margin"
+                           href="#/profile">
+                            Update Profile
+                        </a>
+                    </div>
+                    <!--<a class="wbdv-left-right-margin pull-right" href="#/login">Already A Member?</a>-->
+                </form>
+            </div>
+            <!--<div class="col-sm-2"></div>-->
+            <!--</div>-->
+        </div>
+        <!--<div class="col-sm-1"></div>-->
     </div>
+</div>
 </div>

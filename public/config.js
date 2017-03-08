@@ -31,6 +31,21 @@
                 templateUrl: "views/user/templates/agent.notification.view.client.html",
                 controller: "AgentNotificationController",
                 controllerAs: "model"
+            })
+            .when("/userHistory" , {
+                templateUrl: "views/user/templates/user.history.view.client.html",
+                controller: "UserHistoryController",
+                controllerAs: "model"
+            })
+            .when("/agentHistory" , {
+                templateUrl: "views/user/templates/agent.history.view.client.html",
+                controller: "AgentHistoryController",
+                controllerAs: "model"
+            })
+            .when("/userNotification" , {
+                templateUrl: "views/user/templates/user.notification.view.client.html",
+                controller: "UserNotificationController",
+                controllerAs: "model"
             });
     }
 })();

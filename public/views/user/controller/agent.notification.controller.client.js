@@ -5,5 +5,7 @@
 
     function AgentNotificationController($location) {
         var vm = this;
+
+        vm.destination = "Destination";
     }
 })();
