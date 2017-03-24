@@ -4,6 +4,19 @@ body {
     font-family: Sansita;
 }
 
+.rc-background-flight-search {
+    background: url('/images/9756566442_416cfc4f0c_k.jpg');
+    background-size: cover;
+    /*background-position: 100%;*/
+    /*background:repeat;*/
+    position: absolute;
+    /*height: 100vh;*/
+    top:0;
+    left:0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
 .rc-background-user-history {
     background: url('/images/63494133-flight-wallpapers.jpg');
     background-size: cover;
