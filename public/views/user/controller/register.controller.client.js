@@ -13,7 +13,6 @@
                 UserService
                     .findUserByUsername(newUser.username)
                     .success(function (user) {
-                        console.log(user);
                         vm.error = 'Username already exists'
                     })
                     .error(function () {

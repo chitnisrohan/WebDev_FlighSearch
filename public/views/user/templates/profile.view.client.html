@@ -101,43 +101,52 @@
                     <br>
                     <div class="form-group wbdv-left-right-margin wbdv-font-color-white">
                         <label for="username" class="rc-form-font-size">Username</label>
-                        <input type="text"
+                        <input ng-model="model.user.username"
+                               type="text"
                                class="form-control"
                                id="username"
                                placeholder="Username">
                     </div>
                     <div class="form-group wbdv-left-right-margin wbdv-font-color-white">
                         <label for="firstName" class="rc-form-font-size">First Name</label>
-                        <input type="text"
+                        <input ng-model="model.user.firstName"
+                               type="text"
                                class="form-control"
                                id="firstName"
                                placeholder="First Name">
                     </div>
                     <div class="form-group wbdv-left-right-margin wbdv-font-color-white">
                         <label for="lastName" class="rc-form-font-size">Last Name</label>
-                        <input type="text"
+                        <input ng-model="model.user.lastName"
+                               type="text"
                                class="form-control"
                                id="lastName"
                                placeholder="Last Name">
                     </div>
                     <div class="form-group wbdv-left-right-margin wbdv-font-color-white">
                         <label for="email" class="rc-form-font-size">Email ID</label>
-                        <input type="email"
+                        <input ng-model="model.user.email"
+                               type="email"
                                class="form-control"
                                id="email"
                                placeholder="Email ID">
                     </div>
                     <div class="form-group wbdv-left-right-margin wbdv-font-color-white">
                         <label for="password" class="rc-form-font-size">Password</label>
-                        <input type="password"
+                        <input ng-model="model.user.password"
+                               type="password"
                                class="form-control"
                                id="password"
                                placeholder="Password">
                     </div>
                     <div class="wbdv-left-right-margin">
                         <a class="btn wbdv-button rc-form-font-size btn-block ss-button-margin"
-                           href="#/profile">
+                           ng-click="model.update(model.user)">
                             Update Profile
+                        </a>
+                        <a class="btn wbdv-button rc-form-font-size btn-block ss-button-margin"
+                           href="#/login">
+                            Logout
                         </a>
                     </div>
                     <!--<a class="wbdv-left-right-margin pull-right" href="#/login">Already A Member?</a>-->

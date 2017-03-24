@@ -36,7 +36,8 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label class="wbdv-font-color-white" for="from">From</label>
-                                <input type="text"
+                                <input ng-model="model.flight.source"
+                                       type="text"
                                        class="form-control"
                                        id="from"
                                        placeholder="From">
@@ -45,7 +46,8 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label class="wbdv-font-color-white" for="to">To</label>
-                                <input type="text"
+                                <input ng-model="model.flight.destination"
+                                       type="text"
                                        class="form-control"
                                        id="to"
                                        placeholder="To">
@@ -55,28 +57,32 @@
                     <div class="row">
                         <div class="col-sm-3 form-group">
                             <label class="wbdv-font-color-white" for="depart">Depart</label>
-                            <input type="date"
+                            <input ng-model="model.flight.departDate"
+                                   type="date"
                                    class="form-control"
                                    id="depart"
                                    placeholder="Departure Date">
                         </div>
                         <div class="col-sm-3 form-group">
                             <label class="wbdv-font-color-white" for="return">Return</label>
-                            <input type="date"
+                            <input ng-model="model.flight.returnDate"
+                                   type="date"
                                    class="form-control"
                                    id="return"
                                    placeholder="Return Date">
                         </div>
                         <div class="col-sm-3 form-group">
                             <label class="wbdv-font-color-white" for="adults">Adults</label>
-                            <input type="number"
+                            <input ng-model="model.flight.noOfAdults"
+                                   type="number"
                                    class="form-control"
                                    id="adults"
                                    placeholder="Number of Adults">
                         </div>
                         <div class="col-sm-3 form-group">
                             <label class="wbdv-font-color-white" for="child">Children</label>
-                            <input type="number"
+                            <input ng-model="model.flight.noOfChildren"
+                                   type="number"
                                    class="form-control"
                                    id="child"
                                    placeholder="Number of Children">
@@ -84,7 +90,7 @@
                     </div>
                     <div id="searchButton" class="form-group">
                         <a class="btn btn-block wbdv-button"
-                           href="#/profile">
+                           ng-click="model.searchFlight(model.flight)">
                             Search
                         </a>
                     </div>
@@ -114,8 +120,8 @@
                     </a>
                 </div>
             </div>
-            <div class="col-md-4 visible-xs rc-black-background">
-                <a class="wbdv-font-color-white text-center" href="#">
+            <div class="col-md-4 visible-xs rc-white-background">
+                <a class="rc-font-color-black text-center" href="#">
                     <h4>
                         Get the Best Deals from our partners
                     </h4>
@@ -141,8 +147,8 @@
                     </a>
                 </div>
             </div>
-            <div class="col-md-4 visible-xs rc-black-background">
-                <a class="wbdv-font-color-white text-center" href="#">
+            <div class="col-md-4 visible-xs rc-white-background">
+                <a class="rc-font-color-black text-center" href="#">
                     <h4>
                         Become a partner and grow with us!
                     </h4>
@@ -151,6 +157,15 @@
         </div>
         <div class="col-sm-1"></div>
     </div>
+
+        {{model.flightData.results[0].itineraries[0].outbound.flights[0].departs_at}}
+        {{model.flightData.results[0].itineraries[0].outbound.flights[0].origin.airport}}
+        {{model.flightData.results[0].itineraries[0].outbound.flights[0].origin.terminal}}
+        {{model.flightData.results[0].itineraries[0].outbound.flights[0].destination.airport}}
+        {{model.flightData.results[0].itineraries[0].outbound.flights[0].destination.terminal}}
+        {{model.flightData.results[0].itineraries[0].outbound.flights[0].marketing_airline}}
+        {{model.flightData.results[0].itineraries[0].outbound.flights[0].booking_info.travel_class}}
+        {{model.flightData.results[0].itineraries[0].outbound.flights[0].booking_info.seats_remaining}}
 </div>
 
 </div>

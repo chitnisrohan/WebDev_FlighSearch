@@ -37,49 +37,55 @@
                     <form>
                         <div class="form-group wbdv-left-right-margin">
                             <label for="username">Username</label>
-                            <input type="text"
+                            <input ng-model="model.user.username"
+                                   type="text"
                                    class="form-control"
                                    id="username"
                                    placeholder="UserName">
                         </div>
                         <div class="form-group wbdv-left-right-margin">
                             <label for="firstName">First Name</label>
-                            <input type="text"
+                            <input ng-model="model.user.firstName"
+                                   type="text"
                                    class="form-control"
                                    id="firstName"
                                    placeholder="First Name">
                         </div>
                         <div class="form-group wbdv-left-right-margin">
                             <label for="lastName">Last Name</label>
-                            <input type="text"
+                            <input ng-model="model.user.lastName"
+                                   type="text"
                                    class="form-control"
                                    id="lastName"
                                    placeholder="Last Name">
                         </div>
                         <div class="form-group wbdv-left-right-margin">
                             <label for="email">Email ID</label>
-                            <input type="email"
+                            <input ng-model="model.user.email"
+                                   type="email"
                                    class="form-control"
                                    id="email"
                                    placeholder="Email ID">
                         </div>
                         <div class="form-group wbdv-left-right-margin">
                             <label for="password">Password</label>
-                            <input type="password"
+                            <input ng-model="model.user.password"
+                                   type="password"
                                    class="form-control"
                                    id="password"
                                    placeholder="Password">
                         </div>
                         <div class="form-group wbdv-left-right-margin">
                             <label for="verifyPassword">Verify Password</label>
-                            <input type="password"
+                            <input ng-model="model.user.verify.password"
+                                   type="password"
                                    class="form-control"
                                    id="verifyPassword"
                                    placeholder="Verify Password">
                         </div>
                         <div class="wbdv-left-right-margin">
                             <a class="btn btn-primary btn-block ss-button-margin"
-                               href="#/profile">
+                               ng-click="model.registerUser(model.user)">
                                 Register
                             </a>
                         </div>

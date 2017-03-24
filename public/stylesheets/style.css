@@ -7,6 +7,7 @@ body {
 .rc-background-flight-search {
     background: url('/images/9756566442_416cfc4f0c_k.jpg');
     background-size: cover;
+    opacity: 0.8;
     /*background-position: 100%;*/
     /*background:repeat;*/
     position: absolute;
@@ -74,7 +75,7 @@ body {
 
 .rc-white-background {
     background-color: white;
-    opacity: 0.9;
+    opacity: 0.95;
     padding-top: 2px;
     padding-bottom: 2px;
 }
@@ -161,7 +162,7 @@ body {
     z-index: 1;
     background-color: black;
     height:auto;
-    opacity: 0.8;
+    opacity: 0.9;
     margin-bottom: 30px;
 }
 
