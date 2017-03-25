@@ -9,15 +9,13 @@
         vm.searchFlight = searchFlight;
 
         function searchFlight(journey) {
-            FlightService
-                .getFlights(journey)
-                .success(function (flights) {
-                    vm.flightData = flights;
-                    //console.log(flights.results[0].itineraries[0].outbound.flights[0].arrives_at);
-                })
-                .error(function (err) {
-                    vm.err = err;
-                });
+            console.log(journey.departDate.toISOString().substring(0, 10));
+            var searchUrl = "/flight/search/SRC/"+journey.source+"/DEST/"+journey.destination
+                +"/DEPART/"+journey.departDate.toISOString().substring(0, 10)
+                +"/RETURN/"+journey.returnDate.toISOString().substring(0, 10)
+                +"/ADULTS/"+journey.noOfAdults+"/CHILD/"+
+                journey.noOfChildren+"/CLASS/"+journey.selectedClass;
+            $location.url(searchUrl);
         }
     }
 })();

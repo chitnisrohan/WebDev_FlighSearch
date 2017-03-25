@@ -4,6 +4,16 @@ body {
     font-family: Sansita;
 }
 
+#rc-flight-search-login-margin-right {
+    margin-top: 5px;
+}
+
+#rc-margin-for-logo-flight-search {
+    margin-top: 16px;
+    font-size: 20px;
+    margin-right: 5px;
+}
+
 .rc-background-flight-search {
     background: url('/images/9756566442_416cfc4f0c_k.jpg');
     background-size: cover;
@@ -131,8 +141,26 @@ body {
     margin-top: 50px;
 }
 
+.rc-flight-modify-button {
+    border-radius: 15px;
+}
+
+.rc-flight-details-button {
+    border-radius: 15px;
+}
+
+.rc-flight-detail-button-padding {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
 .wbdv-banner-font {
     font-size: 25px;
+    color: white;
+}
+
+.rc-flight-search-journey-font {
+    font-size: 18px;
     color: white;
 }
 

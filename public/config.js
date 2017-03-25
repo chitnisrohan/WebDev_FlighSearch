@@ -12,6 +12,11 @@
                 controller: "SearchController",
                 controllerAs: "model"
             })
+            .when("/flight/search/SRC/:src/DEST/:dest/DEPART/:dept/RETURN/:ret/ADULTS/:adults/CHILD/:child/CLASS/:class", {
+                templateUrl: "views/flights/templates/search.results.view.client.html",
+                controller: "SearchResultController",
+                controllerAs: "model"
+            })
             .when("/login", {
                 templateUrl: "views/user/templates/login.view.client.html",
                 controller: "LoginController",

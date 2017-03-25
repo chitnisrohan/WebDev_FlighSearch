@@ -71,7 +71,7 @@
                                    id="return"
                                    placeholder="Return Date">
                         </div>
-                        <div class="col-sm-3 form-group">
+                        <div class="col-sm-2 form-group">
                             <label class="wbdv-font-color-white" for="adults">Adults</label>
                             <input ng-model="model.flight.noOfAdults"
                                    type="number"
@@ -79,13 +79,24 @@
                                    id="adults"
                                    placeholder="Number of Adults">
                         </div>
-                        <div class="col-sm-3 form-group">
+                        <div class="col-sm-2 form-group">
                             <label class="wbdv-font-color-white" for="child">Children</label>
                             <input ng-model="model.flight.noOfChildren"
                                    type="number"
                                    class="form-control"
                                    id="child"
                                    placeholder="Number of Children">
+                        </div>
+                        <div class="col-sm-2 form-group">
+                            <label class="wbdv-font-color-white" for="flightClass">Class</label>
+                            <div class="dropdown" id="flightClass">
+                                <select class="selectpicker"
+                                ng-model="model.flight.selectedClass">
+                                    <option value="ECONOMY">ECONOMY</option>
+                                    <option value="FIRST">FIRST</option>
+                                    <option value="BUSINESS">BUSINESS</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div id="searchButton" class="form-group">
@@ -157,7 +168,6 @@
         </div>
         <div class="col-sm-1"></div>
     </div>
-
         {{model.flightData.results[0].itineraries[0].outbound.flights[0].departs_at}}
         {{model.flightData.results[0].itineraries[0].outbound.flights[0].origin.airport}}
         {{model.flightData.results[0].itineraries[0].outbound.flights[0].origin.terminal}}
