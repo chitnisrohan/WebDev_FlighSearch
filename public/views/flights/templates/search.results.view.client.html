@@ -1,4 +1,5 @@
-<div class="rc-no-padding rc-background-user-history">
+<div class="rc-no-padding">
+    <!--rc-background-flight-search-result-->
     <nav class="nav ss-black-navbar ss-navbar-padding">
         <div class="container-fluid">
             <div class="row">
@@ -49,76 +50,96 @@
 <div class="container-fluid">
     <div class="rc-link-top-margin row rc-black-background text-center">
         <div class="col-sm-1 rc-flight-search-journey-font">
-            <strong>BOS</strong>
+            <strong>{{model.userJourney.source}}</strong>
         </div>
         <div class="col-sm-1 rc-flight-search-journey-font">
-            <strong>BOM</strong>
+            <strong>{{model.userJourney.destination}}</strong>
         </div>
         <div class="col-sm-2 rc-flight-search-journey-font">
-            2017-02-01
+            {{model.userJourney.departDate}}
         </div>
         <div class="col-sm-2 rc-flight-search-journey-font">
-            2017-02-06
+            {{model.userJourney.returnDate}}
         </div>
         <div class="col-sm-1 rc-flight-search-journey-font">
-            2 A
+            {{model.userJourney.noOfAdults}} A
         </div>
         <div class="col-sm-1 rc-flight-search-journey-font">
-            2 C
+            {{model.userJourney.noOfChildren}} C
         </div>
         <div class="col-sm-2 rc-flight-search-journey-font">
-            ECONOMY
+            {{model.userJourney.cabinClass}}
         </div>
         <div class="col-sm-2">
             <a href="#" class="btn btn-block btn-primary rc-flight-modify-button">
-                <strong>Modify</strong>
+                <strong>M o d i f y</strong>
             </a>
         </div>
     </div>
 
-    <div id="outbound-short" class="rc-link-top-margin row rc-black-background">
-        <table class="rc-flight-search-journey-font text-center" style="width:100%">
-            <tr>
-                <td style="width: 25%;">BOS</td>
-                <td style="width: 25%;">BOM</td>
-                <td style="width: 25%;">2 Stops</td>
-                <td style="width: 25%;" rowspan="2">USD 1000</td>
-            </tr>
-            <tr>
-                <td>23:35</td>
-                <td>09:20</td>
-                <td>9 Seats Remaining</td>
-            </tr>
-            <tr>
-                <td colspan="4" class="rc-flight-detail-button-padding">
-                <a data-toggle="collapse" data-target="#outbound-detail" class="btn btn-block btn-primary rc-flight-details-button">
-                    <strong>Details</strong>
-                </a>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div id="outbound-detail" class="collapse rc-link-top-margin row rc-black-background">
-        <table class="rc-flight-search-journey-font text-center" style="width:100%">
-            <tr>
-                <td style="width: 25%;">BOS</td>
-                <td style="width: 25%;">BOM</td>
-                <td style="width: 25%;">2 Stops</td>
-                <td style="width: 25%;" rowspan="2">USD 1000</td>
-            </tr>
-            <tr>
-                <td>23:35</td>
-                <td>09:20</td>
-                <td>9 Seats Remaining</td>
-            </tr>
-            <tr>
-                <td colspan="4" class="rc-flight-detail-button-padding">
-                    <a href="#" class="btn btn-block btn-primary rc-flight-details-button">
-                        <strong>Details</strong>
-                    </a>
-                </td>
-            </tr>
-        </table>
+    <div ng-repeat="flight in model.flightSearchResults.results">
+        <div id="outbound-short" class="rc-link-top-margin row rc-black-background">
+            <a class="hover-hand rc-flight-details-button"
+               data-toggle="collapse" data-target="#outbound-detail{{$index}}">
+            <table class="rc-flight-search-journey-font text-center rc-table-width">
+                <tr>
+                    <td class="rc-table-column-width">{{model.userJourney.source}}</td>
+                    <td class="rc-table-column-width">{{model.userJourney.destination}}</td>
+                    <td class="rc-table-column-width">{{flight.itineraries[0].outbound.flights.length - 1}} Stops</td>
+                    <td class="rc-table-column-width" rowspan="2">USD {{flight.fare.total_price}}</td>
+                </tr>
+                <tr>
+                    <td>{{flight.itineraries[0].outbound.flights[0].departs_at}}</td>
+                    <td>{{flight.itineraries[0].outbound.flights[flight.itineraries[0].outbound.flights.length - 1].arrives_at}}</td>
+                    <td>{{flight.itineraries[0].outbound.flights[0].booking_info.seats_remaining}} Seats Remaining</td>
+                </tr>
+                <tr>
+                    <td colspan="4" class="rc-flight-detail-button-padding">
+                        <!--data-toggle="collapse" data-target="#outbound-detail"-->
+                    <!--<a class="btn btn-block btn-primary rc-flight-details-button"-->
+                       <!--data-toggle="collapse" data-target="#outbound-detail{{$index}}">-->
+                        <strong>D e t a i l s</strong>
+                    <!--</a>-->
+                    </td>
+                </tr>
+            </table>
+            </a>
+        </div>
+        <div id="outbound-detail{{$index}}" class="collapse rc-black-background">
+        <div class="rc-flight-search-journey-font rc-link-top-margin"
+             ng-repeat="connectingFlights in flight.itineraries[0].outbound.flights">
+            <table class="text-center rc-table-width">
+                <tr>
+                    <td class="rc-table-column-width">
+                        {{connectingFlights.origin.airport}}
+                    </td>
+                    <td class="rc-table-column-width">
+                        {{connectingFlights.destination.airport}}
+                    </td>
+                    <td class="rc-table-column-width">
+                        {{connectingFlights.departs_at}}
+                    </td>
+                    <td class="rc-table-column-width">
+                        {{connectingFlights.arrives_at}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {{connectingFlights.operating_airline}}
+                    </td>
+                    <td>
+                        {{connectingFlights.flight_number}}
+                    </td>
+                    <td>
+                        {{connectingFlights.booking_info.travel_class}}
+                    </td>
+                    <td>
+                        {{connectingFlights.booking_info.seats_remaining}}
+                    </td>
+                </tr>
+            </table>
+        </div>
+        </div>
     </div>
 </div>
 </div>
