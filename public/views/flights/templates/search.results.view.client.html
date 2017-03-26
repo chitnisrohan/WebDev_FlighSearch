@@ -61,9 +61,13 @@
             <strong class="hidden-xs rc-flight-search-journey-font">{{model.userJourney.departDate}}</strong>
             <strong class="visible-xs rc-flight-search-journey-small-font">{{model.userJourney.departDate}}</strong>
         </div>
-        <div class="col-sm-2 rc-flight-search-journey-font">
+        <div ng-if="model.isReturnJourney" class="col-sm-2 rc-flight-search-journey-font">
             <strong class="hidden-xs rc-flight-search-journey-font">{{model.userJourney.returnDate}}</strong>
             <strong class="visible-xs rc-flight-search-journey-small-font">{{model.userJourney.returnDate}}</strong>
+        </div>
+        <div ng-if="!model.isReturnJourney" class="col-sm-2 rc-flight-search-journey-font">
+            <strong class="hidden-xs rc-flight-search-journey-font">No Return Journey</strong>
+            <strong class="visible-xs rc-flight-search-journey-small-font">No Return Journey</strong>
         </div>
         <div class="col-sm-1 rc-flight-search-journey-font">
             <strong class="hidden-xs rc-flight-search-journey-font">{{model.userJourney.noOfAdults}} Adults</strong>
@@ -110,23 +114,25 @@
                     </span>
                     <br>
                     <!--Inbound Short-->
-                    <span class="rc-flight-time-font">{{model.getOnlyTime(flight.itineraries[0].inbound.flights[0].departs_at)}}</span>
-                    &nbsp;
-                    <span class="rc-flight-time-font">{{model.userJourney.destination}}</span>
-                    &nbsp;
-                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                    &nbsp;
-                    <span class="rc-flight-time-font">{{model.userJourney.source}}</span>
-                    &nbsp;
-                    <span class="rc-flight-time-font">{{model.getOnlyTime(flight.itineraries[0].inbound.flights[flight.itineraries[0].inbound.flights.length - 1].arrives_at)}}</span>
-                    <br>
-                    <span class="rc-flight-time-font">Total Duration :
-                        {{model.calculateTotalDuration(flight.itineraries[0].inbound.flights[flight.itineraries[0].inbound.flights.length - 1].arrives_at, flight.itineraries[0].inbound.flights[0].departs_at)}}
-                    </span>
-                    <span class="rc-flight-time-font">&nbsp;&nbsp;&nbsp;&nbsp;Stops :
-                        {{flight.itineraries[0].inbound.flights.length - 1}}
-                    </span>
-                    <br>
+                    <div ng-if="model.isReturnJourney">
+                        <span class="rc-flight-time-font">{{model.getOnlyTime(flight.itineraries[0].inbound.flights[0].departs_at)}}</span>
+                        &nbsp;
+                        <span class="rc-flight-time-font">{{model.userJourney.destination}}</span>
+                        &nbsp;
+                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                        &nbsp;
+                        <span class="rc-flight-time-font">{{model.userJourney.source}}</span>
+                        &nbsp;
+                        <span class="rc-flight-time-font">{{model.getOnlyTime(flight.itineraries[0].inbound.flights[flight.itineraries[0].inbound.flights.length - 1].arrives_at)}}</span>
+                        <br>
+                        <span class="rc-flight-time-font">Total Duration :
+                            {{model.calculateTotalDuration(flight.itineraries[0].inbound.flights[flight.itineraries[0].inbound.flights.length - 1].arrives_at, flight.itineraries[0].inbound.flights[0].departs_at)}}
+                        </span>
+                            <span class="rc-flight-time-font">&nbsp;&nbsp;&nbsp;&nbsp;Stops :
+                            {{flight.itineraries[0].inbound.flights.length - 1}}
+                        </span>
+                        <br>
+                    </div>
                     <span class="rc-flight-time-font">
                         Seats Remaining : {{flight.itineraries[0].outbound.flights[0].booking_info.seats_remaining}}
                     </span>
@@ -158,30 +164,31 @@
                     </span>
                     <br>
                     <!--Inbound Short-->
-                    <span class="rc-flight-time-big-font">{{model.getOnlyTime(flight.itineraries[0].inbound.flights[0].departs_at)}}</span>
-                    &nbsp;&nbsp;
-                    <span class="rc-flight-time-big-font">{{model.userJourney.destination}}</span>
-                    &nbsp;&nbsp;
-                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                    &nbsp;&nbsp;
-                    <span class="rc-flight-time-big-font">{{model.userJourney.source}}</span>
-                    &nbsp;&nbsp;
-                    <span class="rc-flight-time-big-font">{{model.getOnlyTime(flight.itineraries[0].inbound.flights[flight.itineraries[0].inbound.flights.length - 1].arrives_at)}}</span>
-                    <br>
-                    <span class="rc-flight-time-big-font">Total Duration :
-                        {{model.calculateTotalDuration(flight.itineraries[0].inbound.flights[flight.itineraries[0].inbound.flights.length - 1].arrives_at, flight.itineraries[0].inbound.flights[0].departs_at)}}
-                    </span>
-                    <span class="rc-flight-time-big-font">&nbsp;&nbsp;&nbsp;&nbsp;Stops :
-                        {{flight.itineraries[0].inbound.flights.length - 1}}
-                    </span>
-
-                    <br>
+                    <div ng-if="model.isReturnJourney">
+                        <span class="rc-flight-time-big-font">{{model.getOnlyTime(flight.itineraries[0].inbound.flights[0].departs_at)}}</span>
+                        &nbsp;&nbsp;
+                        <span class="rc-flight-time-big-font">{{model.userJourney.destination}}</span>
+                        &nbsp;&nbsp;
+                        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                        &nbsp;&nbsp;
+                        <span class="rc-flight-time-big-font">{{model.userJourney.source}}</span>
+                        &nbsp;&nbsp;
+                        <span class="rc-flight-time-big-font">{{model.getOnlyTime(flight.itineraries[0].inbound.flights[flight.itineraries[0].inbound.flights.length - 1].arrives_at)}}</span>
+                        <br>
+                        <span class="rc-flight-time-big-font">Total Duration :
+                            {{model.calculateTotalDuration(flight.itineraries[0].inbound.flights[flight.itineraries[0].inbound.flights.length - 1].arrives_at, flight.itineraries[0].inbound.flights[0].departs_at)}}
+                        </span>
+                        <span class="rc-flight-time-big-font">&nbsp;&nbsp;&nbsp;&nbsp;Stops :
+                            {{flight.itineraries[0].inbound.flights.length - 1}}
+                        </span>
+                        <br>
+                    </div>
                     <i class="fa fa-2x fa-angle-double-down" aria-hidden="true"></i>
                     <br>
                 </div>
                 <div class="col-sm-3 hidden-xs wbdv-font-color-white">
                     <span class="rc-flight-price-font">
-                        USD {{flight.fare.total_price}}
+                        USD &nbsp; {{flight.fare.total_price}}
                     </span>
                 </div>
                 <div class="col-sm-2 hidden-xs"></div>
@@ -221,9 +228,9 @@
         <div class="rc-flight-search-journey-font"
              ng-repeat="connectingFlights in flight.itineraries[0].outbound.flights">
             <div class="wbdv-font-color-white text-center visible-xs">
-                <span class="rc-flight-time-font">&nbsp; Depart on&nbsp;&nbsp;:&nbsp;&nbsp;{{model.getOnlyDate(connectingFlights.departs_at)}}</span>
-                <span class="rc-flight-time-font">
-                    Total Time : {{model.calculateTotalDuration(connectingFlights.arrives_at, connectingFlights.departs_at)}}
+                <span class="rc-flight-time-font pull-left">&nbsp; Depart on&nbsp;&nbsp;:&nbsp;&nbsp;{{model.getOnlyDate(connectingFlights.departs_at)}}</span>
+                <span class="rc-flight-time-font pull-right">
+                    Total Time : {{model.calculateTotalDuration(connectingFlights.arrives_at, connectingFlights.departs_at)}}&nbsp;
                 </span>
                 <br>
                 <span class="rc-flight-time-font">{{model.getOnlyTime(connectingFlights.departs_at)}}</span> &nbsp; -- &nbsp;
@@ -237,7 +244,8 @@
                 <br>
             </div>
             <div class="wbdv-font-color-white text-center hidden-xs">
-                <span class="rc-flight-time-big-font">&nbsp; Depart on&nbsp;&nbsp;:&nbsp;&nbsp;{{model.getOnlyDate(connectingFlights.departs_at)}}</span>
+                <span class="rc-flight-time-big-font">&nbsp; Depart on&nbsp;&nbsp;:&nbsp;&nbsp;{{model.getOnlyDate(connectingFlights.departs_at)}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </span>
                 <span class="rc-flight-time-big-font">
                     Total Time : {{model.calculateTotalDuration(connectingFlights.arrives_at, connectingFlights.departs_at)}}
                 </span>
@@ -258,9 +266,10 @@
             <div class="rc-flight-search-journey-font"
                  ng-repeat="connectingFlights in flight.itineraries[0].inbound.flights">
                 <div class="wbdv-font-color-white text-center visible-xs">
-                    <span class="rc-flight-time-font">&nbsp; Depart on&nbsp;&nbsp;:&nbsp;&nbsp;{{model.getOnlyDate(connectingFlights.departs_at)}}</span>
-                    <span class="rc-flight-time-font">
-                    Total Time : {{model.calculateTotalDuration(connectingFlights.arrives_at, connectingFlights.departs_at)}}
+                    <span class="rc-flight-time-font pull-left">&nbsp; Depart on&nbsp;&nbsp;:&nbsp;&nbsp;{{model.getOnlyDate(connectingFlights.departs_at)}}
+                    </span>
+                    <span class="rc-flight-time-font pull-right">
+                    Total Time : {{model.calculateTotalDuration(connectingFlights.arrives_at, connectingFlights.departs_at)}}&nbsp;
                 </span>
                     <br>
                     <span class="rc-flight-time-font">{{model.getOnlyTime(connectingFlights.departs_at)}}</span> &nbsp; -- &nbsp;
@@ -274,7 +283,8 @@
                     <br>
                 </div>
                 <div class="wbdv-font-color-white text-center hidden-xs">
-                    <span class="rc-flight-time-big-font">&nbsp; Depart on&nbsp;&nbsp;:&nbsp;&nbsp;{{model.getOnlyDate(connectingFlights.departs_at)}}</span>
+                    <span class="rc-flight-time-big-font">&nbsp; Depart on&nbsp;&nbsp;:&nbsp;&nbsp;{{model.getOnlyDate(connectingFlights.departs_at)}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </span>
                     <span class="rc-flight-time-big-font">
                     Total Time : {{model.calculateTotalDuration(connectingFlights.arrives_at, connectingFlights.departs_at)}}
                 </span>

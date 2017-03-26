@@ -23,7 +23,7 @@ module.exports = function () {
         , email : newUser.email}},
                 function (err, user) {
                 if(err) {
-                    deferred.abort(err);
+                    deferred.reject(err);
                 } else {
                     deferred.resolve(user);
                 }
@@ -37,7 +37,7 @@ module.exports = function () {
         UserModel
             .create(user, function (err, user) {
                 if(err) {
-                    deferred.abort(err);
+                    deferred.reject(err);
                 } else {
                     deferred.resolve(user);
                 }
@@ -50,7 +50,7 @@ module.exports = function () {
         UserModel
             .findOne({"username": username}, function (err, user) {
                 if(err) {
-                    deferred.abort(err);
+                    deferred.reject(err);
                 } else {
                     deferred.resolve(user);
                 }
@@ -63,7 +63,7 @@ module.exports = function () {
         UserModel
             .findOne({_id: userId}, function (err, user) {
                 if(err) {
-                    deferred.abort(err);
+                    deferred.reject(err);
                 } else {
                     deferred.resolve(user);
                 }
@@ -76,7 +76,7 @@ module.exports = function () {
         UserModel
             .findOne({"username": username, "password": password}, function (err, user) {
                 if(err) {
-                    deferred.abort(err);
+                    deferred.reject(err);
                 } else {
                     deferred.resolve(user);
                 }

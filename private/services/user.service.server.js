@@ -6,6 +6,7 @@ module.exports = function (app, model) {
     // app.delete("/api/user/:userId", deleteUser);
     app.post("/api/user", createUser);
 
+
     function updateUser(req, res) {
         var userId = req.params.userId;
         var newUser = req.body;

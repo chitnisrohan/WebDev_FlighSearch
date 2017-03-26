@@ -8,6 +8,8 @@
         var userId = $routeParams['uid'];
 
         vm.update = update;
+        vm.goToFlightSearch = goToFlightSearch;
+        vm.goToUserHistory = goToUserHistory;
 
         function init() {
             UserService
@@ -17,6 +19,14 @@
                 });
         }
         init();
+
+        function goToFlightSearch() {
+            $location.url("/user/" + userId + "/flightSearch");
+        }
+
+        function goToUserHistory() {
+            $location.url("/user/"+ userId + "/userHistory");
+        }
 
         function update(newUser) {
             var user = UserService

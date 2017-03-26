@@ -16,9 +16,9 @@
                         <span class="glyphicon glyphicon-align-justify ss-white-font"></span>
                     </button>
                     <ul class="dropdown-menu rc-z-index-dropdown rc-drop-menu">
-                        <li><a href="#/" class="rc-drop-menu">Search Flights</a></li>
+                        <li><a ng-click="model.goToFlightSearch()" class="rc-drop-menu">Search Flights</a></li>
                         <li><a class="rc-drop-menu">Profile</a></li>
-                        <li><a href="#/userHistory" class="rc-drop-menu">History</a></li>
+                        <li><a ng-click="model.goToUserHistory()" class="rc-drop-menu">History</a></li>
                         <li><a href="#/userNotification" class="rc-drop-menu">Notifications</a></li>
                         <li><a href="#/" class="rc-drop-menu">Logout</a></li>
                     </ul>
@@ -60,7 +60,7 @@
         <div class="col-sm-3 ss-whitefont hidden-xs ss-black-bg-high" style="opacity: 0.7">
             <ul class="list-group list-unstyled ss-black-bg">
                 <li class="list-group-item  ss-black-bg ss-no-border">
-                    <a href="#/"
+                    <a ng-click="model.goToFlightSearch()"
                        class="ss-whitefont wbdv-banner-font rc-link-left-margin rc-text-decoration">
                         <i class="rc-link-left-margin rc-link-right-margin fa fa-plane"
                            aria-hidden="true"></i>
@@ -75,7 +75,7 @@
                      </a>
                 </li>
                 <li class="list-group-item  ss-black-bg ss-no-border">
-                    <a href="#/userHistory"
+                    <a ng-click="model.goToUserHistory()"
                        class="ss-whitefont wbdv-banner-font rc-link-left-margin rc-text-decoration">
                         <i class="rc-link-left-margin rc-link-right-margin fa fa-bell"
                            aria-hidden="true"></i>
@@ -145,7 +145,7 @@
                             Update Profile
                         </a>
                         <a class="btn wbdv-button rc-form-font-size btn-block ss-button-margin"
-                           href="#/login">
+                           href="#/">
                             Logout
                         </a>
                     </div>

@@ -12,6 +12,11 @@
                 controller: "SearchController",
                 controllerAs: "model"
             })
+            .when("/user/:uid/flightSearch", {
+                templateUrl: "views/flights/templates/search.view.client.html",
+                controller: "SearchController",
+                controllerAs: "model"
+            })
             .when("/flight/search/SRC/:src/DEST/:dest/DEPART/:dept/RETURN/:ret/ADULTS/:adults/CHILD/:child/CLASS/:class", {
                 templateUrl: "views/flights/templates/search.results.view.client.html",
                 controller: "SearchResultController",
@@ -37,7 +42,7 @@
                 controller: "AgentNotificationController",
                 controllerAs: "model"
             })
-            .when("/userHistory" , {
+            .when("/user/:uid/userHistory" , {
                 templateUrl: "views/user/templates/user.history.view.client.html",
                 controller: "UserHistoryController",
                 controllerAs: "model"
