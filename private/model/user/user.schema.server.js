@@ -9,7 +9,13 @@ module.exports = function() {
         lastName: String,
         email: String,
         phone: String,
-        // websites: [{type: mongoose.Schema.Types.ObjectId, ref:'WebsiteModel'}],
+        userType: {
+            type: String,
+            enum: ['USER', 'AGENT', 'ADMIN', 'HOTELOWNER']
+        },
+        organization : String,
+        hotels: [{type: mongoose.Schema.Types.ObjectId, ref:'HotelModel'}],
+        messages: [{type: mongoose.Schema.Types.ObjectId, ref:'MessageModel'}],
         dateCreated: {type: Date, default: Date.now}
     }, {collection: "userDatabase"});
 

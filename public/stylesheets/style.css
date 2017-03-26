@@ -4,9 +4,31 @@ body {
     font-family: Sansita;
 }
 
+.rc-flight-time-font {
+    font-size: 16px;
+}
+
+.rc-flight-time-big-font {
+    font-size: 19px;
+}
+
+a:hover, a:focus {
+    text-decoration: none;
+}
+
+.rc-flight-city-font {
+    font-size: 15px;
+}
+
+.rc-flight-city-big-font {
+    font-size: 18px;
+}
+
+
 #rc-flight-search-login-margin-right {
     margin-top: 5px;
 }
+
 
 #rc-margin-for-logo-flight-search {
     margin-top: 16px;
@@ -15,9 +37,11 @@ body {
 }
 
 .rc-background-flight-search-result {
-    background: url('/images/pexels-photo-115109.jpeg');
+    /*background: url('/images/pexels-photo-115109.jpeg');*/
+    /*background: url('/images/flight-sky-clouds-fly.jpg');*/
+    background-color: #6C7A89;
     background-size: cover;
-    opacity: 1;
+    opacity: 0.9;
     /*background-position: 100%;*/
     /*background:repeat;*/
     position: absolute;
@@ -164,6 +188,8 @@ body {
 
 .rc-flight-modify-button {
     border-radius: 15px;
+    font-size: 15px;
+    background-color: #F9690E;
 }
 
 .rc-flight-details-button {
@@ -182,6 +208,21 @@ body {
 
 .rc-flight-search-journey-font {
     font-size: 18px;
+    color: white;
+}
+
+.rc-flight-price-font {
+    font-size: 25px;
+    color: white;
+}
+
+.rc-flight-price-small-font {
+    font-size: 23px;
+    color: white;
+}
+
+.rc-flight-search-journey-small-font {
+    font-size: 16px;
     color: white;
 }
 
@@ -438,4 +479,30 @@ a.hover {
     left:0;
     min-width: 100%;
     min-height: 100%;
+}
+
+.ss-hotel-search-results-font {
+    font-size: 15px;
+    color: white;
+}
+
+.ss-font-top-padding{
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.ss-edit-pencil{
+    padding-top: px;
+    font-size: 32px;
+    /*color: black;*/
+}
+
+.ss-white-background{
+    /*background-color: white;*/
+}
+
+.ss-hotel-modify-button {
+    border-radius: 15px;
+    margin-top: 2px;
+    margin-bottom: 2px;
 }
