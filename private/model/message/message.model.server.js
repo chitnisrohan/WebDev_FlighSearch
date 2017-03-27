@@ -10,9 +10,23 @@ module.exports = function () {
         setModel: setModel,
         setUpAlert : setUpAlert,
         findAlertsForUser : findAlertsForUser,
-        deleteAlert : deleteAlert
+        deleteAlert : deleteAlert,
+        findAllAlerts : findAllAlerts
     };
     return api;
+
+    function findAllAlerts() {
+        var deferred = Q.defer();
+        MessageModel
+            .find({},function (err, alerts) {
+                if (err) {
+                    deferred.reject(err);
+                } else {
+                    deferred.resolve(alerts);
+                }
+            });
+        return deferred.promise;
+    }
 
     function deleteAlert(alertId) {
         var deferred = Q.defer();

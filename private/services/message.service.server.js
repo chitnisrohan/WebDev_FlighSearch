@@ -3,6 +3,21 @@ module.exports = function (app, model) {
     app.post("/api/:userId/setupAlert", setupAlert);
     app.get("/api/alerts/:userId", findAlertsForUser);
     app.delete("/api/alerts/:alertId", deleteAlert);
+    app.get("/api/allAlerts", findAllAlerts);
+    
+    function findAllAlerts(req, res) {
+        model
+            .messageModel
+            .findAllAlerts()
+            .then(
+                function (alerts) {
+                    res.json(alerts);
+                },
+                function (err) {
+                    res.sendStatus(400).send(err);
+                }
+            );
+    }
 
     function deleteAlert(req, res) {
         var alertId = req.params.alertId;

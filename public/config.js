@@ -37,7 +37,7 @@
                 controller: "ProfileController",
                 controllerAs: "model"
             })
-            .when("/agentNotification" , {
+            .when("/user/:uid/agentNotification" , {
                 templateUrl: "views/user/templates/agent.notification.view.client.html",
                 controller: "AgentNotificationController",
                 controllerAs: "model"
@@ -47,12 +47,12 @@
                 controller: "UserHistoryController",
                 controllerAs: "model"
             })
-            .when("/agentHistory" , {
+            .when("/user/:uid/agentHistory" , {
                 templateUrl: "views/user/templates/agent.history.view.client.html",
                 controller: "AgentHistoryController",
                 controllerAs: "model"
             })
-            .when("/userNotification" , {
+            .when("/user/:uid/userNotification" , {
                 templateUrl: "views/user/templates/user.notification.view.client.html",
                 controller: "UserNotificationController",
                 controllerAs: "model"

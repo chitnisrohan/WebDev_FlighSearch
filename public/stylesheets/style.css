@@ -340,6 +340,14 @@ body img {
     font-size: 15px;
 }
 
+#clearFilterMessageButton .btn-default {
+    background-color: coral;
+    border-radius: 12px;
+    color: white;
+    font-size: 15px;
+}
+
+
 #sendMessageButton .form-control {
     border-radius: 12px;
     font-size: 15px;

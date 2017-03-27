@@ -97,83 +97,90 @@
             <div class="row">
             <!--<div class="col-sm-1"></div>-->
             <div class="col-xs-12 col-sm-12" style="opacity: 0.9">
-                <!--<ul ng-repeat="website in model.websiteList" class="list-group">-->
-                <!--<li class="list-group-item">-->
-                <!--<a ng-click="model.goToWebsite(website._id)"-->
-                <!--class="no-underline">-->
-                <!--{{website.name}}-->
-                <!--</a>-->
-                <!--<a ng-click="model.goToEditWebsite(website._id)"-->
-                <!--class="pull-right">-->
-                <!--<span class="glyphicon glyphicon-cog"></span>-->
-                <!--</a>-->
-                <!--</li>-->
-                <!--</ul>-->
                 <div class="page1">
                 <ul class="list-group" style="margin-top: 10px">
                     <li class="list-group-item" style="background-color: #0f0f0f; opacity: 0.9">
                         <div class="row">
                             <div class="col-md-2 rc-small-top-margin">
-                                <input type="text"
+                                <input ng-model="model.alertFilter.username"
+                                       type="text"
                                        class="form-control"
                                        placeholder="Username">
                             </div>
                             <div class="col-md-2 rc-small-top-margin">
-                                <input type="text"
+                                <input ng-model="model.alertFilter.source"
+                                       type="text"
                                        class="form-control"
                                        placeholder="Source">
                             </div>
                             <div class="col-md-2 rc-small-top-margin">
-                                <input type="text"
+                                <input ng-model="model.alertFilter.destination"
+                                       type="text"
                                        class="form-control"
                                        placeholder="Destination">
                             </div>
                             <div class="col-md-2 rc-small-top-margin">
-                                <input type="text"
+                                <input ng-model="model.alertFilter.dates"
+                                       type="text"
                                        class="form-control"
-                                       placeholder="Date">
+                                       placeholder="Date (YYYY-MM-DD)">
                             </div>
-                            <div id="filterMessageButton" class="col-md-4 rc-small-top-margin">
-                                <a href="#" class="btn btn-default form-control">
+                            <div id="filterMessageButton" class="col-md-2 rc-small-top-margin">
+                                <a ng-click="model.filterAlerts(model.alertFilter)" class="btn btn-default form-control">
                                     Filter
+                                </a>
+                            </div>
+                            <div id="clearFilterMessageButton" class="col-md-2 rc-small-top-margin">
+                                <a ng-click="model.clearFilterAlerts()" class="btn btn-default form-control">
+                                    Clear Filter
                                 </a>
                             </div>
                         </div>
                     </li>
                 <li class="list-group-item" style="background-color: #0f0f0f; opacity: 0.9">
-                    <div class="row hidden-xs hidden-sm">
-                        <div class="col-md-2 rc-small-top-margin">
+                    <div class="row hidden-xs hidden-sm text-center">
+                        <div class="col-md-3 rc-small-top-margin">
                             <h4 class="wbdv-font-color-white">Username</h4>
                         </div>
-                        <div class="col-md-2 rc-small-top-margin">
+                        <div class="col-md-1 rc-small-top-margin">
                             <h4 class="wbdv-font-color-white">Source</h4>
                         </div>
-                        <div class="col-md-2 rc-small-top-margin">
+                        <div class="col-md-1 rc-small-top-margin">
                             <h4 class="wbdv-font-color-white">Destination</h4>
                         </div>
-                        <div class="col-md-2 rc-small-top-margin">
+                        <div class="col-md-3 rc-small-top-margin">
                             <h4 class="wbdv-font-color-white">Date</h4>
                         </div>
-                        <div class="col-md-2 rc-small-top-margin">
+                        <div class="col-md-3 rc-small-top-margin">
                             <h4 class="wbdv-font-color-white">Message</h4>
                         </div>
                     </div>
                 </li>
-                <li class="list-group-item" style="background-color: #0f0f0f; opacity: 0.9">
-                    <div class="row">
-                        <div class="col-md-2 rc-small-top-margin">
-                            <h4 class="wbdv-font-color-white">Saurin Shah</h4>
-                        </div>
-                        <div class="col-md-2 rc-small-top-margin">
-                            <h4 class="wbdv-font-color-white">BOS</h4>
-                        </div>
-                        <div class="col-md-2 rc-small-top-margin">
-                            <h4 class="wbdv-font-color-white">BOM</h4>
-                        </div>
-                        <div class="col-md-2 rc-small-top-margin">
-                            <h4 class="wbdv-font-color-white">05/03/2017</h4>
-                        </div>
+                <li ng-repeat="alert in model.alerts.data" class="list-group-item" style="background-color: #0f0f0f; opacity: 0.9">
+                    <div class="row text-center">
                         <div class="col-md-3 rc-small-top-margin">
+                            <h4 class="wbdv-font-color-white">{{alert.userid}}</h4>
+                        </div>
+                        <div class="col-md-1 rc-small-top-margin">
+                            <h4 class="wbdv-font-color-white">{{alert.source}}</h4>
+                        </div>
+                        <div class="col-md-1 rc-small-top-margin">
+                            <h4 class="wbdv-font-color-white">{{alert.destination}}</h4>
+                        </div>
+                        <div ng-if="alert.returnDate" class="col-md-3 rc-small-top-margin">
+                            <h4 class="wbdv-font-color-white">
+                                Depart on &nbsp; : &nbsp; {{alert.departDate}}
+                            </h4>
+                            <h4 class="wbdv-font-color-white">
+                                Return on &nbsp; : &nbsp; {{alert.returnDate}}
+                            </h4>
+                        </div>
+                        <div ng-if="!alert.returnDate" class="col-md-3 rc-small-top-margin">
+                            <h4 class="wbdv-font-color-white">
+                                Depart on &nbsp; : &nbsp; {{alert.departDate}}
+                            </h4>
+                        </div>
+                        <div class="col-md-3 rc-small-top-margin text-center">
                         <textarea class="form-control"
                                   id="message"
                                   rows="2"
@@ -188,93 +195,93 @@
                         </div>
                     </div>
                 </li>
-                    <li class="list-group-item" style="background-color: #0f0f0f; opacity: 0.9">
-                        <div class="row">
-                            <div class="col-md-2 rc-small-top-margin">
-                                <h4 class="wbdv-font-color-white">Saurin Shah</h4>
-                            </div>
-                            <div class="col-md-2 rc-small-top-margin">
-                                <h4 class="wbdv-font-color-white">BOS</h4>
-                            </div>
-                            <div class="col-md-2 rc-small-top-margin">
-                                <h4 class="wbdv-font-color-white">BOM</h4>
-                            </div>
-                            <div class="col-md-2 rc-small-top-margin">
-                                <h4 class="wbdv-font-color-white">05/03/2017</h4>
-                            </div>
-                            <div class="col-md-3 rc-small-top-margin">
-                        <textarea class="form-control"
-                                  id="message"
-                                  rows="2"
-                                  placeholder="Message To Send"></textarea>
-                            </div>
-                            <div id="sendMessageButton" class="col-md-1 rc-small-top-margin">
-                                <h4>
-                                    <a href="#" class="btn btn-primary form-control">
-                                        Send
-                                    </a>
-                                </h4>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item" style="background-color: #0f0f0f; opacity: 0.9">
-                        <div class="row">
-                            <div class="col-md-2 rc-small-top-margin">
-                                <h4 class="wbdv-font-color-white">Saurin Shah</h4>
-                            </div>
-                            <div class="col-md-2 rc-small-top-margin">
-                                <h4 class="wbdv-font-color-white">BOS</h4>
-                            </div>
-                            <div class="col-md-2 rc-small-top-margin">
-                                <h4 class="wbdv-font-color-white">BOM</h4>
-                            </div>
-                            <div class="col-md-2 rc-small-top-margin">
-                                <h4 class="wbdv-font-color-white">05/03/2017</h4>
-                            </div>
-                            <div class="col-md-3 rc-small-top-margin">
-                        <textarea class="form-control"
-                                  id="message"
-                                  rows="2"
-                                  placeholder="Message To Send"></textarea>
-                            </div>
-                            <div id="sendMessageButton" class="col-md-1 rc-small-top-margin">
-                                <h4>
-                                    <a href="#" class="btn btn-primary form-control">
-                                        Send
-                                    </a>
-                                </h4>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item" style="background-color: #0f0f0f; opacity: 0.9">
-                        <div class="row">
-                            <div class="col-md-2 rc-small-top-margin">
-                                <h4 class="wbdv-font-color-white">Saurin Shah</h4>
-                            </div>
-                            <div class="col-md-2 rc-small-top-margin">
-                                <h4 class="wbdv-font-color-white">BOS</h4>
-                            </div>
-                            <div class="col-md-2 rc-small-top-margin">
-                                <h4 class="wbdv-font-color-white">BOM</h4>
-                            </div>
-                            <div class="col-md-2 rc-small-top-margin">
-                                <h4 class="wbdv-font-color-white">05/03/2017</h4>
-                            </div>
-                            <div class="col-md-3 rc-small-top-margin">
-                        <textarea class="form-control"
-                                  id="message"
-                                  rows="2"
-                                  placeholder="Message To Send"></textarea>
-                            </div>
-                            <div id="sendMessageButton" class="col-md-1 rc-small-top-margin">
-                                <h4>
-                                    <a href="#" class="btn btn-primary form-control">
-                                        Send
-                                    </a>
-                                </h4>
-                            </div>
-                        </div>
-                    </li>
+                    <!--<li class="list-group-item" style="background-color: #0f0f0f; opacity: 0.9">-->
+                        <!--<div class="row">-->
+                            <!--<div class="col-md-2 rc-small-top-margin">-->
+                                <!--<h4 class="wbdv-font-color-white">Saurin Shah</h4>-->
+                            <!--</div>-->
+                            <!--<div class="col-md-2 rc-small-top-margin">-->
+                                <!--<h4 class="wbdv-font-color-white">BOS</h4>-->
+                            <!--</div>-->
+                            <!--<div class="col-md-2 rc-small-top-margin">-->
+                                <!--<h4 class="wbdv-font-color-white">BOM</h4>-->
+                            <!--</div>-->
+                            <!--<div class="col-md-2 rc-small-top-margin">-->
+                                <!--<h4 class="wbdv-font-color-white">05/03/2017</h4>-->
+                            <!--</div>-->
+                            <!--<div class="col-md-3 rc-small-top-margin">-->
+                        <!--<textarea class="form-control"-->
+                                  <!--id="message"-->
+                                  <!--rows="2"-->
+                                  <!--placeholder="Message To Send"></textarea>-->
+                            <!--</div>-->
+                            <!--<div id="sendMessageButton" class="col-md-1 rc-small-top-margin">-->
+                                <!--<h4>-->
+                                    <!--<a href="#" class="btn btn-primary form-control">-->
+                                        <!--Send-->
+                                    <!--</a>-->
+                                <!--</h4>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li class="list-group-item" style="background-color: #0f0f0f; opacity: 0.9">-->
+                        <!--<div class="row">-->
+                            <!--<div class="col-md-2 rc-small-top-margin">-->
+                                <!--<h4 class="wbdv-font-color-white">Saurin Shah</h4>-->
+                            <!--</div>-->
+                            <!--<div class="col-md-2 rc-small-top-margin">-->
+                                <!--<h4 class="wbdv-font-color-white">BOS</h4>-->
+                            <!--</div>-->
+                            <!--<div class="col-md-2 rc-small-top-margin">-->
+                                <!--<h4 class="wbdv-font-color-white">BOM</h4>-->
+                            <!--</div>-->
+                            <!--<div class="col-md-2 rc-small-top-margin">-->
+                                <!--<h4 class="wbdv-font-color-white">05/03/2017</h4>-->
+                            <!--</div>-->
+                            <!--<div class="col-md-3 rc-small-top-margin">-->
+                        <!--<textarea class="form-control"-->
+                                  <!--id="message"-->
+                                  <!--rows="2"-->
+                                  <!--placeholder="Message To Send"></textarea>-->
+                            <!--</div>-->
+                            <!--<div id="sendMessageButton" class="col-md-1 rc-small-top-margin">-->
+                                <!--<h4>-->
+                                    <!--<a href="#" class="btn btn-primary form-control">-->
+                                        <!--Send-->
+                                    <!--</a>-->
+                                <!--</h4>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li class="list-group-item" style="background-color: #0f0f0f; opacity: 0.9">-->
+                        <!--<div class="row">-->
+                            <!--<div class="col-md-2 rc-small-top-margin">-->
+                                <!--<h4 class="wbdv-font-color-white">Saurin Shah</h4>-->
+                            <!--</div>-->
+                            <!--<div class="col-md-2 rc-small-top-margin">-->
+                                <!--<h4 class="wbdv-font-color-white">BOS</h4>-->
+                            <!--</div>-->
+                            <!--<div class="col-md-2 rc-small-top-margin">-->
+                                <!--<h4 class="wbdv-font-color-white">BOM</h4>-->
+                            <!--</div>-->
+                            <!--<div class="col-md-2 rc-small-top-margin">-->
+                                <!--<h4 class="wbdv-font-color-white">05/03/2017</h4>-->
+                            <!--</div>-->
+                            <!--<div class="col-md-3 rc-small-top-margin">-->
+                        <!--<textarea class="form-control"-->
+                                  <!--id="message"-->
+                                  <!--rows="2"-->
+                                  <!--placeholder="Message To Send"></textarea>-->
+                            <!--</div>-->
+                            <!--<div id="sendMessageButton" class="col-md-1 rc-small-top-margin">-->
+                                <!--<h4>-->
+                                    <!--<a href="#" class="btn btn-primary form-control">-->
+                                        <!--Send-->
+                                    <!--</a>-->
+                                <!--</h4>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</li>-->
                 </ul>
                 </div>
             </div>
