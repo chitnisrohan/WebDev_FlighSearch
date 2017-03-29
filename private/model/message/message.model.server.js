@@ -1,7 +1,7 @@
 module.exports = function () {
     var model = {};
     var mongoose = require("mongoose");
-    var MessageSchema = require("./message.schema.server")();
+    var MessageSchema = require("./message.schema.server.js")();
     var MessageModel = mongoose.model("MessageModel", MessageSchema);
 
     var Q = require("q");
