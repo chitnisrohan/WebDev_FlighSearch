@@ -2,9 +2,6 @@
   "name": "flightsearch",
   "version": "0.0.0",
   "private": true,
-  "scripts": {
-    "start": "node server.js"
-  },
   "main": "server.js",
   "dependencies": {
     "body-parser": "~1.15.2",
@@ -18,5 +15,10 @@
     "q": "^1.4.1",
     "q-": "0.0.0",
     "serve-favicon": "~2.3.0"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Rohan Chitnis"
+
 }
