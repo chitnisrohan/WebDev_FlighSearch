@@ -49,7 +49,9 @@
                                        type="text"
                                        class="form-control"
                                        id="from"
-                                       placeholder="From">
+                                       placeholder="From"
+                                       list="cityFrom">
+                                <datalist id="cityFrom"></datalist>
                             </div>
                         </div>
                         <div class="col-sm-6">
@@ -59,7 +61,9 @@
                                        type="text"
                                        class="form-control"
                                        id="to"
-                                       placeholder="To">
+                                       placeholder="To"
+                                       list="cityTo">
+                                <datalist id="cityTo"></datalist>
                             </div>
                         </div>
                     </div>
@@ -183,14 +187,61 @@
         </div>
         <div class="col-sm-1"></div>
     </div>
-        {{model.flightData.results[0].itineraries[0].outbound.flights[0].departs_at}}
-        {{model.flightData.results[0].itineraries[0].outbound.flights[0].origin.airport}}
-        {{model.flightData.results[0].itineraries[0].outbound.flights[0].origin.terminal}}
-        {{model.flightData.results[0].itineraries[0].outbound.flights[0].destination.airport}}
-        {{model.flightData.results[0].itineraries[0].outbound.flights[0].destination.terminal}}
-        {{model.flightData.results[0].itineraries[0].outbound.flights[0].marketing_airline}}
-        {{model.flightData.results[0].itineraries[0].outbound.flights[0].booking_info.travel_class}}
-        {{model.flightData.results[0].itineraries[0].outbound.flights[0].booking_info.seats_remaining}}
 </div>
 
 </div>
+
+<!--<script>-->
+
+    <!--// Get the <datalist> and <input> elements.-->
+    <!--var dataList = document.getElementById('cityFrom');-->
+    <!--var input = document.getElementById('from');-->
+
+    <!--// Create a new XMLHttpRequest.-->
+    <!--var request = new XMLHttpRequest();-->
+
+    <!--// Handle state changes for the request.-->
+    <!--request.onreadystatechange = function(response) {-->
+        <!--if (request.readyState === 4) {-->
+            <!--if (request.status === 200) {-->
+                <!--// Parse the JSON-->
+                <!--var jsonOptions = JSON.parse(request.responseText);-->
+
+                <!--console.log(jsonOptions);-->
+                <!--console.log(jsonOptions.response);-->
+
+                <!--var allCities = jsonOptions.response;-->
+                <!--for (var cityInfo in allCities) {-->
+                    <!--console.log(allCities[cityInfo].code +" Name "+allCities[cityInfo].name);-->
+                    <!--var option = document.createElement('option');-->
+                    <!--option.value = allCities[cityInfo].name;-->
+                    <!--dataList.appendChild(option);-->
+                <!--}-->
+
+                <!--// Loop over the JSON array.-->
+<!--//                jsonOptions.forEach(function(item) {-->
+<!--//                    // Create a new <option> element.-->
+<!--//                    var option = document.createElement('option');-->
+<!--//                    // Set the value using the item in the JSON array.-->
+<!--//                    option.value = item;-->
+<!--//                    // Add the <option> element to the <datalist>.-->
+<!--//                    dataList.appendChild(option);-->
+<!--//                });-->
+
+                <!--// Update the placeholder text.-->
+                <!--input.placeholder = "e.g. datalist";-->
+            <!--} else {-->
+                <!--// An error occured :(-->
+                <!--input.placeholder = "Couldn't load datalist options :(";-->
+            <!--}-->
+        <!--}-->
+    <!--};-->
+
+    <!--// Update the placeholder text.-->
+    <!--input.placeholder = "Loading options...";-->
+
+    <!--// Set up and make the request.-->
+    <!--request.open('GET', 'https://crossorigin.me/https://iatacodes.org/api/v6/cities?api_key=7cf86b00-61f2-47df-a5d0-d56b5bf819bb', true);-->
+<!--//    request.open('GET', 'http://cors.io/?u=http://iatacodes.org/api/v6/autocomplete?api_key=7cf86b00-61f2-47df-a5d0-d56b5bf819bb&query=boston', true);-->
+    <!--request.send();-->
+<!--</script>-->

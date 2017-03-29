@@ -1,0 +1,132 @@
+{
+  "request": {
+    "lang": "en",
+    "currency": "USD",
+    "time": 17,
+    "id": 1490745355450,
+    "server": "production",
+    "host": "iatacodes.org",
+    "pid": 35644,
+    "key": {
+      "id": 7700,
+      "api_key": "7cf86b00-61f2-47df-a5d0-d56b5bf819bb",
+      "type": "free",
+      "expired": null,
+      "registered": "2017-03-28T23:47:33.000Z",
+      "limits_by_hour": 2500,
+      "limits_by_minute": 250,
+      "demo_methods": [],
+      "usage_by_hour": 8,
+      "usage_by_minute": 2
+    },
+    "params": {
+      "query": "london",
+      "lang": "en"
+    },
+    "version": 6,
+    "method": "autocomplete",
+    "client": {
+      "country_code": "US",
+      "country": "United States",
+      "lat": 38,
+      "lng": -97,
+      "ip": "73.69.149.205",
+      "device": {
+        "type": "desktop"
+      },
+      "agent": {
+        "browser": "Chrome",
+        "version": "56.0.2924.87",
+        "os": "unknown",
+        "platform": "Microsoft Windows"
+      }
+    }
+  },
+  "response": {
+    "countries": [],
+    "cities_by_countries": [],
+    "airports_by_countries": [],
+    "cities": [
+      {
+        "code": "YXU",
+        "name": "London",
+        "country_name": "Canada"
+      },
+      {
+        "code": "ELS",
+        "name": "East London",
+        "country_name": "South Africa"
+      },
+      {
+        "code": "LON",
+        "name": "London",
+        "country_name": "United Kingdom"
+      },
+      {
+        "code": "GON",
+        "name": "New London",
+        "country_name": "United States"
+      },
+      {
+        "code": "LOZ",
+        "name": "London",
+        "country_name": "United States"
+      }
+    ],
+    "airports": [
+      {
+        "code": "LCY",
+        "name": "London City Airport",
+        "country_name": "United Kingdom"
+      },
+      {
+        "code": "YXU",
+        "name": "London International",
+        "country_name": "Canada"
+      },
+      {
+        "code": "ELS",
+        "name": "East London",
+        "country_name": "South Africa"
+      },
+      {
+        "code": "LOZ",
+        "name": "Corbin-london",
+        "country_name": "United States"
+      },
+      {
+        "code": "GON",
+        "name": "New London",
+        "country_name": "United States"
+      }
+    ],
+    "cities_by_airports": [],
+    "airports_by_cities": [
+      {
+        "code": "LCY",
+        "name": "London City Airport",
+        "country_name": "United Kingdom"
+      },
+      {
+        "code": "LHR",
+        "name": "Heathrow",
+        "country_name": "United Kingdom"
+      },
+      {
+        "code": "LGW",
+        "name": "Gatwick",
+        "country_name": "United Kingdom"
+      },
+      {
+        "code": "YXU",
+        "name": "London International",
+        "country_name": "Canada"
+      },
+      {
+        "code": "ZEP",
+        "name": "Victoria Railway",
+        "country_name": "United Kingdom"
+      }
+    ]
+  }
+}
