@@ -353,6 +353,12 @@ body img {
     font-size: 15px;
 }
 
+#deleteMessageButton .form-control {
+    border-radius: 12px;
+    font-size: 15px;
+}
+
+
 .rc-small-top-margin {
     margin-top: 3px;
 }

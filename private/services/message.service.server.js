@@ -4,7 +4,56 @@ module.exports = function (app, model) {
     app.get("/api/alerts/:userId", findAlertsForUser);
     app.delete("/api/alerts/:alertId", deleteAlert);
     app.get("/api/allAlerts", findAllAlerts);
-    
+    app.put("/api/sendMessage", sendMessage);
+    app.put("/api/deleteMessage/:agentId", deleteMessageForAgent);
+    app.get("/api/getAllNotifications/:userId", getAllNotifications);
+
+    function getAllNotifications(req, res) {
+        var userId = req.params.userId;
+        model
+            .messageModel
+            .getAllNotifications(userId)
+            .then(
+                function (notifications) {
+                    res.json(notifications);
+                },
+                function (err) {
+                    res.sendStatus(400).send(err);
+                }
+            );
+    }
+
+    function deleteMessageForAgent(req, res) {
+        var agentId = req.params.agentId;
+        var alert = req.body;
+        model
+            .messageModel
+            .addAgentToDeleteList(alert, agentId)
+            .then(
+                function (alerts) {
+                    res.json(alerts);
+                },
+                function (err) {
+                    res.sendStatus(400).send(err);
+                }
+            );
+    }
+
+    function sendMessage(req, res) {
+        var alert = req.body;
+        model
+            .messageModel
+            .updateMessage(alert)
+            .then(
+                function (alerts) {
+                    res.json(alerts);
+                },
+                function (err) {
+                    res.sendStatus(400).send(err);
+                }
+            );
+    }
+
     function findAllAlerts(req, res) {
         model
             .messageModel

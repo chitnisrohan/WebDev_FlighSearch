@@ -11,9 +11,66 @@ module.exports = function () {
         setUpAlert : setUpAlert,
         findAlertsForUser : findAlertsForUser,
         deleteAlert : deleteAlert,
-        findAllAlerts : findAllAlerts
+        findAllAlerts : findAllAlerts,
+        updateMessage : updateMessage,
+        addAgentToDeleteList : addAgentToDeleteList,
+        getAllNotifications : getAllNotifications
     };
     return api;
+
+    function getAllNotifications(userId) {
+        var deferred = Q.defer();
+        MessageModel
+            .find({userid : userId, response : true}, function (err, notifications) {
+                if (err) {
+                    deferred.reject(err);
+                } else {
+                    deferred.resolve(notifications);
+                }
+            });
+        return deferred.promise;
+    }
+    
+    function addAgentToDeleteList(alert, agentId) {
+        var deferred = Q.defer();
+        MessageModel
+            .update({_id : alert._id}, {$push : {NotVisibleForAgents : agentId}}, 
+            function (err, alerts) {
+                if (err) {
+                    deferred.reject(err);
+                } else {
+                    MessageModel
+                        .find({}, function (err, alerts) {
+                            if (err) {
+                                deferred.reject(err);
+                            } else {
+                                deferred.resolve(alerts);
+                            }
+                        });
+                }
+            });
+        return deferred.promise;
+    }
+    
+    function updateMessage(alert) {
+        var deferred = Q.defer();
+        MessageModel
+            .update({_id : alert._id}, alert, function (err, alerts) {
+                if (err) {
+                    deferred.reject(err);
+                } else {
+                    MessageModel
+                        .find({}, function (err, alerts) {
+                            if (err) {
+                                deferred.reject(err);
+                            } else {
+                                deferred.resolve(alerts);
+                            }
+                        });
+                }
+            });
+        return deferred.promise;
+    }
 
     function findAllAlerts() {
         var deferred = Q.defer();

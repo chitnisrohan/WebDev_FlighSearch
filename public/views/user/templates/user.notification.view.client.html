@@ -141,126 +141,87 @@
                                         <!--</div>-->
                                     <!--</li>-->
                                     <li class="list-group-item" style="background-color: #0f0f0f; opacity: 1">
-                                        <div class="row hidden-xs hidden-sm">
-                                            <div class="col-md-2 rc-small-top-margin">
-                                                <h4 class="wbdv-font-color-white">Agent Name</h4>
+                                        <div ng-if="model.noNitifications">
+                                            <h4 class="wbdv-font-color-white">
+                                                There are no Notifications.
+                                            </h4>
+                                        </div>
+                                        <div ng-if="!model.noNitifications" class="row hidden-xs hidden-sm">
+                                            <div class="col-md-4 rc-small-top-margin text-center">
+                                                <h3 class="wbdv-font-color-white">Journey</h3>
                                             </div>
-                                            <div class="col-md-2 rc-small-top-margin">
-                                                <h4 class="wbdv-font-color-white">Source</h4>
+                                            <div class="col-md-6 rc-small-top-margin text-center">
+                                                <h3 class="wbdv-font-color-white">Message</h3>
                                             </div>
-                                            <div class="col-md-2 rc-small-top-margin">
-                                                <h4 class="wbdv-font-color-white">Destination</h4>
-                                            </div>
-                                            <div class="col-md-2 rc-small-top-margin">
-                                                <h4 class="wbdv-font-color-white">Date</h4>
-                                            </div>
-                                            <div class="col-md-2 rc-small-top-margin">
-                                                <h4 class="wbdv-font-color-white">Message</h4>
-                                            </div>
+                                            <!--<div class="col-md-2 rc-small-top-margin">-->
+                                                <!--<h4 class="wbdv-font-color-white">Agent Names</h4>-->
+                                            <!--</div>-->
+                                            <!--<div class="col-md-2 rc-small-top-margin">-->
+                                                <!--<h4 class="wbdv-font-color-white">Source</h4>-->
+                                            <!--</div>-->
+                                            <!--<div class="col-md-2 rc-small-top-margin">-->
+                                                <!--<h4 class="wbdv-font-color-white">Destination</h4>-->
+                                            <!--</div>-->
+                                            <!--<div class="col-md-2 rc-small-top-margin">-->
+                                                <!--<h4 class="wbdv-font-color-white">Date</h4>-->
+                                            <!--</div>-->
                                         </div>
                                     </li>
-                                    <li class="list-group-item" style="background-color: #0f0f0f; opacity: 1">
+                                    <li ng-repeat="notification in model.notifications" class="list-group-item" style="background-color: #0f0f0f; opacity: 1">
                                         <div class="row">
-                                            <div class="col-md-2 rc-small-top-margin">
-                                                <h4 class="wbdv-font-color-white">Saurin Shah</h4>
-                                            </div>
-                                            <div class="col-md-2 rc-small-top-margin">
-                                                <h4 class="wbdv-font-color-white">BOS</h4>
-                                            </div>
-                                            <div class="col-md-2 rc-small-top-margin">
-                                                <h4 class="wbdv-font-color-white">BOM</h4>
-                                            </div>
-                                            <div class="col-md-2 rc-small-top-margin">
-                                                <h4 class="wbdv-font-color-white">05/03/2017</h4>
-                                            </div>
-                                            <div class="col-md-3 rc-small-top-margin">
-                                                <h4 class="wbdv-font-color-white">50% off sale. Book asap.</h4>
-                                            </div>
-                                            <div id="sendMessageButton" class="col-md-1 rc-small-top-margin text-center">
-                                                <h5>
-                                                    <a href="#" class="btn btn-primary form-control">
-                                                        Send
-                                                    </a>
-                                                </h5>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item" style="background-color: #0f0f0f; opacity: 1">
-                                        <div class="row">
-                                            <div class="col-md-2 rc-small-top-margin">
-                                                <h4 class="wbdv-font-color-white">Saurin Shah</h4>
-                                            </div>
-                                            <div class="col-md-2 rc-small-top-margin">
-                                                <h4 class="wbdv-font-color-white">BOS</h4>
-                                            </div>
-                                            <div class="col-md-2 rc-small-top-margin">
-                                                <h4 class="wbdv-font-color-white">BOM</h4>
-                                            </div>
-                                            <div class="col-md-2 rc-small-top-margin">
-                                                <h4 class="wbdv-font-color-white">05/03/2017</h4>
-                                            </div>
-                                            <div class="col-md-3 rc-small-top-margin">
-                                                <h4 class="wbdv-font-color-white">50% off sale. Book asap.</h4>
-                                            </div>
-                                            <div id="sendMessageButton" class="col-md-1 rc-small-top-margin">
-                                                <h4>
-                                                    <a href="#" class="btn btn-primary form-control">
-                                                        Send
-                                                    </a>
-                                                </h4>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item" style="background-color: #0f0f0f; opacity: 1">
-                                        <div class="row">
-                                            <div class="col-md-2 rc-small-top-margin">
-                                                <h4 class="wbdv-font-color-white">Saurin Shah</h4>
-                                            </div>
-                                            <div class="col-md-2 rc-small-top-margin">
-                                                <h4 class="wbdv-font-color-white">BOS</h4>
-                                            </div>
-                                            <div class="col-md-2 rc-small-top-margin">
-                                                <h4 class="wbdv-font-color-white">BOM</h4>
-                                            </div>
-                                            <div class="col-md-2 rc-small-top-margin">
-                                                <h4 class="wbdv-font-color-white">05/03/2017</h4>
-                                            </div>
-                                            <div class="col-md-3 rc-small-top-margin">
-                                                <h4 class="wbdv-font-color-white">50% off sale. Book asap.</h4>
-                                            </div>
-                                            <div id="sendMessageButton" class="col-md-1 rc-small-top-margin">
-                                                <h4>
-                                                    <a href="#" class="btn btn-primary form-control">
-                                                        Send
-                                                    </a>
-                                                </h4>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item" style="background-color: #0f0f0f; opacity: 1">
-                                        <div class="row">
-                                            <div class="col-md-2 rc-small-top-margin">
-                                                <h4 class="wbdv-font-color-white">Saurin Shah</h4>
-                                            </div>
-                                            <div class="col-md-2 rc-small-top-margin">
-                                                <h4 class="wbdv-font-color-white">BOS</h4>
-                                            </div>
-                                            <div class="col-md-2 rc-small-top-margin">
-                                                <h4 class="wbdv-font-color-white">BOM</h4>
-                                            </div>
-                                            <div class="col-md-2 rc-small-top-margin">
-                                                <h4 class="wbdv-font-color-white">05/03/2017</h4>
-                                            </div>
-                                            <div class="col-md-3 rc-small-top-margin">
-                                                <h4 class="wbdv-font-color-white">50% off sale. Book asap.</h4>
-                                            </div>
-                                            <div id="sendMessageButton" class="col-md-1 rc-small-top-margin">
-                                                <h4>
-                                                    <a href="#" class="btn btn-primary form-control">
-                                                        Send
-                                                    </a>
-                                                </h4>
-                                            </div>
+                                            <ul class="list-group" style="margin-top: 10px">
+                                                <li ng-repeat="messageFromAgent in notification.AgentsResponded"
+                                                    class="list-group-item"
+                                                    style="background-color: #0f0f0f; opacity: 1">
+                                                    <div class="col-md-4 rc-small-top-margin">
+                                                        <h4 class="visible-xs visible-sm wbdv-font-color-white">
+                                                            Journey &nbsp;: &nbsp;{{notification.source}}&nbsp; to&nbsp; {{notification.destination}}
+                                                            <br>Dates : &nbsp;{{notification.departDate}} &nbsp;&nbsp;
+                                                            {{notification.returnDate}}
+                                                        </h4>
+                                                        <h4 class="hidden-xs hidden-sm wbdv-font-color-white">
+                                                            {{notification.source}}&nbsp; to&nbsp; {{notification.destination}}
+                                                            <br>Dates : &nbsp;{{notification.departDate}} &nbsp;&nbsp;
+                                                            {{notification.returnDate}}
+                                                        </h4>
+                                                    </div>
+                                                    <!--<div class="col-md-3 rc-small-top-margin text-center">-->
+                                                        <!--<h4 class="wbdv-font-color-white">-->
+                                                            <!--{{notification.destination}}-->
+                                                        <!--</h4>-->
+                                                    <!--</div>-->
+                                                    <!--<div class="col-md-6 rc-small-top-margin text-center">-->
+                                                        <!--<h4 class="wbdv-font-color-white">-->
+                                                            <!--{{notification.departDate}}-->
+                                                            <!--&nbsp;to&nbsp;-->
+                                                            <!--{{notification.returnDate}}-->
+                                                        <!--</h4>-->
+                                                    <!--</div>-->
+                                                    <div class="col-md-6 rc-small-top-margin">
+                                                        <h4 class="wbdv-font-color-white">
+                                                            Agent Name&nbsp;&nbsp; :&nbsp; &nbsp;{{messageFromAgent._id}}
+                                                            <br>Message &nbsp;&nbsp;: &nbsp;&nbsp;{{messageFromAgent.message}}
+                                                        </h4>
+                                                    </div>
+                                                    <!--<div class="col-md-5 rc-small-top-margin">-->
+                                                        <!--<h4 class="wbdv-font-color-white">-->
+                                                            <!--{{messageFromAgent.message}}-->
+                                                        <!--</h4>-->
+                                                    <!--</div>-->
+                                                    <div id="sendMessageButton" class="col-md-2 rc-small-top-margin text-center">
+                                                        <h5>
+                                                            <a href="#" class="btn btn-danger form-control">
+                                                                Delete
+                                                            </a>
+                                                        </h5>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <!--<div class="col-md-3 rc-small-top-margin">-->
+                                                <!--<h4 class="wbdv-font-color-white">-->
+                                                    <!--{{notification.message}}-->
+                                                <!--</h4>-->
+                                            <!--</div>-->
                                         </div>
                                     </li>
                                 </ul>

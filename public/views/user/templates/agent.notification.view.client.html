@@ -139,35 +139,39 @@
                     </li>
                 <li class="list-group-item" style="background-color: #0f0f0f; opacity: 0.9">
                     <div class="row hidden-xs hidden-sm text-center">
-                        <div class="col-md-3 rc-small-top-margin">
+                        <div class="col-md-4 rc-small-top-margin">
                             <h4 class="wbdv-font-color-white">Username</h4>
                         </div>
-                        <div class="col-md-1 rc-small-top-margin">
+                        <div class="col-md-2 rc-small-top-margin">
                             <h4 class="wbdv-font-color-white">Source</h4>
                         </div>
-                        <div class="col-md-1 rc-small-top-margin">
+                        <div class="col-md-2 rc-small-top-margin">
                             <h4 class="wbdv-font-color-white">Destination</h4>
                         </div>
-                        <div class="col-md-3 rc-small-top-margin">
+                        <div class="col-md-4 rc-small-top-margin">
                             <h4 class="wbdv-font-color-white">Date</h4>
                         </div>
-                        <div class="col-md-3 rc-small-top-margin">
-                            <h4 class="wbdv-font-color-white">Message</h4>
-                        </div>
+                        <!--<div class="col-md-3 rc-small-top-margin">-->
+                            <!--<h4 class="wbdv-font-color-white">Message</h4>-->
+                        <!--</div>-->
                     </div>
                 </li>
-                <li ng-repeat="alert in model.alerts.data" class="list-group-item" style="background-color: #0f0f0f; opacity: 0.9">
+                <li ng-repeat="alert in model.alerts" class="list-group-item" style="background-color: #0f0f0f; opacity: 0.9">
                     <div class="row text-center">
-                        <div class="col-md-3 rc-small-top-margin">
-                            <h4 class="wbdv-font-color-white">{{alert.userid}}</h4>
+                        <div class="col-md-4 rc-small-top-margin">
+                            <h4 class="wbdv-font-color-white">
+                                {{alert.userid}}
+                                <span ng-click="model.deleteMessageForAgent(alert)"
+                                      class="visible-xs visible-sm pull-right glyphicon glyphicon-remove"></span>
+                            </h4>
                         </div>
-                        <div class="col-md-1 rc-small-top-margin">
+                        <div class="col-md-2 rc-small-top-margin">
                             <h4 class="wbdv-font-color-white">{{alert.source}}</h4>
                         </div>
-                        <div class="col-md-1 rc-small-top-margin">
+                        <div class="col-md-2 rc-small-top-margin">
                             <h4 class="wbdv-font-color-white">{{alert.destination}}</h4>
                         </div>
-                        <div ng-if="alert.returnDate" class="col-md-3 rc-small-top-margin">
+                        <div ng-if="alert.returnDate" class="col-md-4 rc-small-top-margin">
                             <h4 class="wbdv-font-color-white">
                                 Depart on &nbsp; : &nbsp; {{alert.departDate}}
                             </h4>
@@ -175,21 +179,32 @@
                                 Return on &nbsp; : &nbsp; {{alert.returnDate}}
                             </h4>
                         </div>
-                        <div ng-if="!alert.returnDate" class="col-md-3 rc-small-top-margin">
+                        <div ng-if="!alert.returnDate" class="col-md-4 rc-small-top-margin">
                             <h4 class="wbdv-font-color-white">
                                 Depart on &nbsp; : &nbsp; {{alert.departDate}}
                             </h4>
                         </div>
-                        <div class="col-md-3 rc-small-top-margin text-center">
-                        <textarea class="form-control"
+                        <div class="col-md-6 rc-small-top-margin text-center">
+                        <textarea ng-model ="message"
+                                  class="form-control"
                                   id="message"
                                   rows="2"
                                   placeholder="Message To Send"></textarea>
                         </div>
-                        <div id="sendMessageButton" class="col-md-1 rc-small-top-margin text-center">
+                        <div id="sendMessageButton" class="col-md-3 rc-small-top-margin text-center">
                             <h5>
-                                <a href="#" class="btn btn-primary form-control">
+                                <a ng-click="model.sendMessage(alert, message)"
+                                   class="btn btn-primary form-control">
                                     Send
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="deleteMessageButton"
+                             class="hidden-xs hidden-sm col-md-3 rc-small-top-margin text-center">
+                            <h5>
+                                <a ng-click="model.deleteMessageForAgent(alert)"
+                                   class="btn btn-danger form-control">
+                                    Delete Message
                                 </a>
                             </h5>
                         </div>

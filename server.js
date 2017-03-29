@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 
 //require ("./public/app.js")(app);
-//require ("./private/app.js")(app);
+require ("./private/app.js")(app);
 
 var port = process.env.PORT || 3002;
 

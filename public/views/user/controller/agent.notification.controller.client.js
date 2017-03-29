@@ -5,16 +5,28 @@
 
     function AgentNotificationController($location, $routeParams, MessageService) {
         var vm = this;
+        var agentId = $routeParams['uid'];
 
         vm.filterAlerts = filterAlerts;
         vm.clearFilterAlerts = clearFilterAlerts;
+        vm.sendMessage = sendMessage;
+        vm.deleteMessageForAgent = deleteMessageForAgent;
 
         function init() {
             MessageService
                 .findAlerts()
                 .then(
                     function (alerts) {
-                        vm.alerts = alerts;
+                        var alerts2 = [];
+                        for (var a in alerts.data) {
+                            var alert = alerts.data[a];
+                            var agentList = alert.NotVisibleForAgents;
+                            if (!agentList.includes(agentId) && alert.response == false) {
+                                alerts2.push(alert);
+                            }
+                        }
+                        console.log(alerts2);
+                        vm.alerts = alerts2;
                         vm.alertsBackup = angular.copy(vm.alerts);
                     },
                     function (err) {
@@ -23,6 +35,38 @@
                 );
         }
         init();
+
+        function deleteMessageForAgent(alert) {
+            MessageService
+                .deleteMessageForAgent(alert, agentId)
+                .then(
+                    function (alerts) {
+                        init();
+                        vm.message = "Alert deleted";
+                    },
+                    function (err) {
+                        vm.error = "Could not delete alert. Please try again";
+                    }
+                );
+        }
+
+        function sendMessage(alert, message) {
+            alert.response = true;
+            var messageMap = {_id : agentId, message : message};
+            alert.AgentsResponded.push(messageMap);
+//            alert.message = message;
+            MessageService
+                .sendMessage(alert)
+                .then(
+                    function (alerts) {
+                        vm.message = "Message sent!";
+                        init();
+                    },
+                    function (err) {
+                        vm.error = "Could not send message. Please try again";
+                    }
+                );
+        }
 
         function clearFilterAlerts() {
             vm.alerts = vm.alertsBackup;
