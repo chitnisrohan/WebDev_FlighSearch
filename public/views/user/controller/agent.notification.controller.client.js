@@ -21,11 +21,15 @@
                         for (var a in alerts.data) {
                             var alert = alerts.data[a];
                             var agentList = alert.NotVisibleForAgents;
-                            if (!agentList.includes(agentId) && alert.response == false) {
+                            var agentList2 = [];
+                            for (var agentIdWhoResponded in alert.AgentsResponded) {
+                                agentList2.push(alert.AgentsResponded[agentIdWhoResponded]._id);
+                            }
+                            if (agentList.includes(agentId) || agentList2.includes(agentId)) {
+                            } else {
                                 alerts2.push(alert);
                             }
                         }
-                        console.log(alerts2);
                         vm.alerts = alerts2;
                         vm.alertsBackup = angular.copy(vm.alerts);
                     },

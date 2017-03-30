@@ -1,5 +1,6 @@
 module.exports = function (app, model) {
 
+    app.delete("/api/deleteFromAgentHistory/:messageId/:agentId", deleteFromAgentHistory);
     app.post("/api/:userId/setupAlert", setupAlert);
     app.get("/api/alerts/:userId", findAlertsForUser);
     app.delete("/api/alerts/:alertId", deleteAlert);
@@ -7,6 +8,39 @@ module.exports = function (app, model) {
     app.put("/api/sendMessage", sendMessage);
     app.put("/api/deleteMessage/:agentId", deleteMessageForAgent);
     app.get("/api/getAllNotifications/:userId", getAllNotifications);
+    app.get("/api/getAgentHistory/:agentId", getAgentHistory);
+
+
+    function deleteFromAgentHistory(req, res) {
+        var messageId = req.params.messageId;
+        var agentId = req.params.agentId;
+        model
+            .messageModel
+            .deleteFromAgentHistory(messageId, agentId)
+            .then(
+                function (history) {
+                    res.json(history);
+                },
+                function (err) {
+                    res.sendStatus(400).send(err);
+                }
+            );
+    }
+
+    function getAgentHistory(req, res) {
+        var agentId = req.params.agentId;
+        model
+            .messageModel
+            .getAgentHistory(agentId)
+            .then(
+                function (history) {
+                    res.json(history);
+                },
+                function (err) {
+                    res.sendStatus(400).send(err);
+                }
+            );
+    }
 
     function getAllNotifications(req, res) {
         var userId = req.params.userId;

@@ -11,9 +11,19 @@
             "findAlerts" : findAlerts,
             "sendMessage" : sendMessage,
             "deleteMessageForAgent" : deleteMessageForAgent,
-            "getAllNotification" : getAllNotification
+            "getAllNotification" : getAllNotification,
+            "findHistory" : findHistory,
+            "deleteMessageFromHistory" : deleteMessageFromHistory
         };
         return api;
+
+        function deleteMessageFromHistory(messageId, agentId) {
+            return $http.delete("/api/deleteFromAgentHistory/" + messageId +"/"+ agentId);
+        }
+
+        function findHistory(agentId) {
+            return $http.get("/api/getAgentHistory/" + agentId);
+        }
 
         function getAllNotification(userId) {
             return $http.get("/api/getAllNotifications/" + userId);
