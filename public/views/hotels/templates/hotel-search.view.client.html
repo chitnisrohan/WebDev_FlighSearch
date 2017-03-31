@@ -1,0 +1,178 @@
+<!--<img src="images/9756566442_416cfc4f0c_k.jpg" height="100%" width="100%">-->
+<div class="rc-no-padding ss-background-hotel-search">
+    <nav class="nav ss-black-navbar ss-navbar-padding">
+        <div class="container-fluid">
+            <div class="row">
+                <!--<div class="col-sm-1"></div>-->
+                <!--<div class="col-xs-12 col-sm-10">-->
+                <div class="col-md-12">
+                    <!--<div class="dropdown pull-right">-->
+                    <!--<button class="btn dropdown-toggle ss-btn-highlight-off ss-btn-top-margin"-->
+                    <!--type="button" data-toggle="dropdown">-->
+                    <!--<span class="glyphicon glyphicon-align-justify ss-white-font"></span>-->
+                    <!--</button>-->
+                    <!--<ul class="dropdown-menu" style="margin-bottom: 100px">-->
+                    <!--<li><a href="#/">Search Flights</a></li>-->
+                    <!--<li><a href="#/profile">Profile</a></li>-->
+                    <!--<li><a href="#/userHistory">History</a></li>-->
+                    <!--<li><a>Notifications</a></li>-->
+                    <!--<li><a href="#/">Logout</a></li>-->
+                    <!--</ul>-->
+                    <!--</div>-->
+
+                    <!--<a class="navbar-brand pull-left" href="#/">-->
+                    <strong class="navbar-brand visible-xs rc-agent-notify-font-size
+                    wbdv-font-color-white pull-left">
+                        New Flight Search
+                    </strong>
+                    <strong class="navbar-brand pull-left wbdv-font-family wbdv-banner-font hidden-xs">
+                        New Flight Search
+                    </strong>
+                    <strong class="navbar-brand visible-xs rc-agent-notify-font-size
+                    wbdv-font-color-white pull-left">
+                        Hotel Search
+                    </strong>
+                    <strong class="navbar-brand pull-left wbdv-font-family wbdv-banner-font hidden-xs">
+                        Hotel Search
+                    </strong>
+                    <i class="fa fa-user-circle-o wbdv-banner-font visible-xs pull-right"
+                       aria-hidden="true"
+                       id = "rc-margin-for-logo-flight-search"></i>
+                    <strong class="wbdv-banner-font hidden-xs pull-right"
+                            id = "rc-flight-search-login-margin-right">
+                        Login
+                    </strong>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-xs-12 col-sm-10 wbdv-black-shade">
+                <div class="page1">
+                    <h1 class="wbdv-font-color-white">Search Hotels</h1>
+                    <form>
+                        <div class="row">
+                            <!--<div class="col-sm-6">-->
+                            <!--<div class="form-group">-->
+                            <!--<label class="wbdv-font-color-white" for="from">From</label>-->
+                            <!--<input ng-model="model.flight.source"-->
+                            <!--type="text"-->
+                            <!--class="form-control"-->
+                            <!--id="from"-->
+                            <!--placeholder="From">-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="col-sm-6">-->
+                            <!--<div class="form-group">-->
+                            <!--<label class="wbdv-font-color-white" for="to">To</label>-->
+                            <!--<input ng-model="model.flight.destination"-->
+                            <!--type="text"-->
+                            <!--class="form-control"-->
+                            <!--id="to"-->
+                            <!--placeholder="To">-->
+                            <!--</div>-->
+                            <!--</div>-->
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4 form-group">
+                                <label class="wbdv-font-color-white" for="location">Location (IATA code)</label>
+                                <input ng-model="model.hotelBookingReq.location"
+                                       class="form-control"
+                                       placeholder="IATA Code of desired location"
+                                       id="location">
+                            </div>
+
+                            <div class="col-sm-4 form-group">
+                                <label class="wbdv-font-color-white" for="checkin">Check in</label>
+                                <input ng-model="model.hotelBookingReq.checkinDate"
+                                       type="date"
+                                       class="form-control"
+                                       id="checkin">
+                            </div>
+                            <div class="col-sm-4 form-group">
+                                <label class="wbdv-font-color-white" for="checkout">Check out</label>
+                                <input ng-model="model.hotelBookingReq.checkoutDate"
+                                       type="date"
+                                       class="form-control"
+                                       id="checkout">
+                            </div>
+
+                            <!--<div class="col-sm-3 form-group">-->
+                            <!--<label class="wbdv-font-color-white" for="maxRate">Maximum Rate</label>-->
+                            <!--<input ng-model="model.hotelBookingReq.maxRate"-->
+                            <!--type="number"-->
+                            <!--class="form-control"-->
+                            <!--placeholder="Maximum rate"-->
+                            <!--id="maxRate">-->
+                            <!--</div>-->
+                        </div>
+                        <div id="searchButton" class="form-group">
+                            <a class="btn btn-block wbdv-button"
+                               ng-click="model.gotoHotelResultsPage(model.hotelBookingReq)">
+                                Search
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row page1">
+            <div class="col-sm-1"></div>
+            <div class="col-xs-12 col-sm-10">
+                <!--<div class="col-md-4 rc-white-background hidden-xs">-->
+                <!--<div class="text-center">-->
+                <!--<a class="rc-font-color-black" href="#">-->
+                <!--<h3>-->
+                <!--Get the Best Deals from our partners-->
+                <!--</h3>-->
+                <!--<div class="rc-deal-image visible-lg visible-md"></div>-->
+                <!--&lt;!&ndash;Designed by freepik.com&ndash;&gt;-->
+                <!--</a>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="col-md-4 visible-xs rc-white-background">-->
+                <!--<a class="rc-font-color-black text-center" href="#">-->
+                <!--<h4>-->
+                <!--Get the Best Deals from our partners-->
+                <!--</h4>-->
+                <!--</a>-->
+                <!--</div>-->
+                <!--<div class="col-md-4 rc-white-background hidden-xs">-->
+                <!--<div class="text-center">-->
+                <!--<a class="rc-font-color-black" href="#">-->
+                <!--<h3>-->
+                <!--Become a member to avail best deals-->
+                <!--</h3>-->
+                <!--<div class="rc-member-image visible-lg visible-md"></div>-->
+                <!--</a>-->
+                <!--</div>-->
+                <!--</div>-->
+                <div class="col-md-4 hidden-xs"></div>
+                <div class="col-md-4 rc-white-background hidden-xs">
+                    <div class="text-center">
+                        <a class="rc-font-color-black" href="#">
+                            <h3 class="hidden-xs">
+                                Become a partner and grow with us!
+                            </h3>
+                            <div class="rc-partner-image visible-lg visible-md"></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 hidden-xs"></div>
+                <!--<div class="col-md-4 visible-xs rc-white-background">-->
+                <!--<a class="rc-font-color-black text-center" href="#">-->
+                <!--<h4>-->
+                <!--Become a partner and grow with us!-->
+                <!--</h4>-->
+                <!--</a>-->
+                <!--</div>-->
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+
+    </div>
+
+</div>

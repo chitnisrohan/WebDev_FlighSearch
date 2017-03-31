@@ -35,7 +35,6 @@
                 .getFlights(journey)
                 .success(function (flights) {
                     vm.flightSearchResults = flights;
-                    console.log(vm.flightSearchResults);
                 })
                 .error(function (err) {
                     vm.err = err;

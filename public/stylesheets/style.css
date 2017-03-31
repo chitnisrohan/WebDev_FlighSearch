@@ -460,7 +460,7 @@ a {
 
 .ss-black-bg {
     background-color: black;
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 .ss-whitefont{
@@ -532,7 +532,6 @@ a.hover {
 }
 
 .ss-edit-pencil{
-    padding-top: px;
     font-size: 32px;
     /*color: black;*/
 }
@@ -545,4 +544,27 @@ a.hover {
     border-radius: 15px;
     margin-top: 2px;
     margin-bottom: 2px;
+}
+
+.ss-hotel-name-font-size{
+    font-size: 23px;
+}
+
+.ss-div-padding{
+    padding-bottom: 7px;
+    padding-top: 7px;
+}
+
+.ss-price-center {
+    /*margin-top: 30px;*/
+    font-size: 27px;
+}
+
+.ss-top-bottom-padding{
+    padding-bottom: 4px;
+    padding-top: 2px;
+}
+
+.ss-collapsible-div-bottom-padding{
+    padding-bottom: 5px;
 }

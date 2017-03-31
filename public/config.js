@@ -12,6 +12,16 @@
                 controller: "SearchController",
                 controllerAs: "model"
             })
+            .when("/hotelSearch", {
+                templateUrl: "views/hotels/templates/hotel-search.view.client.html",
+                controller: "HotelSearchController",
+                controllerAs: "model"
+            })
+            .when("/hotels/SearchResults/location/:loc/checkin/:cin/checkout/:cout" , {
+                templateUrl: "views/hotels/templates/hotel-search.results.view.client.html",
+                controller: "HotelSearchResultsController",
+                controllerAs: "model"
+            })
             .when("/user/:uid/flightSearch", {
                 templateUrl: "views/flights/templates/search.view.client.html",
                 controller: "SearchController",
