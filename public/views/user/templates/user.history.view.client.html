@@ -18,8 +18,8 @@
                         <ul class="dropdown-menu" style="margin-bottom: 100px">
                             <li><a ng-click="model.goToFlightSearch()">Search Flights</a></li>
                             <li><a ng-click="model.goToProfile()">Profile</a></li>
-                            <li><a>User History</a></li>
-                            <li><a href="#/userNotification">Notifications</a></li>
+                            <li><a>History</a></li>
+                            <li><a ng-click="model.goToUserNotification()">Notifications</a></li>
                             <li><a href="#/">Logout</a></li>
                         </ul>
                     </div>
@@ -79,11 +79,11 @@
                         <a class="ss-whitefont wbdv-banner-font rc-link-left-margin rc-text-decoration">
                             <i class="rc-link-left-margin rc-link-right-margin fa fa-history"
                                aria-hidden="true"></i>
-                            User History
+                            History
                         </a>
                     </li>
                     <li class="list-group-item  ss-black-bg ss-no-border">
-                        <a href="#/userNotification"
+                        <a ng-click="model.goToUserNotification()"
                            class="ss-whitefont wbdv-banner-font rc-link-left-margin rc-text-decoration">
                             <i class="rc-link-left-margin rc-link-right-margin fa fa-exclamation-circle"
                                aria-hidden="true"></i>

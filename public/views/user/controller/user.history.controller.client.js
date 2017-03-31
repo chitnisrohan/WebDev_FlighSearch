@@ -10,6 +10,7 @@
         vm.deleteAlert = deleteAlert;
         vm.goToFlightSearch = goToFlightSearch;
         vm.goToProfile = goToProfile;
+        vm.goToUserNotification = goToUserNotification;
 
         function init() {
             MessageService
@@ -24,6 +25,10 @@
                 )
         }
         init();
+
+        function goToUserNotification() {
+            $location.url("/user/" + userId + "/userNotification");
+        }
 
         function goToFlightSearch() {
             $location.url("/user/" + userId + "/flightSearch");

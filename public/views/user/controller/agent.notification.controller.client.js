@@ -12,6 +12,9 @@
         vm.sendMessage = sendMessage;
         vm.deleteMessageForAgent = deleteMessageForAgent;
         vm.goToFlightSearch = goToFlightSearch;
+        vm.goToProfile = goToProfile;
+        vm.goToAgentHistory = goToAgentHistory;
+
 
         function init() {
             MessageService
@@ -70,6 +73,14 @@
                         vm.error = "Could not send message. Please try again";
                     }
                 );
+        }
+
+        function goToAgentHistory() {
+            $location.url("user/"+agentId+"/agentHistory");
+        }
+
+        function goToProfile() {
+            $location.url("user/"+agentId);
         }
 
         function goToFlightSearch() {

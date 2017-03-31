@@ -8,6 +8,9 @@
         var userId = $routeParams['uid'];
 
         vm.deleteNotification = deleteNotification;
+        vm.goToFlightSearch = goToFlightSearch;
+        vm.goToProfile = goToProfile;
+        vm.goToUserHistory = goToUserHistory;
 
         function init() {
             MessageService
@@ -40,6 +43,18 @@
                 );
         }
         init();
+
+        function goToFlightSearch() {
+            $location.url("user/"+ userId +"/flightSearch");
+        }
+
+        function goToProfile() {
+            $location.url("user/"+ userId);
+        }
+
+        function goToUserHistory() {
+            $location.url("user/"+ userId +"/userHistory");
+        }
 
         function deleteNotification(notification, agentId) {
             MessageService
