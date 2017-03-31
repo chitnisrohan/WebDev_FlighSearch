@@ -18,8 +18,8 @@
                     <ul class="dropdown-menu rc-z-index-dropdown rc-drop-menu">
                         <li><a ng-click="model.goToFlightSearch()" class="rc-drop-menu">Search Flights</a></li>
                         <li><a class="rc-drop-menu">Profile</a></li>
-                        <li><a ng-click="model.goToUserHistory()" class="rc-drop-menu">History</a></li>
-                        <li><a href="#/userNotification" class="rc-drop-menu">Notifications</a></li>
+                        <li><a ng-click="model.goToHistory()" class="rc-drop-menu">History</a></li>
+                        <li><a ng-click="model.goToNotifications()" class="rc-drop-menu">Notifications</a></li>
                         <li><a href="#/" class="rc-drop-menu">Logout</a></li>
                     </ul>
                 </div>
@@ -75,7 +75,7 @@
                      </a>
                 </li>
                 <li class="list-group-item  ss-black-bg ss-no-border">
-                    <a ng-click="model.goToUserHistory()"
+                    <a ng-click="model.goToHistory()"
                        class="ss-whitefont wbdv-banner-font rc-link-left-margin rc-text-decoration">
                         <i class="rc-link-left-margin rc-link-right-margin fa fa-bell"
                            aria-hidden="true"></i>
@@ -83,7 +83,7 @@
                     </a>
                 </li>
                 <li class="list-group-item  ss-black-bg ss-no-border">
-                    <a href="#/userNotification"
+                    <a ng-click="model.goToNotifications()"
                        class="ss-whitefont wbdv-banner-font rc-link-left-margin rc-text-decoration">
                         <i class="rc-link-left-margin rc-link-right-margin fa fa-exclamation-circle"
                            aria-hidden="true"></i>
@@ -130,6 +130,14 @@
                                class="form-control"
                                id="email"
                                placeholder="Email ID">
+                    </div>
+                    <div ng-if="model.userType === 'AGENT'" class="form-group wbdv-left-right-margin wbdv-font-color-white">
+                        <label for="organization">Organization Name</label>
+                        <input ng-model="model.user.organization"
+                               type="text"
+                               class="form-control"
+                               id="organization"
+                               placeholder="Organization Name">
                     </div>
                     <div class="form-group wbdv-left-right-margin wbdv-font-color-white">
                         <label for="password" class="rc-form-font-size">Password</label>

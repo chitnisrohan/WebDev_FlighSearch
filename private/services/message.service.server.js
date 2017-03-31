@@ -1,5 +1,6 @@
 module.exports = function (app, model) {
 
+    app.put("/api/deleteUserNotification/:agentId", deleteUserNotification);
     app.delete("/api/deleteFromAgentHistory/:messageId/:agentId", deleteFromAgentHistory);
     app.post("/api/:userId/setupAlert", setupAlert);
     app.get("/api/alerts/:userId", findAlertsForUser);
@@ -9,6 +10,22 @@ module.exports = function (app, model) {
     app.put("/api/deleteMessage/:agentId", deleteMessageForAgent);
     app.get("/api/getAllNotifications/:userId", getAllNotifications);
     app.get("/api/getAgentHistory/:agentId", getAgentHistory);
+
+    function deleteUserNotification(req, res) {
+        var agentId = req.params.agentId;
+        var notification = req.body;
+        model
+            .messageModel
+            .deleteUserNotification(notification._id, agentId)
+            .then(
+                function (notifications) {
+                    res.json(notifications);
+                },
+                function (err) {
+                    res.sendStatus(400).send(err);
+                }
+            );
+    }
 
 
     function deleteFromAgentHistory(req, res) {

@@ -10,7 +10,8 @@ module.exports = function() {
         phone: String,
         userType: {
             type: String,
-            enum: ['USER', 'AGENT', 'ADMIN', 'HOTELOWNER']
+            enum: ['USER', 'AGENT', 'ADMIN', 'HOTELOWNER'],
+            default: 'USER'
         },
         organization : String,
         hotels: [{type: mongoose.Schema.Types.ObjectId, ref:'HotelModel'}],

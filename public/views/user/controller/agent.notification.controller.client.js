@@ -11,6 +11,7 @@
         vm.clearFilterAlerts = clearFilterAlerts;
         vm.sendMessage = sendMessage;
         vm.deleteMessageForAgent = deleteMessageForAgent;
+        vm.goToFlightSearch = goToFlightSearch;
 
         function init() {
             MessageService
@@ -56,11 +57,10 @@
 
         function sendMessage(alert, message) {
             alert.response = true;
-            var messageMap = {_id : agentId, message : message};
-            alert.AgentsResponded.push(messageMap);
+            var messageMap = {_id : agentId, message : message, visible: true};
 //            alert.message = message;
             MessageService
-                .sendMessage(alert)
+                .sendMessage(alert, messageMap)
                 .then(
                     function (alerts) {
                         vm.message = "Message sent!";
@@ -70,6 +70,10 @@
                         vm.error = "Could not send message. Please try again";
                     }
                 );
+        }
+
+        function goToFlightSearch() {
+            $location.url("user/"+agentId+"/flightSearch");
         }
 
         function clearFilterAlerts() {

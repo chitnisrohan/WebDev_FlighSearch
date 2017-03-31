@@ -16,9 +16,42 @@ module.exports = function () {
         addAgentToDeleteList : addAgentToDeleteList,
         getAllNotifications : getAllNotifications,
         getAgentHistory : getAgentHistory,
-        deleteFromAgentHistory : deleteFromAgentHistory
+        deleteFromAgentHistory : deleteFromAgentHistory,
+        deleteUserNotification : deleteUserNotification
     };
     return api;
+
+    function deleteUserNotification(notificationId, agentId) {
+        var deferred = Q.defer();
+        MessageModel
+            .findOne({_id : notificationId}, function (err, notification) {
+                if (err) {
+                    deferred.reject(err);
+                } else {
+                    var messages = notification.AgentsResponded;
+                    var msgs = [];
+                    for (var i = 0; i < messages.length ; i++) {
+                        var oneMessage = messages[i];
+                        if (oneMessage._id == agentId) {
+                            oneMessage.visible = false;
+                            msgs.push(oneMessage);
+                        } else {
+                            msgs.push(oneMessage);
+                        }
+                    }
+                    MessageModel
+                        .update({_id : notificationId}, {$set : {AgentsResponded : msgs}},
+                        function (err, status) {
+                            if (err) {
+                                deferred.reject(err);
+                            } else {
+                                deferred.resolve(status);
+                            }
+                        });
+                }
+            });
+        return deferred.promise;
+    }
 
     function deleteFromAgentHistory(messageId, agentId) {
         var deferred = Q.defer();
@@ -108,7 +141,7 @@ module.exports = function () {
     function updateMessage(alert) {
         var deferred = Q.defer();
         MessageModel
-            .update({_id : alert._id}, alert, function (err, alerts) {
+            .update({_id : alert.alert._id}, {$push : {AgentsResponded : alert.message}}, function (err, alerts) {
                 if (err) {
                     deferred.reject(err);
                 } else {

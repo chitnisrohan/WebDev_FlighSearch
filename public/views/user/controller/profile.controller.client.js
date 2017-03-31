@@ -9,23 +9,37 @@
 
         vm.update = update;
         vm.goToFlightSearch = goToFlightSearch;
-        vm.goToUserHistory = goToUserHistory;
+        vm.goToHistory = goToHistory;
+        vm.goToNotifications = goToNotifications;
 
         function init() {
             UserService
                 .findUserById(userId)
                 .success(function (user) {
                     vm.user = user;
+                    vm.userType = user.userType;
                 });
         }
         init();
+
+        function goToNotifications() {
+            if (vm.userType === "USER") {
+                $location.url("/user/"+ userId +"/userNotification");
+            } else if (vm.userType === "AGENT") {
+                $location.url("/user/"+ userId +"/agentNotification");
+            }
+        }
 
         function goToFlightSearch() {
             $location.url("/user/" + userId + "/flightSearch");
         }
 
-        function goToUserHistory() {
-            $location.url("/user/"+ userId + "/userHistory");
+        function goToHistory() {
+            if (vm.userType === "USER") {
+                $location.url("/user/"+ userId +"/userHistory");
+            } else if (vm.userType === "AGENT") {
+                $location.url("/user/"+ userId +"/agentHistory");
+            }
         }
 
         function update(newUser) {

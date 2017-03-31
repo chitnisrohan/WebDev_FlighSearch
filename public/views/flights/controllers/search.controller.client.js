@@ -3,15 +3,23 @@
         .module("FlightSearchApp")
         .controller("SearchController", SearchController);
     
-    function SearchController($routeParams, $location, FlightService) {
+    function SearchController($routeParams, $location, FlightService, UserService) {
         var vm = this;
         var userId = $routeParams['uid'];
 
         vm.searchFlight = searchFlight;
         vm.setUpAlert = setUpAlert;
-        vm.goToUserHistory = goToUserHistory;
+        vm.goToHistory = goToHistory;
+        vm.goToRegister = goToRegister;
 
         function init() {
+            UserService
+                .findUserById(userId)
+                .success(function (user) {
+                    // vm.user = user;
+                    vm.userType = user.userType;
+                });
+
             if (userId) {
                 vm.isLoggedIn = true;
             } else {
@@ -41,8 +49,8 @@
                             option.value = vm.allCities[cityInfo].name;
                             var option2 = document.createElement('option');
                             option2.value = vm.allCities[cityInfo].name;
-//                            dataList.appendChild(option);
-//                            dataList2.appendChild(option2);
+                           dataList.appendChild(option);
+                           dataList2.appendChild(option2);
                         }
 
                         // Update the placeholder text.
@@ -68,8 +76,16 @@
         }
         init();
 
-        function goToUserHistory() {
-            $location.url("/user/" + userId + "/userHistory");
+        function goToRegister(userType) {
+            $location.url("/register/" + userType);
+        }
+
+        function goToHistory() {
+            if (vm.userType === "USER") {
+                $location.url("/user/"+ userId +"/userHistory");
+            } else if (vm.userType === "AGENT") {
+                $location.url("/user/"+ userId +"/agentHistory");
+            }
         }
 
         function setUpAlert(journey) {

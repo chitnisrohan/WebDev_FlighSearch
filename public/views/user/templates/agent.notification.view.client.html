@@ -16,7 +16,7 @@
                         <span class="glyphicon glyphicon-align-justify ss-white-font"></span>
                     </button>
                     <ul class="dropdown-menu" style="margin-bottom: 100px">
-                        <li><a href="#/">Search Flights</a></li>
+                        <li><a ng-click="model.goToFlightSearch()">Search Flights</a></li>
                         <li><a href="#/profile">Profile</a></li>
                         <li><a href="#/agentHistory">History</a></li>
                         <li><a>Notifications</a></li>
@@ -60,7 +60,7 @@
         <div class="col-md-3 ss-whitefont hidden-xs hidden-sm ss-black-bg-high">
             <ul class="list-group list-unstyled  ss-black-bg">
                 <li class="list-group-item  ss-black-bg ss-no-border">
-                    <a href="#/"
+                    <a ng-click="model.goToFlightSearch()"
                        class="ss-whitefont wbdv-banner-font rc-link-left-margin rc-text-decoration">
                         <i class="rc-link-left-margin rc-link-right-margin fa fa-plane"
                            aria-hidden="true"></i>

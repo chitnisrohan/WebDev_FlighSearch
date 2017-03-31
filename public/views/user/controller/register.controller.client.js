@@ -3,12 +3,19 @@
         .module("FlightSearchApp")
         .controller("RegisterController", RegisterController);
 
-    function RegisterController($location, UserService) {
+    function RegisterController($location, UserService, $routeParams) {
         var vm = this;
+        var userType = $routeParams['userType'];
 
         vm.registerUser = registerUser;
 
+        function init() {
+            vm.userType = userType;
+        }
+        init();
+
         function registerUser(newUser) {
+            newUser.userType = vm.userType;
             if (newUser.password === newUser.verify.password) {
                 UserService
                     .findUserByUsername(newUser.username)

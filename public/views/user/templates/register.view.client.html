@@ -1,3 +1,4 @@
+<div class="rc-background-register">
 <nav class="nav">
     <div class="container-fluid">
         <div class="row">
@@ -7,14 +8,14 @@
                     <div class="col-sm-2"></div>
                     <div class="col-sm-8">
                         <a class="navbar-brand pull-left" href="#/">
-                            <strong class="wbdv-font-family">
+                            <strong class="wbdv-font-family wbdv-font-color-white">
                                 Continue as Guest
                             </strong>
                         </a>
                         <a class="navbar-brand pull-right" href="#/login">
-                            <i class="fa fa-user-circle-o visible-xs"
+                            <i class="fa fa-user-circle-o visible-xs wbdv-font-color-white"
                                aria-hidden="true"></i>
-                            <strong class="wbdv-font-family hidden-xs">
+                            <strong class="wbdv-font-family hidden-xs wbdv-font-color-white">
                                 Login
                             </strong>
                         </a>
@@ -27,13 +28,13 @@
     </div>
 </nav>
 
-<div class="container-fluid">
+<div class="container-fluid wbdv-margin-top">
     <div class="row">
         <div class="col-sm-1"></div>
         <div class="col-xs-12 col-sm-10">
             <div class="row">
                 <div class="col-sm-2"></div>
-                <div id="loginform" class="col-xs-12 col-sm-8 fa-border">
+                <div id="loginform" class="col-xs-12 col-sm-8 fa-border rc-black-background wbdv-font-color-white">
                     <form>
                         <div class="form-group wbdv-left-right-margin">
                             <label for="username">Username</label>
@@ -67,6 +68,14 @@
                                    id="email"
                                    placeholder="Email ID">
                         </div>
+                        <div ng-if="model.userType === 'AGENT'" class="form-group wbdv-left-right-margin">
+                            <label for="organization">Organization Name</label>
+                            <input ng-model="model.user.organization"
+                                   type="text"
+                                   class="form-control"
+                                   id="organization"
+                                   placeholder="Organization Name">
+                        </div>
                         <div class="form-group wbdv-left-right-margin">
                             <label for="password">Password</label>
                             <input ng-model="model.user.password"
@@ -89,7 +98,7 @@
                                 Register
                             </a>
                         </div>
-                        <a class="wbdv-left-right-margin pull-right"
+                        <a class="wbdv-left-right-margin pull-right wbdv-font-color-white"
                            href="#/login">Already A Member?</a>
                     </form>
                 </div>
@@ -98,4 +107,5 @@
         </div>
         <div class="col-sm-1"></div>
     </div>
+</div>
 </div>

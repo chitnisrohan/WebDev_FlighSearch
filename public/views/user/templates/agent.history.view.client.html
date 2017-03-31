@@ -16,10 +16,10 @@
                             <span class="glyphicon glyphicon-align-justify ss-white-font"></span>
                         </button>
                         <ul class="dropdown-menu" style="margin-bottom: 100px">
-                            <li><a href="#/">Search Flights</a></li>
-                            <li><a href="#/profile">Profile</a></li>
+                            <li><a ng-click="model.goToFlightSearch()">Search Flights</a></li>
+                            <li><a ng-click="model.goToProfile()">Profile</a></li>
                             <li><a >History</a></li>
-                            <li><a href="#/agentNotification">Notifications</a></li>
+                            <li><a ng-click="model.goToAgentNotification()">Notifications</a></li>
                             <li><a href="#/">Logout</a></li>
                         </ul>
                     </div>
@@ -60,7 +60,7 @@
             <div class="col-sm-3 ss-whitefont hidden-xs ss-black-bg-high">
                 <ul class="list-group list-unstyled  ss-black-bg">
                     <li class="list-group-item  ss-black-bg ss-no-border">
-                        <a href="#/"
+                        <a ng-click="model.goToFlightSearch()"
                            class="ss-whitefont wbdv-banner-font rc-link-left-margin rc-text-decoration">
                             <i class="rc-link-left-margin rc-link-right-margin fa fa-plane"
                                aria-hidden="true"></i>
@@ -68,7 +68,7 @@
                         </a>
                     </li>
                     <li class="list-group-item ss-black-bg ss-no-border">
-                        <a href="#/profile"
+                        <a ng-click="model.goToProfile()"
                            class="ss-whitefont wbdv-banner-font rc-link-left-margin rc-text-decoration">
                             <i class="rc-link-left-margin rc-link-right-margin fa fa-user-circle-o"
                                aria-hidden="true"></i>
@@ -83,7 +83,7 @@
                         </a>
                     </li>
                     <li class="list-group-item  ss-black-bg ss-no-border">
-                        <a href="#/agentNotification"
+                        <a ng-click="model.goToAgentNotification()"
                            class="ss-whitefont wbdv-banner-font rc-link-left-margin rc-text-decoration">
                             <i class="rc-link-left-margin rc-link-right-margin fa fa-exclamation-circle"
                                aria-hidden="true"></i>
@@ -101,8 +101,7 @@
                                 <ul class="list-group" style="margin-top: 10px">
                                     <li class="list-group-item hidden-xs" style="background-color: #0f0f0f; opacity: 0.9">
                                         <div class="row">
-                                            <div class="text-center col-xs-4 col-sm-4 rc-small-top-margin wbdv-font-color-white"
-                                            style="border-right: thick solid #ff0000;">
+                                            <div class="text-center col-xs-4 col-sm-4 rc-small-top-margin wbdv-font-color-white">
                                                 <h4>Username</h4>
                                             </div>
                                             <div class="text-center col-xs-6 col-sm-6 rc-small-top-margin wbdv-font-color-white">

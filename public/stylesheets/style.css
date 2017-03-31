@@ -36,6 +36,20 @@ a:hover, a:focus {
     margin-right: 5px;
 }
 
+.rc-background-register {
+    background: url('/images/pexels-photo-325703.jpeg');
+    background-size: cover;
+    opacity: 0.9;
+    /*background-position: 100%;*/
+    /*background:repeat;*/
+    position: absolute;
+    /*height: 100vh;*/
+    top:0;
+    left:0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
 .rc-background-flight-search-result {
     /*background: url('/images/pexels-photo-115109.jpeg');*/
     /*background: url('/images/flight-sky-clouds-fly.jpg');*/
@@ -137,6 +151,11 @@ a:hover, a:focus {
 
 .rc-font-color-black {
     color: black;
+}
+
+.rc-flight-logo {
+    font-size: 19px;
+    color: #0f0f0f;
 }
 
 .wbdv-margin-top-login {

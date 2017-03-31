@@ -27,7 +27,7 @@
                 controller: "LoginController",
                 controllerAs: "model"
             })
-            .when("/register" , {
+            .when("/register/:userType" , {
                 templateUrl: "views/user/templates/register.view.client.html",
                 controller: "RegisterController",
                 controllerAs: "model"
