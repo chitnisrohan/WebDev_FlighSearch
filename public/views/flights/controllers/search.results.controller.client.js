@@ -6,6 +6,7 @@
     function SearchResultController($location, FlightService, $routeParams) {
         //flight/search/SRC/:src/DEST/:dest/DEPART/:dept/RETURN/:ret/ADULTS/:adults/CHILD/:child/CLASS/:class
         var vm = this;
+        var userId = $routeParams['uid'];
         var source = $routeParams['src'];
         var destination = $routeParams['dest'];
         var departDate = $routeParams['dept'];
@@ -18,6 +19,7 @@
         vm.getOnlyTime = getOnlyTime;
         vm.getOnlyDate = getOnlyDate;
         vm.calculateTotalDuration = calculateTotalDuration;
+        vm.goToFlightSearch = goToFlightSearch;
 
         function init() {
             if (returnDate === "0") {
@@ -25,6 +27,8 @@
             } else {
                 vm.isReturnJourney = true;
             }
+
+            vm.isUserLoggedIn = userId != "0";
 
             var journey = {source: source, destination : destination
                 , noOfAdults : noOfAdults, noOfChildren : noOfChildren,
@@ -41,6 +45,10 @@
                 });
         }
         init();
+
+        function goToFlightSearch() {
+            $location.url("/user/"+userId+"/flightSearch");
+        }
 
         function displayDetails(index) {
             vm.selectedIndex[index].showDetails = true;

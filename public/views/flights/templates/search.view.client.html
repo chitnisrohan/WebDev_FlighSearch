@@ -129,7 +129,7 @@
                             Search
                         </a>
                     </div>
-                    <div ng-if="model.isLoggedIn" id="setUpAlertButton" class="form-group">
+                    <div ng-if="model.isLoggedIn && model.userType==='USER'" id="setUpAlertButton" class="form-group">
                         <a class="btn btn-block wbdv-button"
                            ng-click="model.setUpAlert(model.flight)">
                             Set Up Alert

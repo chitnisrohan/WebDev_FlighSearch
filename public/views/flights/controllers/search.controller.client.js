@@ -69,7 +69,9 @@
             input2.placeholder = "Loading options...";
 
             // Set up and make the request.
-            request.open('GET', 'https://crossorigin.me/https://iatacodes.org/api/v6/cities?api_key=7cf86b00-61f2-47df-a5d0-d56b5bf819bb', true);
+            //
+            request.open('GET', 'City_Codes.json', true);
+//            request.open('GET', 'https://crossorigin.me/https://iatacodes.org/api/v6/cities?api_key=7cf86b00-61f2-47df-a5d0-d56b5bf819bb', true);
 //    request.open('GET', 'http://cors.io/?u=http://iatacodes.org/api/v6/autocomplete?api_key=7cf86b00-61f2-47df-a5d0-d56b5bf819bb&query=boston', true);
             request.send();
 
@@ -115,14 +117,20 @@
                     journey.destination = vm.allCities[cityInfo].code;
                 }
             }
+            var loggenInUser;
+            if (userId) {
+                loggenInUser = userId;
+            } else {
+                loggenInUser = 0;
+            }
             if (typeof journey.returnDate != "undefined") {
-                searchUrl = "/flight/search/SRC/"+journey.source+"/DEST/"+journey.destination
+                searchUrl = "user/"+loggenInUser+"/flight/search/SRC/"+journey.source+"/DEST/"+journey.destination
                     +"/DEPART/"+journey.departDate.toISOString().substring(0, 10)
                     +"/RETURN/"+journey.returnDate.toISOString().substring(0, 10)
                     +"/ADULTS/"+journey.noOfAdults+"/CHILD/"+
                     journey.noOfChildren+"/CLASS/"+journey.selectedClass;
             } else {
-                searchUrl = "/flight/search/SRC/"+journey.source+"/DEST/"+journey.destination
+                searchUrl = "user/"+loggenInUser+"/flight/search/SRC/"+journey.source+"/DEST/"+journey.destination
                     +"/DEPART/"+journey.departDate.toISOString().substring(0, 10)
                     +"/RETURN/"+0
                     +"/ADULTS/"+journey.noOfAdults+"/CHILD/"+

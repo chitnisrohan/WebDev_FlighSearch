@@ -21,13 +21,15 @@
                     <!--</div>-->
 
                     <!--<a class="navbar-brand pull-left" href="#/">-->
-                    <strong class="navbar-brand visible-xs rc-agent-notify-font-size
-                    wbdv-font-color-white pull-left">
-                        New Flight Search
-                    </strong>
-                    <strong class="navbar-brand pull-left wbdv-font-family wbdv-banner-font hidden-xs">
-                        New Flight Search
-                    </strong>
+                    <a ng-click="model.goToFlightSearch()">
+                        <strong class="navbar-brand visible-xs rc-agent-notify-font-size
+                        wbdv-font-color-white pull-left">
+                            New Flight Search
+                        </strong>
+                        <strong class="navbar-brand pull-left wbdv-font-family wbdv-banner-font hidden-xs">
+                            New Flight Search
+                        </strong>
+                    </a>
                     <strong class="navbar-brand visible-xs rc-agent-notify-font-size
                     wbdv-font-color-white pull-left">
                         Hotel Search
@@ -35,13 +37,15 @@
                     <strong class="navbar-brand pull-left wbdv-font-family wbdv-banner-font hidden-xs">
                         Hotel Search
                     </strong>
-                    <i class="fa fa-user-circle-o wbdv-banner-font visible-xs pull-right"
-                       aria-hidden="true"
-                        id = "rc-margin-for-logo-flight-search"></i>
-                    <strong class="wbdv-banner-font hidden-xs pull-right"
-                            id = "rc-flight-search-login-margin-right">
-                        Login
-                    </strong>
+                    <div ng-if="!model.isUserLoggedIn">
+                        <i class="fa fa-user-circle-o wbdv-banner-font visible-xs pull-right"
+                           aria-hidden="true"
+                            id = "rc-margin-for-logo-flight-search"></i>
+                        <strong class="wbdv-banner-font hidden-xs pull-right"
+                                id = "rc-flight-search-login-margin-right">
+                            Login
+                        </strong>
+                    </div>
                 </div>
             </div>
         </div>
@@ -82,7 +86,7 @@
             <strong class="visible-xs rc-flight-search-journey-small-font">{{model.userJourney.cabinClass}}</strong>
         </div>
             <div class="col-sm-2">
-            <a href="#" class="btn btn-block rc-btn-primary-modify rc-flight-modify-button">
+            <a ng-click="model.goToFlightSearch()" class="btn btn-block rc-btn-primary-modify rc-flight-modify-button">
                 <strong>M o d i f y</strong>
             </a>
         </div>
@@ -137,7 +141,7 @@
                         Seats Remaining : {{flight.itineraries[0].outbound.flights[0].booking_info.seats_remaining}}
                     </span>
                     <br>
-                    <span class="rc-flight-price-small-font">
+                    <span class="rc-flight-price-small-font btn rc-btn-primary-modify rc-flight-modify-button">
                         USD {{flight.fare.total_price}}
                     </span>
                     <br>
@@ -187,7 +191,7 @@
                     <br>
                 </div>
                 <div class="col-sm-3 hidden-xs wbdv-font-color-white">
-                    <span class="rc-flight-price-font">
+                    <span class="rc-flight-price-small-font btn rc-btn-primary-modify rc-flight-modify-button">
                         USD &nbsp; {{flight.fare.total_price}}
                     </span>
                 </div>
