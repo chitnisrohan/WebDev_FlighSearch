@@ -10,6 +10,7 @@ module.exports = function (app, model) {
     app.put("/api/deleteMessage/:agentId", deleteMessageForAgent);
     app.get("/api/getAllNotifications/:userId", getAllNotifications);
     app.get("/api/getAgentHistory/:agentId", getAgentHistory);
+    app.get("/api/allMessages", findAllAlerts);
 
     function deleteUserNotification(req, res) {
         var agentId = req.params.agentId;

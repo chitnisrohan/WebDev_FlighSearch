@@ -17,6 +17,21 @@
                 controller: "HotelSearchController",
                 controllerAs: "model"
             })
+            .when("/user/58dee67efb263b7c7dd7b2c8/adminProfile", {
+                templateUrl: "views/user/templates/admin-profile.view.client.html",
+                controller: "AdminProfileController",
+                controllerAs: "model"
+            })
+            .when("/user/58dee67efb263b7c7dd7b2c8/allHotels",{
+                templateUrl: "views/user/templates/admin-hotels.view.client.html",
+                controller: "AdminHotelsController",
+                controllerAs: "model"
+            })
+            .when("/user/58dee67efb263b7c7dd7b2c8/allMessages",{
+                templateUrl: "views/user/templates/admin-messages.view.client.html",
+                controller: "AdminMessagesController",
+                controllerAs: "model"
+            })
             .when("/hotels/SearchResults/location/:loc/checkin/:cin/checkout/:cout" , {
                 templateUrl: "views/hotels/templates/hotel-search.results.view.client.html",
                 controller: "HotelSearchResultsController",

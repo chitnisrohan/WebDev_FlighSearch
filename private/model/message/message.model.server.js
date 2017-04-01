@@ -17,9 +17,24 @@ module.exports = function () {
         getAllNotifications : getAllNotifications,
         getAgentHistory : getAgentHistory,
         deleteFromAgentHistory : deleteFromAgentHistory,
-        deleteUserNotification : deleteUserNotification
+        deleteUserNotification : deleteUserNotification,
+        updateMessageAfterAgentDeletion : updateMessageAfterAgentDeletion
     };
     return api;
+
+    function updateMessageAfterAgentDeletion(alertId, notVisibleAgent, agentRespondedArray) {
+        var deferred = Q.defer();
+        MessageModel
+            .update({_id : alertId}, {$set : {NotVisibleForAgents : notVisibleAgent,
+                AgentsResponded : agentRespondedArray}}, function (err, status) {
+            if (err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(status);
+            }
+        });
+        return deferred.promise;
+    }
 
     function deleteUserNotification(notificationId, agentId) {
         var deferred = Q.defer();
@@ -199,6 +214,18 @@ module.exports = function () {
 
     function setUpAlert(journey) {
         var deferred = Q.defer();
+        // var date1 = new Date(2017,4,15).toISOString().substring(0,10);
+        // var date2 = new Date(2017,4,25).toISOString().substring(0,10);
+        // var splitdate1 = date1.split("-");
+        // var splitdate2 = date2.split("-");
+        // var a = new Date(journey.departDate.split("-")[0], journey.departDate.split("-")[1] - 1, journey.departDate.split("-")[2]);
+        // var b = new Date(journey.returnDate.split("-")[0], journey.returnDate.split("-")[1] - 1, journey.returnDate.split("-")[2]);
+        // var c = new Date(splitdate1[0], splitdate1[1] - 1, splitdate1[2]);
+        // var d = new Date(splitdate2[0], splitdate2[1] - 1, splitdate2[2]);
+        // if (c <= a && d >= b) {
+        //     console.log("Available");
+        // }
+
         MessageModel
             .create(journey,function (err, alerts) {
                 if(err) {

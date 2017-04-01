@@ -120,7 +120,6 @@
                 }
 
             }
-            console.log(showAlerts);
             vm.alerts.data = showAlerts;
         }
 

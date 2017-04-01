@@ -14,9 +14,14 @@
             "getAllNotification" : getAllNotification,
             "findHistory" : findHistory,
             "deleteMessageFromHistory" : deleteMessageFromHistory,
-            "deleteNotification" : deleteNotification
+            "deleteNotification" : deleteNotification,
+            "findAllMessages" : findAllMessages
         };
         return api;
+
+        function findAllMessages() {
+            return $http.get("/api/allMessages");
+        }
 
         function deleteNotification(notification, agentId) {
             return $http.put("/api/deleteUserNotification/" + agentId, notification);

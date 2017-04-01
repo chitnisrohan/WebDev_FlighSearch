@@ -3,9 +3,38 @@ module.exports = function (app, model) {
     app.get("/api/user", findUser);
     app.get("/api/user/:userId", findUserById);
     app.put("/api/user/:userId", updateUser);
-    // app.delete("/api/user/:userId", deleteUser);
+    app.delete("/api/user/:userId", deleteUser);
     app.post("/api/user", createUser);
+    app.get("/api/allUsers", findAllUsers);
 
+    function deleteUser(req, res) {
+        var userId = req.params.userId;
+        model
+            .userModel
+            .deleteUser(userId)
+            .then(
+                function (user) {
+                    res.send(user);
+                },
+                function (err) {
+                    res.sendStatus(400).send(err);
+                }
+            );
+    }
+
+    function findAllUsers(req, res) {
+        model
+            .userModel
+            .finAllUsers()
+            .then(
+                function (user) {
+                    res.send(user);
+                },
+                function (err) {
+                    res.sendStatus(400).send(err);
+                }
+            );
+    }
 
     function updateUser(req, res) {
         var userId = req.params.userId;

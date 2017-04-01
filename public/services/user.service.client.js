@@ -11,9 +11,14 @@
             "updateUser" : updateUser,
             "deleteUser" : deleteUser,
             "createUser" : createUser,
-            "findUserByUsername" : findUserByUsername
+            "findUserByUsername" : findUserByUsername,
+            "findAllUsers" : findAllUsers
         };
         return api;
+
+        function findAllUsers() {
+            return $http.get("/api/allUsers");
+        }
 
         function createUser(newUser) {
             return $http.post("/api/user", newUser);
