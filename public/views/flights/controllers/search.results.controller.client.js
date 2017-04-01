@@ -22,6 +22,7 @@
         vm.goToFlightSearch = goToFlightSearch;
 
         function init() {
+            vm.flightSearchResults = '0';
             if (returnDate === "0") {
                 vm.isReturnJourney = false;
             } else {
@@ -82,7 +83,7 @@
             }
         }
 
-        vm.flightSearchResults = {
+        // vm.flightSearchResults = {
         //         "results"
         // :
         //     [{
@@ -2768,6 +2769,6 @@
             //         }
             //     }
             // ]
-        };
+        // };
     }
 })();

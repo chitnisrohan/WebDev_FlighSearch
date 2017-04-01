@@ -50,10 +50,14 @@ a:hover, a:focus {
     min-height: 100%;
 }
 
+.rc-price-top-margin {
+    margin-top: 10px;
+}
+
 .rc-background-flight-search-result {
     /*background: url('/images/pexels-photo-115109.jpeg');*/
-    /*background: url('/images/flight-sky-clouds-fly.jpg');*/
-    background-color: #6C7A89;
+    background: url('/images/flight-sky-clouds-fly.jpg');
+    /*background-color: #6C7A89;*/
     background-size: cover;
     opacity: 0.9;
     /*background-position: 100%;*/
@@ -231,12 +235,12 @@ a:hover, a:focus {
 }
 
 .rc-flight-price-font {
-    font-size: 25px;
+    font-size: 23px;
     color: white;
 }
 
 .rc-flight-price-small-font {
-    font-size: 23px;
+    font-size: 20px;
     color: white;
 }
 
@@ -398,6 +402,14 @@ a {
     border-radius: 5px;
 }
 
+.rc-loading-image {
+    background: url("/images/InternetSlowdown_Day.gif");
+    margin: auto;
+    margin-top: 20px;
+    height: 250px;
+    width: 250px;
+    opacity: 0.8;
+}
 
 .ss-button-margin{
     margin-top: 10px;

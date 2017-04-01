@@ -92,6 +92,9 @@
         </div>
     </div>
 
+    <div ng-if="model.flightSearchResults === '0'" class="rc-loading-image">
+    </div>
+
     <div ng-repeat="flight in model.flightSearchResults.results">
 
         <!--Outbound Short Description-->
@@ -141,7 +144,7 @@
                         Seats Remaining : {{flight.itineraries[0].outbound.flights[0].booking_info.seats_remaining}}
                     </span>
                     <br>
-                    <span class="rc-flight-price-small-font btn rc-btn-primary-modify rc-flight-modify-button">
+                    <span class="rc-flight-price-small-font btn rc-btn-primary-modify rc-flight-modify-button rc-price-top-margin">
                         USD {{flight.fare.total_price}}
                     </span>
                     <br>
@@ -190,8 +193,8 @@
                     <i class="fa fa-2x fa-angle-double-down" aria-hidden="true"></i>
                     <br>
                 </div>
-                <div class="col-sm-3 hidden-xs wbdv-font-color-white">
-                    <span class="rc-flight-price-small-font btn rc-btn-primary-modify rc-flight-modify-button">
+                <div class="col-sm-3 hidden-xs wbdv-font-color-white rc-price-top-margin">
+                    <span class="rc-flight-price-font btn rc-btn-primary-modify rc-flight-modify-button">
                         USD &nbsp; {{flight.fare.total_price}}
                     </span>
                 </div>

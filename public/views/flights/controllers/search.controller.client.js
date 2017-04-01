@@ -20,7 +20,7 @@
                     vm.userType = user.userType;
                 });
 
-            if (userId) {
+            if (userId != '0') {
                 vm.isLoggedIn = true;
             } else {
                 vm.isLoggedIn = false;
