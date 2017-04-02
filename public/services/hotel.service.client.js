@@ -10,10 +10,19 @@
             "&location=LOCATION_REQ&check_in=CHECKIN_REQ&check_out=CHECKOUT_REQ"
 
         var api = {
-            "getHotels": getHotels
+            "getHotels": getHotels,
+            "addHotel": addHotel,
+            "findHotelsByOwner": findHotelsByOwner,
+            "updateHotelAvailibility": updateHotelAvailibility,
+            "deleteHotel": deleteHotel,
+            "getRegisteredHotels" : getRegisteredHotels
             // "getHotelSearchUrl": getHotelSearchUrl
         };
         return api;
+
+        function getRegisteredHotels(hotelBookingReq) {
+            return  $http.post('/api/searchHotel/', hotelBookingReq);
+        }
 
 
         function getHotels (hotelBookingReq) {
@@ -23,6 +32,22 @@
 
             return $http.get(hotelSearchUrl);
 
+        }
+
+        function addHotel(hotel, userId) {
+            return $http.post('/api/user-hotelowner/' + userId + '/hotel', hotel);
+        }
+
+        function findHotelsByOwner (userId) {
+            return $http.get("/api/user-hotelowner/" + userId + "/hotel");
+        }
+
+        function updateHotelAvailibility (bookingDates, hotelId) {
+            return $http.put('/api/hotel/' + hotelId, bookingDates);
+        }
+
+        function deleteHotel (hotelId) {
+            return $http.delete('/api/hotel/' + hotelId);
         }
 
     }

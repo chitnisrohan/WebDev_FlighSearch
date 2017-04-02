@@ -26,7 +26,11 @@
                         UserService
                             .createUser(newUser)
                             .success(function (user) {
-                                $location.url("/user/" + user._id);
+                                if(user.userType === "HOTELOWNER"){
+                                    $location.url('/user-hotelowner/' + user._id);
+                                }
+                                else
+                                    $location.url("/user/" + user._id);
                             });
                     });
             } else {

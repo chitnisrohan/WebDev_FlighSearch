@@ -4,5 +4,6 @@ module.exports = function (app) {
 
     require('./services/user.service.server.js')(app, model);
     require('./services/message.service.server.js')(app, model);
+    require('./services/hotel.service.server.js')(app, model);
 
 };

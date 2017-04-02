@@ -6,30 +6,27 @@
     function HotelSearchResultsController($routeParams, HotelService) {
         var vm = this;
 
-        var hotelLoc = $routeParams['loc'];
-        var cinDate = $routeParams['cin'];
-        var coutDate = $routeParams['cout'];
-
-        vm.hotelReq = {"location": hotelLoc, "checkinDate": cinDate, "checkoutDate": coutDate};
+        vm.hotelLoc = $routeParams['loc'];
+        vm.cinDate = $routeParams['cin'];
+        vm.coutDate = $routeParams['cout'];
 
         function init() {
+            vm.hotelReq = {"location": vm.hotelLoc, "checkinDate": vm.cinDate, "checkoutDate": vm.coutDate};
 
             HotelService
                 .getHotels(vm.hotelReq)
                 .success(function (hotels) {
-                    vm.hotels = hotels;
-                })
-                .error(function (err) {
-                    vm.err = err;
+                    vm.apiHotels = hotels;
+                    HotelService
+                        .getRegisteredHotels(vm.hotelReq)
+                        .success(function (hotels) {
+                            vm.registeredHotels = hotels;
+                        });
                 });
+
 
         }
         init();
 
-
-        // function getHotels(hotelBookingReq) {
-
-        //
-        // }
     }
 })();

@@ -19,6 +19,8 @@
                     if(user) {
                         if (user.userType === "ADMIN") {
                             $location.url("/user/"+user._id+"/adminProfile");
+                        } else if (user.userType === "HOTELOWNER") {
+                            $location.url('/user-hotelowner/' + user._id);
                         } else {
                             $location.url("/user/"+user._id+"/flightSearch");
                         }

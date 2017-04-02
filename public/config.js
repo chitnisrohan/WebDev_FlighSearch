@@ -62,6 +62,22 @@
                 controller: "ProfileController",
                 controllerAs: "model"
             })
+            .when("/user-hotelowner/:uid" , {
+                templateUrl: "views/user/templates/hotel-owner.profile.view.client.html",
+                controller: "HotelOwnerProfileController",
+                controllerAs: "model"
+            })
+
+            .when("/user-hotelowner/:uid/hotel" , {
+                templateUrl: "views/user/templates/hotel-owner.hotelslist.view.client.html",
+                controller: "HotelOwnerListController",
+                controllerAs: "model"
+            })
+            .when("/user-hotelowner/:uid/hotel/new" , {
+                templateUrl: "views/user/templates/hotel-owner.newhotel.view.client.html",
+                controller: "NewHotelController",
+                controllerAs: "model"
+            })
             .when("/user/:uid/agentNotification" , {
                 templateUrl: "views/user/templates/agent.notification.view.client.html",
                 controller: "AgentNotificationController",

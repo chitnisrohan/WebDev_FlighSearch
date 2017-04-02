@@ -1,41 +1,28 @@
 <div class="rc-no-padding rc-background-profile">
-<nav class="nav ss-black-navbar ss-navbar-padding" style="opacity: 0.7">
+<nav class="nav ss-black-navbar ss-navbar-padding" style="opacity: 1; position: relative;
+z-index: 1000;">
     <div class="container-fluid">
         <div class="row">
             <!--<div class="col-sm-1"></div>-->
             <!--<div class="col-xs-12 col-sm-10">-->
             <div class="col-sm-3">
             </div>
-            <div class="col-sm-9 rc-drop-menu">
-                <!--<div class="row">-->
-                <!--<div class="col-sm-2"></div>-->
-                <!--<div class="col-sm-8">-->
-                <div class="dropdown pull-right collapse navbar-collapse">
-                    <a class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a ng-click="model.goToFlightSearch()" class="rc-drop-menu">Search Flights</a></li>
-                        <li><a class="rc-drop-menu">Profile</a></li>
-                        <li><a href="#">Something else here</a></li>
+            <div class="col-xs-12 col-sm-9">
+                <!--<div class="dropdown pull-right collapse navbar-collapse">-->
+                <div class="dropdown pull-right">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span class="glyphicon glyphicon-align-justify ss-white-font"
+                        style="margin-top: 15px; margin-right: 10px"></span>
+                        <!--<span class="caret"></span>-->
+                    </a>
+                    <ul class="dropdown-menu rc-dropdown-small-font">
+                        <li><a ng-click="model.goToFlightSearch()" class="">Search Flights</a></li>
+                        <li><a class="">Profile</a></li>
+                        <li><a ng-click="model.goToHistory()" class="">History</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a ng-click="model.goToHistory()" class="rc-drop-menu">History</a></li>
+                        <li><a href="#/" class="">Logout</a></li>
                     </ul>
-                    <!--<button class="btn dropdown-toggle ss-btn-highlight-off ss-btn-top-margin rc-drop-menu"-->
-                            <!--type="button" data-toggle="dropdown">-->
-                        <!--<span class="glyphicon glyphicon-align-justify ss-white-font"></span>-->
-                    <!--</button>-->
-                    <!--<ul class="dropdown-menu rc-z-index-dropdown rc-drop-menu">-->
-                        <!--<li><a ng-click="model.goToFlightSearch()" class="rc-drop-menu">Search Flights</a></li>-->
-                        <!--<li><a class="rc-drop-menu">Profile</a></li>-->
-                        <!--<li><a ng-click="model.goToHistory()" class="rc-drop-menu">History</a></li>-->
-                        <!--<li><a ng-click="model.goToNotifications()" class="rc-drop-menu">Notifications</a></li>-->
-                        <!--<li><a href="#/" class="rc-drop-menu">Logout</a></li>-->
-                    <!--</ul>-->
                 </div>
-
-                <!--<a class="navbar-brand pull-left" href="#/">-->
-                    <!--<strong class="wbdv-font-family ss-white-font">-->
-                        <!--Your Profile-->
-                    <!--</strong>-->
                 <strong class="navbar-brand visible-xs rc-agent-notify-font-size
                     wbdv-font-color-white rc-form-font-size pull-left">
                     Profile
@@ -43,20 +30,6 @@
                 <strong class="navbar-brand pull-left wbdv-font-family wbdv-banner-font wbdv-font-color-white hidden-xs">
                     Profile
                 </strong>
-                <!--</a>-->
-
-                <!--<a class="navbar-brand pull-right" href="#/login">-->
-                <!--<i class="fa fa-user-circle-o visible-xs"-->
-                <!--aria-hidden="true"></i>-->
-                <!--<strong class="wbdv-font-family hidden-xs">-->
-                <!--Login-->
-                <!--</strong>-->
-                <!--</a>-->
-                <!--</div>-->
-                <!--<div class="col-sm-2"></div>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--<div class="col-sm-1"></div>-->
             </div>
         </div>
     </div>
