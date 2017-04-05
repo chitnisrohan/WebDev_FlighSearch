@@ -1,11 +1,28 @@
 <div class="rc-no-padding rc-background-flight-search-result">
     <!--rc-background-flight-search-result-->
-    <nav class="nav ss-black-navbar ss-navbar-padding">
+    <nav class="nav ss-black-navbar ss-navbar-padding rc-navbar-style">
         <div class="container-fluid">
             <div class="row">
                 <!--<div class="col-sm-1"></div>-->
                 <!--<div class="col-xs-12 col-sm-10">-->
                 <div class="col-md-12">
+
+                    <div class="dropdown pull-right">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span class="glyphicon glyphicon-align-justify ss-white-font"
+                              style="margin-top: 15px; margin-right: 10px"></span>
+                            <!--<span class="caret"></span>-->
+                        </a>
+                        <ul class="dropdown-menu rc-dropdown-small-font">
+                            <li><a ng-click="model.goToFlightSearch()" class="">Search Flights</a></li>
+                            <li><a ng-click="model.goToProfile()">Profile</a></li>
+                            <li><a ng-click="model.goToHistory()" class="">History</a></li>
+                            <li><a ng-click="model.goToNotifications()">Notifications</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#/" class="">Logout</a></li>
+                        </ul>
+                    </div>
+
                     <!--<div class="dropdown pull-right">-->
                         <!--<button class="btn dropdown-toggle ss-btn-highlight-off ss-btn-top-margin"-->
                                 <!--type="button" data-toggle="dropdown">-->
@@ -54,12 +71,20 @@
 <div class="container-fluid">
     <div class="rc-link-top-margin row rc-black-background text-center">
         <div class="col-sm-1">
-            <strong class="hidden-xs rc-flight-search-journey-font">{{model.userJourney.source}}</strong>
-            <strong class="visible-xs rc-flight-search-journey-small-font">{{model.userJourney.source}}</strong>
+            <strong class="hidden-xs rc-flight-search-journey-font">
+                {{model.findCityName(model.userJourney.source)}}
+            </strong>
+            <strong class="visible-xs rc-flight-search-journey-small-font">
+                {{model.findCityName(model.userJourney.source)}}
+            </strong>
         </div>
         <div class="col-sm-1 rc-flight-search-journey-font">
-            <strong class="hidden-xs rc-flight-search-journey-font">{{model.userJourney.destination}}</strong>
-            <strong class="visible-xs rc-flight-search-journey-small-font">{{model.userJourney.destination}}</strong>
+            <strong class="hidden-xs rc-flight-search-journey-font">
+                {{model.findCityName(model.userJourney.destination)}}
+            </strong>
+            <strong class="visible-xs rc-flight-search-journey-small-font">
+                {{model.findCityName(model.userJourney.destination)}}
+            </strong>
         </div>
         <div class="col-sm-2 rc-flight-search-journey-font">
             <strong class="hidden-xs rc-flight-search-journey-font">{{model.userJourney.departDate}}</strong>
@@ -105,11 +130,11 @@
                     <!--Outbound Short-->
                     <span class="rc-flight-time-font">{{model.getOnlyTime(flight.itineraries[0].outbound.flights[0].departs_at)}}</span>
                     &nbsp;
-                    <span class="rc-flight-time-font">{{model.userJourney.source}}</span>
+                    <span class="rc-flight-time-font">{{model.findCityName(model.userJourney.source)}}</span>
                     &nbsp;
                     <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
                     &nbsp;
-                    <span class="rc-flight-time-font">{{model.userJourney.destination}}</span>
+                    <span class="rc-flight-time-font">{{model.findCityName(model.userJourney.destination)}}</span>
                     &nbsp;
                     <span class="rc-flight-time-font">{{model.getOnlyTime(flight.itineraries[0].outbound.flights[flight.itineraries[0].outbound.flights.length - 1].arrives_at)}}</span>
                     <br>
@@ -124,11 +149,11 @@
                     <div ng-if="model.isReturnJourney">
                         <span class="rc-flight-time-font">{{model.getOnlyTime(flight.itineraries[0].inbound.flights[0].departs_at)}}</span>
                         &nbsp;
-                        <span class="rc-flight-time-font">{{model.userJourney.destination}}</span>
+                        <span class="rc-flight-time-font">{{model.findCityName(model.userJourney.destination)}}</span>
                         &nbsp;
                         <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
                         &nbsp;
-                        <span class="rc-flight-time-font">{{model.userJourney.source}}</span>
+                        <span class="rc-flight-time-font">{{model.findCityName(model.userJourney.source)}}</span>
                         &nbsp;
                         <span class="rc-flight-time-font">{{model.getOnlyTime(flight.itineraries[0].inbound.flights[flight.itineraries[0].inbound.flights.length - 1].arrives_at)}}</span>
                         <br>
@@ -155,11 +180,11 @@
                     <!--Outbound Short-->
                     <span class="rc-flight-time-big-font">{{model.getOnlyTime(flight.itineraries[0].outbound.flights[0].departs_at)}}</span>
                     &nbsp;&nbsp;
-                    <span class="rc-flight-time-big-font">{{model.userJourney.source}}</span>
+                    <span class="rc-flight-time-big-font">{{model.findCityName(model.userJourney.source)}}</span>
                     &nbsp;&nbsp;
                     <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
                     &nbsp;&nbsp;
-                    <span class="rc-flight-time-big-font">{{model.userJourney.destination}}</span>
+                    <span class="rc-flight-time-big-font">{{model.findCityName(model.userJourney.destination)}}</span>
                     &nbsp;&nbsp;
                     <span class="rc-flight-time-big-font">{{model.getOnlyTime(flight.itineraries[0].outbound.flights[flight.itineraries[0].outbound.flights.length - 1].arrives_at)}}</span>
                     <br>
@@ -174,11 +199,11 @@
                     <div ng-if="model.isReturnJourney">
                         <span class="rc-flight-time-big-font">{{model.getOnlyTime(flight.itineraries[0].inbound.flights[0].departs_at)}}</span>
                         &nbsp;&nbsp;
-                        <span class="rc-flight-time-big-font">{{model.userJourney.destination}}</span>
+                        <span class="rc-flight-time-big-font">{{model.findCityName(model.userJourney.destination)}}</span>
                         &nbsp;&nbsp;
                         <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
                         &nbsp;&nbsp;
-                        <span class="rc-flight-time-big-font">{{model.userJourney.source}}</span>
+                        <span class="rc-flight-time-big-font">{{model.findCityName(model.userJourney.source)}}</span>
                         &nbsp;&nbsp;
                         <span class="rc-flight-time-big-font">{{model.getOnlyTime(flight.itineraries[0].inbound.flights[flight.itineraries[0].inbound.flights.length - 1].arrives_at)}}</span>
                         <br>
@@ -234,17 +259,18 @@
         <div id="outbound-detail{{$index}}" class="collapse rc-black-background">
         <div class="rc-flight-search-journey-font"
              ng-repeat="connectingFlights in flight.itineraries[0].outbound.flights">
-            <div class="wbdv-font-color-white text-center visible-xs">
+            <div class="wbdv-font-color-white visible-xs text-center">
                 <span class="rc-flight-time-font pull-left">&nbsp; Depart on&nbsp;&nbsp;:&nbsp;&nbsp;{{model.getOnlyDate(connectingFlights.departs_at)}}</span>
                 <span class="rc-flight-time-font pull-right">
                     Total Time : {{model.calculateTotalDuration(connectingFlights.arrives_at, connectingFlights.departs_at)}}&nbsp;
                 </span>
                 <br>
-                <span class="rc-flight-time-font">{{model.getOnlyTime(connectingFlights.departs_at)}}</span> &nbsp; -- &nbsp;
+                <span class="rc-flight-time-font">{{model.getOnlyTime(connectingFlights.departs_at)}}</span> &nbsp;--
+                &nbsp;
                 <span class="rc-flight-time-font">{{model.getOnlyTime(connectingFlights.arrives_at)}}</span>
                 <br>
-                <span class="rc-flight-time-font">{{connectingFlights.origin.airport}}</span> &nbsp; -- &nbsp;
-                <span class="rc-flight-time-font">{{connectingFlights.destination.airport}}</span>
+                <span class="rc-flight-time-font">{{model.findCityName(connectingFlights.origin.airport)}}</span> &nbsp; -- &nbsp;
+                <span class="rc-flight-time-font">{{model.findCityName(connectingFlights.destination.airport)}}</span>
                 <br>
                 <span class="rc-flight-time-font">Airline&nbsp;&nbsp;:&nbsp;&nbsp;{{connectingFlights.operating_airline}}</span>
                 <span class="rc-flight-time-font">&nbsp;&nbsp;&nbsp;&nbsp;Flight No.&nbsp;&nbsp;:&nbsp;&nbsp;{{connectingFlights.flight_number}}</span>
@@ -262,8 +288,8 @@
                 <!--<i class="fa fa-window-minimize" aria-hidden="true"></i>-->
                 <span class="rc-flight-time-big-font">{{model.getOnlyTime(connectingFlights.arrives_at)}}</span>
                 <br>
-                <span class="rc-flight-time-big-font">{{connectingFlights.origin.airport}}</span> &nbsp; -- &nbsp;
-                <span class="rc-flight-time-big-font">{{connectingFlights.destination.airport}}</span>
+                <span class="rc-flight-time-big-font">{{model.findCityName(connectingFlights.origin.airport)}}</span> &nbsp; -- &nbsp;
+                <span class="rc-flight-time-big-font">{{model.findCityName(connectingFlights.destination.airport)}}</span>
                 <br>
                 <span class="rc-flight-time-big-font">Airline&nbsp;&nbsp;:&nbsp;&nbsp;{{connectingFlights.operating_airline}}</span>
                 <span class="rc-flight-time-big-font">&nbsp;&nbsp;&nbsp;&nbsp;Flight No.&nbsp;&nbsp;:&nbsp;&nbsp;{{connectingFlights.flight_number}}</span>
@@ -282,8 +308,8 @@
                     <span class="rc-flight-time-font">{{model.getOnlyTime(connectingFlights.departs_at)}}</span> &nbsp; -- &nbsp;
                     <span class="rc-flight-time-font">{{model.getOnlyTime(connectingFlights.arrives_at)}}</span>
                     <br>
-                    <span class="rc-flight-time-font">{{connectingFlights.origin.airport}}</span> &nbsp; -- &nbsp;
-                    <span class="rc-flight-time-font">{{connectingFlights.destination.airport}}</span>
+                    <span class="rc-flight-time-font">{{model.findCityName(connectingFlights.origin.airport)}}</span> &nbsp; -- &nbsp;
+                    <span class="rc-flight-time-font">{{model.findCityName(connectingFlights.destination.airport)}}</span>
                     <br>
                     <span class="rc-flight-time-font">Airline&nbsp;&nbsp;:&nbsp;&nbsp;{{connectingFlights.operating_airline}}</span>
                     <span class="rc-flight-time-font">&nbsp;&nbsp;&nbsp;&nbsp;Flight No.&nbsp;&nbsp;:&nbsp;&nbsp;{{connectingFlights.flight_number}}</span>
@@ -301,8 +327,8 @@
                     <!--<i class="fa fa-window-minimize" aria-hidden="true"></i>-->
                     <span class="rc-flight-time-big-font">{{model.getOnlyTime(connectingFlights.arrives_at)}}</span>
                     <br>
-                    <span class="rc-flight-time-big-font">{{connectingFlights.origin.airport}}</span> &nbsp; -- &nbsp;
-                    <span class="rc-flight-time-big-font">{{connectingFlights.destination.airport}}</span>
+                    <span class="rc-flight-time-big-font">{{model.findCityName(connectingFlights.origin.airport)}}</span> &nbsp; -- &nbsp;
+                    <span class="rc-flight-time-big-font">{{model.findCityName(connectingFlights.destination.airport)}}</span>
                     <br>
                     <span class="rc-flight-time-big-font">Airline&nbsp;&nbsp;:&nbsp;&nbsp;{{connectingFlights.operating_airline}}</span>
                     <span class="rc-flight-time-big-font">&nbsp;&nbsp;&nbsp;&nbsp;Flight No.&nbsp;&nbsp;:&nbsp;&nbsp;{{connectingFlights.flight_number}}</span>

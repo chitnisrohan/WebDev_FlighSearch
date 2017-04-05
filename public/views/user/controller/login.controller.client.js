@@ -28,6 +28,17 @@
                         vm.error = "User not found";
                     }
                 });
+
+            // UserService
+            //     .login(user)
+            //     .then(
+            //         function (user) {
+            //             console.log(user);
+            //         },
+            //         function (err) {
+            //             console.log(err);
+            //         }
+            //     );
         }
     }
 })();

@@ -11,6 +11,7 @@
         vm.goToFlightSearch = goToFlightSearch;
         vm.goToHistory = goToHistory;
         vm.goToNotifications = goToNotifications;
+        vm.AreYouSure = AreYouSure;
 
         function init() {
             UserService
@@ -21,6 +22,22 @@
                 });
         }
         init();
+        
+        function AreYouSure() {
+            if (confirm("Are you sure?") == true) {
+                UserService
+                    .deleteUser(userId)
+                    .then(
+                        function () {
+                            $location.url("/");
+                        },
+                        function (err) {
+                            vm.error = "Could not process your request. Please try again";
+                        }
+                    )
+            } else {
+            }
+        }
 
         function goToNotifications() {
             if (vm.userType === "USER") {

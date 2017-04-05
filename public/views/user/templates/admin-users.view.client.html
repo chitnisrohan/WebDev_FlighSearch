@@ -4,9 +4,9 @@
             <div class="row">
                 <!--<div class="col-sm-1"></div>-->
                 <!--<div class="col-xs-12 col-sm-10">-->
-                <div class="col-sm-3">
+                <div class="col-md-3">
                 </div>
-                <div class="col-sm-9 rc-drop-menu">
+                <div class="col-md-9 rc-drop-menu">
                     <!--<div class="row">-->
                     <!--<div class="col-sm-2"></div>-->
                     <!--<div class="col-sm-8">-->
@@ -65,7 +65,7 @@
     <div class="container-fluid">
         <div class="row ">
             <!--<div class="col-sm-1"></div>-->
-            <div class="col-sm-3 ss-whitefont hidden-xs ss-black-bg-high" style="opacity: 0.7">
+            <div class="col-md-3 ss-whitefont hidden-xs hidden-sm ss-black-bg-high" style="opacity: 0.7">
                 <ul class="list-group list-unstyled ss-black-bg">
                     <li class="list-group-item  ss-black-bg ss-no-border selected-page">
                         <a class="ss-whitefont wbdv-banner-font rc-link-left-margin rc-text-decoration">
@@ -92,18 +92,18 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-sm-9">
+            <div class="col-md-9">
                 <div class="page1">
                     <ul class="list-group rc-user-history-top-margin">
                         <li class="list-group-item rc-user-history-list-background">
                             <div class="row">
-                                <div class="col-xs-6 text-center rc-small-top-margin">
+                                <div class="col-sm-6 text-center rc-small-top-margin">
                                     <h4 class="wbdv-font-color-white">UserName</h4>
                                 </div>
-                                <div class="col-xs-4 text-center rc-small-top-margin">
+                                <div class="col-sm-4 text-center rc-small-top-margin">
                                     <h4 class="wbdv-font-color-white">User Type</h4>
                                 </div>
-                                <div class="col-xs-2 text-center rc-small-top-margin">
+                                <div class="col-sm-2 text-center rc-small-top-margin">
                                     <h4 class="wbdv-font-color-white">Delete</h4>
                                 </div>
                             </div>
@@ -111,17 +111,17 @@
                         <li ng-repeat="user in model.users"
                             class="list-group-item rc-user-history-list-background">
                             <div class="row">
-                                <div class="col-xs-6 text-center rc-small-top-margin">
+                                <div class="col-sm-6 text-center rc-small-top-margin">
                                     <h4 class="wbdv-font-color-white">
                                         {{user.username}}
                                     </h4>
                                 </div>
-                                <div class="col-xs-4 text-center rc-small-top-margin">
+                                <div class="col-sm-4 text-center rc-small-top-margin">
                                     <h4 class="wbdv-font-color-white">
                                         {{user.userType}}
                                     </h4>
                                 </div>
-                                <div class="col-xs-2 text-center rc-small-top-margin">
+                                <div class="col-sm-2 text-center rc-small-top-margin">
                                     <h5 class="wbdv-font-color-white">
                                         <a ng-click="model.deleteUser(user)" class="">
                                             <i class="fa fa-minus-circle fa-2x rc-delete-alert-button"

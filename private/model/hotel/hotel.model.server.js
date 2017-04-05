@@ -12,10 +12,23 @@ module.exports = function () {
         findHotelByUser: findHotelByUser,
         updateHotelAvailability: updateHotelAvailability,
         deleteHotel: deleteHotel,
-        findHotels: findHotels
-
+        findHotels: findHotels,
+        findAllHotels : findAllHotels
     };
     return api;
+
+    function findAllHotels() {
+        var deferred = Q.defer();
+        HotelModel
+            .find({}, function (err, hotels) {
+                if (err) {
+                    deferred.abort(err);
+                } else {
+                    deferred.resolve(hotels);
+                }
+            });
+        return deferred.promise;
+    }
 
 
     function setModel(_model) {
@@ -24,8 +37,6 @@ module.exports = function () {
 
     function findHotels (query) {
         var deferred = Q.defer();
-        console.log(query);
-
         HotelModel
             .find({},function (err, hotels) {
                 if(err){

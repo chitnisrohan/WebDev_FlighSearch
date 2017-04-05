@@ -99,12 +99,48 @@ module.exports = function () {
                                                 deferred.resolve(userId);
                                             }
                                         });
-
                                 },
                                 function (err) {
                                     deferred.reject(err);
                                 }
                             )
+                    } else if (user.userType === "HOTELOWNER") {
+                        // find all hotels belonging to this user
+                        // delete all hotels
+                        // delete user
+                        model
+                            .hotelModel
+                            .findHotelByUser(userId)
+                            .then(
+                                function (hotels) {
+                                    for (var i = 0; i < hotels.length ; i++) {
+                                        model
+                                            .hotelModel
+                                            .deleteHotel(hotels[i]._id)
+                                            .then(
+                                                function (status) {
+
+                                                },
+                                                function (err) {
+                                                    deferred.reject(err);
+                                                }
+                                            )
+                                    }
+                                    UserModel
+                                        .remove({_id : userId}, function (err, users) {
+                                            if (err) {
+                                                deferred.reject(err);
+                                            } else {
+                                                deferred.resolve(userId);
+                                            }
+                                        });
+                                },
+                                function (err) {
+                                    deferred.reject(err);
+                                }
+                            )
+
+
                     }
                 },
                 function (err) {

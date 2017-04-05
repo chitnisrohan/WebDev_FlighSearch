@@ -3,7 +3,7 @@
         .module("FlightSearchApp")
         .controller("SearchResultController", SearchResultController);
 
-    function SearchResultController($location, FlightService, $routeParams) {
+    function SearchResultController($location, FlightService, $routeParams, UserService) {
         //flight/search/SRC/:src/DEST/:dest/DEPART/:dept/RETURN/:ret/ADULTS/:adults/CHILD/:child/CLASS/:class
         var vm = this;
         var userId = $routeParams['uid'];
@@ -20,8 +20,21 @@
         vm.getOnlyDate = getOnlyDate;
         vm.calculateTotalDuration = calculateTotalDuration;
         vm.goToFlightSearch = goToFlightSearch;
+        vm.goToNotifications = goToNotifications;
+        vm.goToHistory = goToHistory;
+        vm.goToProfile = goToProfile;
+        vm.findCityName = findCityName;
 
         function init() {
+
+            findAllCityCodeArray();
+
+            UserService
+                .findUserById(userId)
+                .success(function (user) {
+                    vm.userType = user.userType;
+                });
+
             vm.flightSearchResults = '0';
             if (returnDate === "0") {
                 vm.isReturnJourney = false;
@@ -47,9 +60,64 @@
         }
         init();
 
+        function findAllCityCodeArray() {
+            // Create a new XMLHttpRequest.
+            var request = new XMLHttpRequest();
+
+            // Handle state changes for the request.
+            request.onreadystatechange = function(response) {
+                if (request.readyState === 4) {
+                    if (request.status === 200) {
+                        // Parse the JSON
+                        var jsonOptions = JSON.parse(request.responseText);
+
+                        vm.allCities = jsonOptions.response;
+                    }
+                }
+            };
+
+            request.open('GET', 'City_Codes.json', true);
+            request.send();
+
+        }
+        
+        function findCityName(cityCode) {
+            var city = vm.allCities.filter(function (item) {
+                return item.code === cityCode;
+            });
+            if (city.length > 0) {
+                return city[0].name;
+            } else {
+                return cityCode;
+            }
+        }
+
+
         function goToFlightSearch() {
             $location.url("/user/"+userId+"/flightSearch");
         }
+
+        function goToNotifications() {
+            if (vm.userType === "USER") {
+                $location.url("/user/"+ userId +"/userNotification");
+            } else if (vm.userType === "AGENT") {
+                $location.url("/user/"+ userId +"/agentNotification");
+            }
+        }
+
+        function goToProfile() {
+            $location.url("/user/" + userId);
+        }
+
+
+        function goToHistory() {
+            if (vm.userType === "USER") {
+                $location.url("/user/"+ userId +"/userHistory");
+            } else if (vm.userType === "AGENT") {
+                $location.url("/user/"+ userId +"/agentHistory");
+            }
+        }
+
 
         function displayDetails(index) {
             vm.selectedIndex[index].showDetails = true;

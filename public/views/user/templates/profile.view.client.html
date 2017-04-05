@@ -1,6 +1,5 @@
 <div class="rc-no-padding rc-background-profile">
-<nav class="nav ss-black-navbar ss-navbar-padding" style="opacity: 1; position: relative;
-z-index: 1000;">
+<nav class="nav ss-black-navbar ss-navbar-padding rc-navbar-style">
     <div class="container-fluid">
         <div class="row">
             <!--<div class="col-sm-1"></div>-->
@@ -17,8 +16,8 @@ z-index: 1000;">
                     </a>
                     <ul class="dropdown-menu rc-dropdown-small-font">
                         <li><a ng-click="model.goToFlightSearch()" class="">Search Flights</a></li>
-                        <li><a class="">Profile</a></li>
                         <li><a ng-click="model.goToHistory()" class="">History</a></li>
+                        <li><a ng-click="model.goToNotifications()">Notifications</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#/" class="">Logout</a></li>
                     </ul>
@@ -136,6 +135,10 @@ z-index: 1000;">
                         <a class="btn wbdv-button rc-form-font-size btn-block ss-button-margin"
                            href="#/">
                             Logout
+                        </a>
+                        <a ng-click="model.AreYouSure()"
+                           class="btn wbdv-button rc-form-font-size btn-block ss-button-margin">
+                            Delete Me
                         </a>
                     </div>
                     <!--<a class="wbdv-left-right-margin pull-right" href="#/login">Already A Member?</a>-->

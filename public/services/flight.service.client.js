@@ -38,8 +38,7 @@
                     .replace("RETURNDATE",journey.returnDate)
                     .replace("CABINCLASS", journey.cabinClass);
             }
-            var result = $http.get(url);
-            return result;
+            return $http.get(url);
         }
     }
 })();

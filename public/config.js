@@ -18,7 +18,7 @@
                 controllerAs: "model"
             })
             .when("/user/58dee67efb263b7c7dd7b2c8/adminProfile", {
-                templateUrl: "views/user/templates/admin-profile.view.client.html",
+                templateUrl: "views/user/templates/admin-users.view.client.html",
                 controller: "AdminProfileController",
                 controllerAs: "model"
             })

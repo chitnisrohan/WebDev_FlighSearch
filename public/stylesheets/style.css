@@ -358,6 +358,12 @@ body img {
     opacity: 0.9;
 }
 
+.rc-admin-background {
+    background-color: #0f0f0f;
+    opacity: 0.8;
+}
+
+
 .rc-user-history-top-margin {
     margin-top: 10px;
 }
@@ -642,3 +648,8 @@ a.hover {
 }
 
 
+.rc-navbar-style {
+    opacity: 1; !important;
+    position: relative;
+    z-index: 1000;
+}

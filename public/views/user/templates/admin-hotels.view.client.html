@@ -4,9 +4,9 @@
             <div class="row">
                 <!--<div class="col-sm-1"></div>-->
                 <!--<div class="col-xs-12 col-sm-10">-->
-                <div class="col-sm-3">
+                <div class="col-md-3">
                 </div>
-                <div class="col-sm-9 rc-drop-menu">
+                <div class="col-md-9 rc-drop-menu">
                     <!--<div class="row">-->
                     <!--<div class="col-sm-2"></div>-->
                     <!--<div class="col-sm-8">-->
@@ -65,7 +65,7 @@
     <div class="container-fluid">
         <div class="row ">
             <!--<div class="col-sm-1"></div>-->
-            <div class="col-sm-3 ss-whitefont hidden-xs ss-black-bg-high" style="opacity: 0.7">
+            <div class="col-md-3 ss-whitefont hidden-sm hidden-xs ss-black-bg-high" style="opacity: 0.7">
                 <ul class="list-group list-unstyled ss-black-bg">
                     <li class="list-group-item  ss-black-bg ss-no-border">
                         <a ng-click="model.goToProfile()"
@@ -92,9 +92,52 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-sm-9">
+            <div class="col-md-9">
+                <div class="page1">
+                    <ul class="list-group rc-user-history-top-margin">
+                        <li class="list-group-item rc-admin-background">
+                            <div class="row">
+                                <div class="col-sm-5 text-center rc-small-top-margin">
+                                    <h4 class="wbdv-font-color-white">Hotel Name &nbsp; & &nbsp; Address</h4>
+                                </div>
+                                <div class="col-sm-6 text-center rc-small-top-margin">
+                                    <h4 class="wbdv-font-color-white">Hotel Owner</h4>
+                                </div>
+                                <div class="col-sm-1 text-center rc-small-top-margin">
+                                    <h4 class="wbdv-font-color-white">Delete</h4>
+                                </div>
+                            </div>
+                        </li>
+                        <li ng-repeat="hotel in model.hotels"
+                            class="list-group-item rc-admin-background">
+                            <div class="row">
+                                <div class="col-sm-5 text-center rc-small-top-margin">
+                                    <h4 class="wbdv-font-color-white">
+                                        Hotel Name : {{hotel.property_name}}
+                                        <br>
+                                        Address : {{hotel.addressline1}},&nbsp; {{hotel.city}}&nbsp;
+                                        {{hotel.region}}&nbsp;-&nbsp;{{hotel.postal_code}}
+                                    </h4>
+                                </div>
+                                <div class="col-sm-6 text-center rc-small-top-margin">
+                                    <h4 class="wbdv-font-color-white">
+                                        {{hotel._user}}
+                                    </h4>
+                                </div>
+                                <div class="col-sm-1 text-center rc-small-top-margin">
+                                    <h5>
+                                        <a ng-click="model.deleteHotel(hotel)" class="">
+                                            <i class="fa fa-minus-circle fa-2x rc-delete-alert-button"
+                                               aria-hidden="true"></i>
+                                        </a>
+                                    </h5>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
             </div>
             <!--<div class="col-sm-1"></div>-->
         </div>
     </div>
-</div>

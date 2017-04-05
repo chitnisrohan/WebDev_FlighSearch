@@ -5,6 +5,19 @@ module.exports = function (app, model) {
     app.put('/api/hotel/:hotelId', updateHotelAvailability);
     app.delete('/api/hotel/:hotelId', deleteHotel);
     app.post('/api/searchHotel/', findHotels);
+    app.get('/api/allHotels', findAllHotels);
+    
+    function findAllHotels(req, res) {
+        model
+            .hotelModel
+            .findAllHotels()
+            .then(function (hotels) {
+                    res.json(hotels);
+                },
+                function (err) {
+                    res.sendStatus(400);
+                });
+    }
 
     function findHotels (req, res) {
         var query = req.body;
