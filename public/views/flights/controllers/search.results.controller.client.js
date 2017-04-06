@@ -24,6 +24,7 @@
         vm.goToHistory = goToHistory;
         vm.goToProfile = goToProfile;
         vm.findCityName = findCityName;
+        vm.findAllAirportCodeArray = findAllAirportCodeArray;
 
         function init() {
 
@@ -80,7 +81,29 @@
             request.send();
 
         }
-        
+
+        function findAllAirportCodeArray() {
+            // Create a new XMLHttpRequest.
+            var request = new XMLHttpRequest();
+
+            // Handle state changes for the request.
+            request.onreadystatechange = function(response) {
+                if (request.readyState === 4) {
+                    if (request.status === 200) {
+                        // Parse the JSON
+                        var jsonOptions = JSON.parse(request.responseText);
+
+                        vm.allAirports = jsonOptions.response;
+                    }
+                }
+            };
+
+            request.open('GET', 'Airport_Codes.json', true);
+            request.send();
+
+        }
+
+
         function findCityName(cityCode) {
             var city = vm.allCities.filter(function (item) {
                 return item.code === cityCode;
@@ -88,7 +111,11 @@
             if (city.length > 0) {
                 return city[0].name;
             } else {
-                return cityCode;
+                findAllAirportCodeArray();
+                var Airport = vm.allAirports.filter(function (item) {
+                    return item.code === cityCode;
+                });
+                return Airport[0].name;
             }
         }
 
