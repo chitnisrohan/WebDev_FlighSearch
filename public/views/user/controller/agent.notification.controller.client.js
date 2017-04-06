@@ -3,7 +3,7 @@
         .module("FlightSearchApp")
         .controller("AgentNotificationController", AgentNotificationController);
 
-    function AgentNotificationController($location, $routeParams, MessageService) {
+    function AgentNotificationController($location, $routeParams, MessageService, UserService) {
         var vm = this;
         var agentId = $routeParams['uid'];
 
@@ -17,6 +17,22 @@
 
 
         function init() {
+
+            // can be removed on adding passportJS
+            // get agent name from id
+            UserService
+                .findUserById(agentId)
+                .then(
+                    function (user) {
+                        vm.agentName = user.data.firstName + " " + user.data.lastName;
+                        console.log(vm.agentName);
+                    },
+                    function (err) {
+                        vm.error = "User does not exist";
+                    }
+                );
+
+
             MessageService
                 .findAlerts()
                 .then(
@@ -60,8 +76,7 @@
 
         function sendMessage(alert, message) {
             alert.response = true;
-            var messageMap = {_id : agentId, message : message, visible: true};
-//            alert.message = message;
+            var messageMap = {_id : agentId, message : message, visible: true, agentName : vm.agentName};
             MessageService
                 .sendMessage(alert, messageMap)
                 .then(

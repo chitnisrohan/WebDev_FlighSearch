@@ -93,7 +93,6 @@ module.exports = function () {
                     for (var m in messages) {
                         var msg = messages[m];
 
-                        console.log();
                         if (msg.NotVisibleForAgents.indexOf(agentId) != -1) {
                             continue;
                         }
@@ -108,6 +107,7 @@ module.exports = function () {
                                     returnDate : msg.returnDate,
                                     message : c.message,
                                     userid : msg.userid,
+                                    username : msg.username,
                                     messageId : msg._id};
                                 agentHistory.push(singleMessage)
                             }
@@ -214,21 +214,32 @@ module.exports = function () {
 
     function setUpAlert(journey) {
         var deferred = Q.defer();
-        MessageModel
-            .create(journey,function (err, alerts) {
-                if(err) {
-                    deferred.reject(err);
-                } else {
+        model
+            .userModel
+            .findUserById(journey.userid)
+            .then(
+                function (user) {
+                    journey.username = user.firstName + " " + user.lastName;
                     MessageModel
-                        .find({userid : journey.userid}, function (err, messages) {
-                            if (err) {
+                        .create(journey,function (err, alerts) {
+                            if(err) {
                                 deferred.reject(err);
                             } else {
-                                deferred.resolve(messages);
+                                MessageModel
+                                    .find({userid : journey.userid}, function (err, messages) {
+                                        if (err) {
+                                            deferred.reject(err);
+                                        } else {
+                                            deferred.resolve(messages);
+                                        }
+                                    })
                             }
-                        })
+                        });
+                },
+                function (err) {
+                    deferred.reject(err);
                 }
-            });
+            );
         return deferred.promise;
     }
 

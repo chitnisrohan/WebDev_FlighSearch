@@ -20,8 +20,10 @@
                         var validNotifications = [];
                         for (var n in notifications.data) {
                             var notification = notifications.data[n];
-//                            console.log(notification);
                             var msgs = notification.AgentsResponded;
+                            if (msgs.length === 0) {
+                                continue;
+                            }
                             var validMsgs = [];
                             for (var i = 0; i < msgs.length ; i++) {
                                 var msg = msgs[i];
@@ -29,8 +31,6 @@
                                     validMsgs.push(msg);
                                 }
                             }
-                            console.log(validMsgs);
-//                            console.log(notification);
                             notification.AgentsResponded = validMsgs;
                             validNotifications.push(notification);
                         }
