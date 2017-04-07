@@ -31,8 +31,10 @@
                                     validMsgs.push(msg);
                                 }
                             }
-                            notification.AgentsResponded = validMsgs;
-                            validNotifications.push(notification);
+                            if (validMsgs.length > 0) {
+                                notification.AgentsResponded = validMsgs;
+                                validNotifications.push(notification);
+                            }
                         }
                         vm.notifications = validNotifications;
                         vm.noNitifications = vm.notifications.length === 0;
