@@ -1,0 +1,164 @@
+<div class="rc-no-padding rc-background-profile">
+    <nav class="nav ss-black-navbar ss-navbar-padding navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3">
+                </div>
+                <div class="col-sm-9 rc-drop-menu">
+                    <div class="dropdown pull-right rc-drop-menu rc-drop-menu">
+                        <button class="btn dropdown-toggle ss-btn-highlight-off ss-btn-top-margin rc-drop-menu"
+                                type="button" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-align-justify ss-white-font"></span>
+                        </button>
+                        <ul class="dropdown-menu rc-z-index-dropdown rc-drop-menu">
+                            <li><a ng-click="model.goToFlightSearch()" class="rc-drop-menu">Search Flights</a></li>
+                            <li><a class="rc-drop-menu">Profile</a></li>
+                            <li><a ng-click="model.goToHistory()" class="rc-drop-menu">History</a></li>
+                            <li><a ng-click="model.goToNotifications()" class="rc-drop-menu">Notifications</a></li>
+                            <li><a href="#/" class="rc-drop-menu">Logout</a></li>
+                        </ul>
+                    </div>
+
+                    <strong class="navbar-brand visible-xs rc-agent-notify-font-size
+                    wbdv-font-color-white rc-form-font-size pull-left">
+                        Edit Hotel
+                    </strong>
+                    <strong class="navbar-brand pull-left wbdv-font-family wbdv-banner-font wbdv-font-color-white hidden-xs">
+                        Edit Hotel
+                    </strong>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid rc-top-margin-page">
+        <div class="row ">
+            <div class="col-sm-3 ss-whitefont hidden-xs ss-black-bg-high" style="opacity: 0.7">
+                <ul class="list-group list-unstyled ss-black-bg">
+
+                    <li class="list-group-item ss-black-bg ss-no-border">
+                        <a ng-click="model.goToHotelOwnerProfile()"
+                           class="ss-whitefont wbdv-banner-font rc-link-left-margin rc-text-decoration">
+                            <i class="rc-link-left-margin rc-link-right-margin fa fa-user-circle-o"
+                               aria-hidden="true"></i>
+                            Profile
+                        </a>
+                    </li>
+
+                    <li class="list-group-item  ss-black-bg ss-no-border ">
+                        <a ng-click="model.goToHotelsList()"
+                           class="ss-whitefont wbdv-banner-font rc-link-left-margin rc-text-decoration">
+                            <i class="rc-link-left-margin rc-link-right-margin fa fa-bed"
+                               aria-hidden="true"></i>
+                            My Hotels
+                        </a>
+                    </li>
+
+                    <li class="list-group-item  ss-black-bg ss-no-border">
+                        <a class="ss-whitefont wbdv-banner-font rc-link-left-margin rc-text-decoration">
+                            <i class="rc-link-left-margin rc-link-right-margin fa fa-plus"
+                               aria-hidden="true"></i>
+                            New Hotel
+                        </a>
+                    </li>
+
+                    <!--<li class="list-group-item  ss-black-bg ss-no-border selected-page">-->
+                        <!--<a class="ss-whitefont wbdv-banner-font rc-link-left-margin rc-text-decoration">-->
+                            <!--<i class="fa fa-pencil-square-o rc-link-left-margin rc-link-right-margin"-->
+                               <!--aria-hidden="true"></i>-->
+                            <!--Edit Hotel-->
+                        <!--</a>-->
+                    <!--</li>-->
+
+                </ul>
+            </div>
+            <div class="col-sm-3"></div>
+            <div class="col-sm-9">
+                <!--<div class="row">-->
+                <!--<div class="col-sm-2"></div>-->
+                <!--<div id="loginform" class="col-sm-8 fa-border">-->
+                <div id="loginform" style="opacity: 0.9">
+                    <form>
+                        <br>
+                        <div class="row">
+                            <div class="col-xs-1"></div>
+                            <div class="col-xs-10">
+                                <div class="form-group wbdv-font-color-white col-xs-12">
+                                    <label for="hotelname" class="rc-form-font-size">Name of Hotel</label>
+                                    <input ng-model="model.hotel.property_name"
+                                           type="text"
+                                           class="form-control"
+                                           id="hotelname"
+                                           placeholder="Name of your hotel">
+                                </div>
+
+                                <div class="form-group wbdv-font-color-white col-sm-6">
+                                    <!--<strong class="rc-form-font-size pull-left"> Address </strong>-->
+                                    <!--<div class="col-sm-6 col-xs-12">-->
+                                    <label for="line1" class="rc-form-font-size">Address</label>
+                                    <input ng-model="model.hotel.addressline1"
+                                           type="text"
+                                           class="form-control"
+                                           id="line1"
+                                           placeholder="Line 1">
+                                    <input ng-model="model.hotel.city"
+                                           type="text"
+                                           class="form-control ss-inputarea-top-margin"
+                                           placeholder="City">
+                                    <input ng-model="model.hotel.region"
+                                           type="text"
+                                           class="form-control ss-inputarea-top-margin"
+                                           placeholder="Region">
+                                    <input ng-model="model.hotel.postal_code"
+                                           type="text"
+                                           class="form-control ss-inputarea-top-margin"
+                                           placeholder="Postal Code">
+                                </div>
+
+                                <div class="col-sm-6 ss-white-font">
+                                    <label for="price" class="rc-form-font-size">Total Price</label>
+                                    <input ng-model="model.hotel.total_price"
+                                           type="text"
+                                           class="form-control"
+                                           id="price"
+                                           placeholder="Total Price">
+
+                                    <label for="phone" class="rc-form-font-size ss-top-margin-form">Contact Details</label>
+                                    <input ng-model="model.hotel.phone"
+                                           type="text"
+                                           id="phone"
+                                           class="form-control ss-inputarea-top-margin"
+                                           placeholder="Phone">
+
+                                    <input ng-model="model.hotel.fax"
+                                           type="text"
+                                           class="form-control ss-inputarea-top-margin"
+                                           placeholder="Fax">
+
+                                </div>
+
+
+                                <div class="form-group wbdv-font-color-white col-xs-12">
+                                    <label for="amenities" class="rc-form-font-size">Amenities</label>
+                                    <input ng-model="model.hotel.amenities"
+                                           type="text"
+                                           class="form-control"
+                                           id="amenities"
+                                           placeholder="Elevators, Hotspots, Free high speed internet connection, etc.">
+                                </div>
+
+                                <div class="col-xs-12">
+                                    <a class="btn ss-wbdv-button rc-form-font-size btn-block ss-button-margin"
+                                       ng-click="model.updateHotel()">
+                                        Update Hotel Details
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-1"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

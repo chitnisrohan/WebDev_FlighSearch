@@ -8,6 +8,8 @@ module.exports = function() {
         lastName: String,
         email: String,
         phone: String,
+        passwordRecoveryQuestion: String,
+        passwordRecoveryAnswer: String,
         userType: {
             type: String,
             enum: ['USER', 'AGENT', 'ADMIN', 'HOTELOWNER'],

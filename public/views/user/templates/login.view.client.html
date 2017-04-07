@@ -1,24 +1,89 @@
 <div class="rc-background-register">
-<nav class="nav">
-    <div class="container-fluid">
+    <nav class="nav">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-xs-12 col-sm-10">
+                    <div class="row">
+                        <div class="col-sm-2"></div>
+                        <div class="col-xs-12 col-sm-8">
+                            <a class="navbar-brand pull-left" href="#/">
+                                <strong class="wbdv-font-family wbdv-font-color-white">
+                                    Continue as Guest
+                                </strong>
+                            </a>
+                            <a class="navbar-brand pull-right" href="#/register/USER">
+                                <i class="fa fa-user-plus visible-xs wbdv-font-color-white"
+                                   aria-hidden="true"></i>
+                                <strong class="wbdv-font-family hidden-xs wbdv-font-color-white">
+                                    Register
+                                </strong>
+                            </a>
+                        </div>
+                        <div class="col-sm-2"></div>
+                    </div>
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid wbdv-margin-top">
         <div class="row">
             <div class="col-sm-1"></div>
             <div class="col-xs-12 col-sm-10">
-                <div class="row">
+                <div class="row wbdv-font-color-white">
                     <div class="col-sm-2"></div>
-                    <div class="col-xs-12 col-sm-8">
-                        <a class="navbar-brand pull-left" href="#/">
-                            <strong class="wbdv-font-family wbdv-font-color-white">
-                                Continue as Guest
-                            </strong>
-                        </a>
-                        <a class="navbar-brand pull-right" href="#/register/USER">
-                            <i class="fa fa-user-plus visible-xs wbdv-font-color-white"
-                               aria-hidden="true"></i>
-                            <strong class="wbdv-font-family hidden-xs wbdv-font-color-white">
-                                Register
-                            </strong>
-                        </a>
+                    <div id="loginform" class="col-xs-12 col-sm-8 fa-border rc-black-background">
+                        <div ng-show="model.error" class="alert alert-danger" role="alert">
+                            {{model.error}}
+                        </div>
+                        <div class="form-group wbdv-left-right-margin">
+                            <label for="username">Username</label>
+                            <input ng-model="model.user.username"
+                                   type="text"
+                                   class="form-control"
+                                   id="username"
+                                   placeholder="Username">
+                        </div>
+                        <div ng-if="!model.passwordRecoverymode" class="form-group wbdv-left-right-margin">
+                            <label for="password">Password</label>
+                            <input ng-model="model.user.password"
+                                   type="password"
+                                   class="form-control"
+                                   id="password"
+                                   placeholder="Password">
+                        </div>
+
+                        <div ng-if="model.passwordRecoverymode" class="form-group wbdv-left-right-margin">
+                            <label>Account Recovery Question</label>
+                            <div>
+                                {{model.user.passwordRecoveryQuestion}}
+                            </div>
+                            <!--<input ng-model="model.user.username"-->
+                            <!--type="text"-->
+                            <!--class="form-control"-->
+                            <!--id="recoveryQuestion">-->
+                        </div>
+                        <div ng-if="model.passwordRecoverymode" class="form-group wbdv-left-right-margin">
+                            <label for="recoveryAnswer">Your Answer</label>
+                            <input ng-model="model.user.passwordRecoveryAnswer"
+                                   type="text"
+                                   class="form-control"
+                                   id="recoveryAnswer"
+                                   placeholder="Enter your response">
+                        </div>
+
+                        <div class="wbdv-left-right-margin">
+                            <a class="btn btn-primary btn-block ss-button-margin"
+                               ng-click="model.login(model.user)">
+                                Login
+                            </a>
+                        </div>
+                        <a ng-if="!model.passwordRecoverymode" ng-click="model.setToRecoveryMode(model.user)"
+                           class="wbdv-left-right-margin pull-left wbdv-font-color-white">Forgot Passowrd?</a>
+                        <a class="wbdv-left-right-margin pull-right wbdv-font-color-white"
+                           href="#/register/USER">Not a Member?</a>
                     </div>
                     <div class="col-sm-2"></div>
                 </div>
@@ -26,47 +91,5 @@
             <div class="col-sm-1"></div>
         </div>
     </div>
-</nav>
 
-<div class="container-fluid wbdv-margin-top">
-    <div class="row">
-        <div class="col-sm-1"></div>
-        <div class="col-xs-12 col-sm-10">
-            <div class="row wbdv-font-color-white">
-                <div class="col-sm-2"></div>
-                <div id="loginform" class="col-xs-12 col-sm-8 fa-border rc-black-background">
-                    <div ng-show="model.error" class="alert alert-danger" role="alert">
-                        {{model.error}}
-                    </div>
-                    <div class="form-group wbdv-left-right-margin">
-                        <label for="username">UserName</label>
-                        <input ng-model="model.user.username"
-                               type="text"
-                               class="form-control"
-                               id="username"
-                               placeholder="UserName">
-                    </div>
-                    <div class="form-group wbdv-left-right-margin">
-                        <label for="password">Password</label>
-                        <input ng-model="model.user.password"
-                               type="password"
-                               class="form-control"
-                               id="password"
-                               placeholder="Password">
-                    </div>
-                    <div class="wbdv-left-right-margin">
-                        <a class="btn btn-primary btn-block ss-button-margin"
-                           ng-click="model.login(model.user)">
-                            Login
-                        </a>
-                    </div>
-                    <a class="wbdv-left-right-margin pull-right wbdv-font-color-white"
-                       href="#/register/USER">Not A Member?</a>
-                </div>
-                <div class="col-sm-2"></div>
-            </div>
-        </div>
-        <div class="col-sm-1"></div>
-    </div>
-</div>
 </div>

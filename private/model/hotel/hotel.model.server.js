@@ -13,30 +13,61 @@ module.exports = function () {
         updateHotelAvailability: updateHotelAvailability,
         deleteHotel: deleteHotel,
         findHotels: findHotels,
-        findAllHotels : findAllHotels
+        findHotelById: findHotelById,
+        updateHotel: updateHotel
+
     };
     return api;
-
-    function findAllHotels() {
-        var deferred = Q.defer();
-        HotelModel
-            .find({}, function (err, hotels) {
-                if (err) {
-                    deferred.abort(err);
-                } else {
-                    deferred.resolve(hotels);
-                }
-            });
-        return deferred.promise;
-    }
 
 
     function setModel(_model) {
         model = _model;
     }
 
+    function updateHotel (hotelId, hotel) {
+        var deferred = Q.defer();
+        console.log(hotelId);
+        console.log(hotel);
+
+        HotelModel
+            .update({"_id":hotelId}, {property_name: hotel.property_name,
+                addressline1: hotel.addressline1,
+                city: hotel.city,
+                region: hotel.region,
+                postal_code: hotel.postal_code,
+                phone: hotel.phone,
+                fax : hotel.fax,
+                amenities: hotel.amenities,
+                total_price: hotel.total_price}, function (err, hotel) {
+                if(err){
+                    deferred.abort(err);
+                } else{
+                    deferred.resolve(hotel);
+                }
+            });
+        return deferred.promise;
+    }
+
+    function findHotelById (hotelId) {
+        var deferred = Q.defer();
+        // console.log(hotelId);
+        HotelModel
+            .findOne({"_id": hotelId}, function (err, hotel) {
+                if(err){
+                    deferred.abort();
+                }
+                else{
+                    deferred.resolve(hotel);
+                    // console.log(hotel);
+                }
+            });
+        return deferred.promise;
+    }
+
     function findHotels (query) {
         var deferred = Q.defer();
+        // console.log(query);
+
         HotelModel
             .find({},function (err, hotels) {
                 if(err){

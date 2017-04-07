@@ -1,5 +1,6 @@
 module.exports = function (app, model) {
 
+    app.get("/api/user/securityquestion", findSecurityQuestionByUsername);
     app.get("/api/user", findUser);
     app.get("/api/user/:userId", findUserById);
     app.put("/api/user/:userId", updateUser);
@@ -59,6 +60,20 @@ module.exports = function (app, model) {
 
 
 
+    function findSecurityQuestionByUsername (req, res) {
+        var username = req.query.username;
+        model
+            .userModel
+            .findSecurityQuestionByUsername(username)
+            .then(
+                function (securityQuestion) {
+                    res.send(securityQuestion);
+                },
+                function (err) {
+                    res.sendStatus(400);
+                }
+            );
+    }
 
 
     function deleteUser(req, res) {
@@ -138,10 +153,15 @@ module.exports = function (app, model) {
     }
 
     function findUser(req, res) {
-        if(req.query.username && req.query.password) {
+        if(req.query.username && req.query.password != "") {
             findUserByCredential(req, res);
         } else {
-            findUserByUsername(req, res);
+            if (req.query.username && req.query.passwordRecoveryAnswer){
+                findUserByRecoveryCredentials(req,res);
+            }
+            else {
+                findUserByUsername(req, res);
+            }
         }
     }
 
@@ -179,5 +199,22 @@ module.exports = function (app, model) {
                 }
             );
     }
+
+    function findUserByRecoveryCredentials(req, res) {
+        var username = req.query.username;
+        var passwordRecoveryAnswer = req.query.passwordRecoveryAnswer;
+        model
+            .userModel
+            .findUserByRecoveryCredentials(username, passwordRecoveryAnswer)
+            .then(
+                function (user) {
+                    res.send(user);
+                },
+                function (err) {
+                    res.sendStatus(400).send(err);
+                }
+            );
+    }
+
 
 };

@@ -78,6 +78,11 @@
                 controller: "NewHotelController",
                 controllerAs: "model"
             })
+            .when("/user-hotelowner/:uid/hotel/:hid" , {
+                templateUrl: "views/user/templates/hotel-owner.edithotel.view.client.html",
+                controller: "EditHotelController",
+                controllerAs: "model"
+            })
             .when("/user/:uid/agentNotification" , {
                 templateUrl: "views/user/templates/agent.notification.view.client.html",
                 controller: "AgentNotificationController",

@@ -510,6 +510,12 @@ a {
     /*min-width: 100%;*/
 }
 
+.ss-wbdv-button {
+    background-color: green;
+    font-size: 1.2em;
+    color: white;
+}
+
 .ss-black-bg {
     background-color: black;
     opacity: 0.9;

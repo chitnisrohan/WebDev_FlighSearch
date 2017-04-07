@@ -12,8 +12,9 @@
             "deleteUser" : deleteUser,
             "createUser" : createUser,
             "findUserByUsername" : findUserByUsername,
+            "login" : login,
             "findAllUsers" : findAllUsers,
-            "login" : login
+            "findSecurityQuestionByUsername": findSecurityQuestionByUsername
         };
         return api;
 
@@ -41,12 +42,16 @@
             return $http.post("/api/login", user);
         }
 
-        function findUserByCredentials(username, password) {
-            return $http.get("/api/user?username="+username+"&password="+password);
+        function findUserByCredentials(username, password, passwordRecoveryAnswer) {
+            return $http.get("/api/user?username="+username+"&password="+password+"&passwordRecoveryAnswer="+passwordRecoveryAnswer);
         }
 
         function findUserByUsername(username) {
             return $http.get("/api/user?username="+username);
+        }
+
+        function findSecurityQuestionByUsername (username) {
+            return $http.get("/api/user/securityquestion?username="+username);
         }
     }
 })();

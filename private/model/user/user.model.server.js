@@ -14,9 +14,39 @@ module.exports = function () {
         createUser : createUser,
         updateUser : updateUser,
         finAllUsers : finAllUsers,
-        deleteUser : deleteUser
+        deleteUser : deleteUser,
+        findUserByRecoveryCredentials: findUserByRecoveryCredentials,
+        findSecurityQuestionByUsername: findSecurityQuestionByUsername
     };
     return api;
+
+    function findUserByRecoveryCredentials(username, passwordRecoveryAnswer) {
+        var deferred = Q.defer();
+        UserModel
+            .findOne({"username": username, "passwordRecoveryAnswer": passwordRecoveryAnswer}, function (err, user) {
+                if(err) {
+                    deferred.reject(err);
+                } else {
+                    deferred.resolve(user);
+                }
+            });
+        return deferred.promise;
+    }
+
+    function findSecurityQuestionByUsername (username) {
+        var deferred = Q.defer();
+
+        UserModel
+            .findOne({"username": username}, function (err, user) {
+                if(err) {
+                    deferred.reject(err);
+                } else {
+                    // console.log(user);
+                    deferred.resolve(user.passwordRecoveryQuestion);
+                }
+            });
+        return deferred.promise;
+    }
 
     function deleteUser(userId) {
         var deferred = Q.defer();

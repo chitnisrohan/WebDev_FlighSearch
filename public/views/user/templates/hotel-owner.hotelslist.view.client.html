@@ -1,5 +1,5 @@
 <div class="rc-no-padding rc-background-profile">
-    <nav class="nav ss-black-navbar ss-navbar-padding rc-navbar-style navbar-fixed-top">
+    <nav class="nav ss-black-navbar navbar-fixed-top ss-navbar-padding">
         <div class="container-fluid">
             <div class="row">
                 <!--<div class="col-sm-1"></div>-->
@@ -36,10 +36,10 @@
         </div>
     </nav>
 
-    <div class="container-fluid rc-top-margin-page">
+    <div class="container-fluid" style="margin-top: 50px">
         <div class="row ">
             <!--<div class="col-sm-1"></div>-->
-            <div class="col-sm-3 ss-whitefont hidden-xs ss-black-bg-high">
+            <div class="col-sm-3 ss-whitefont hidden-xs ss-black-bg-high" style="opacity: 0.7">
                 <ul class="list-group list-unstyled ss-black-bg">
 
                     <li class="list-group-item ss-black-bg ss-no-border">
@@ -68,7 +68,9 @@
 
                 </ul>
             </div>
+
             <div class="col-sm-3"></div>
+
             <div class="col-sm-9">
 
                 <div class="alert alert-danger text-center" ng-show="model.error">
@@ -85,13 +87,14 @@
                     <!--&lt;!&ndash;<i class="fa fa-pencil-square-o pull-right ss-white-font" aria-hidden="true"></i>&ndash;&gt;-->
                     <!--</div>-->
 
-                    <div class="row ss-black-bg">
+                    <div class="row ">
 
                         <div class="col-sm-1"> </div>
 
-                        <div class="col-xs-7 col-sm-7 ss-black-bg ss-white-font ss-top-margin ss-div-padding">
+                        <div class="col-xs-7 col-sm-7 ss-white-font ss-top-margin ss-div-padding">
                             <div>
                                 <strong class="ss-hotel-name-font-size">{{hotel.property_name}}</strong>
+
                             </div>
                             <div>
                                 <strong class="ss-font-class1">Address: &nbsp;</strong>
@@ -102,7 +105,7 @@
                             </div>
                         </div>
 
-                        <div class="col-xs-5 col-sm-4 ss-top-margin  ss-div-padding text-center ss-price-center">
+                        <div class="col-xs-5 col-sm-4 ss-top-margin ss-div-padding text-center ss-price-center">
                             <!--<i class="fa fa-times pull-right ss-white-font ss-cross-font-size" aria-hidden="true"></i>-->
                             <a ng-click="model.deleteHotel(hotel._id)">
                                 <div>
@@ -111,19 +114,18 @@
                                     </span>
                                 </div>
                             </a>
-                            <a data-toggle="collapse" data-target="#hotelDetails{{$index}}">
-                                <div>
+                            <a ng-click="model.gotoEditHotelPage(hotel._id)">
                                     <span class="text-center ss-arrow-bottom-padding">
                                         <i class="fa fa-pencil-square-o pull-right ss-white-font ss-cross-font-size" aria-hidden="true"></i>
                                     </span>
-                                </div>
                             </a>
+
                             <!--<span class="label label-warning">{{hotel.total_price}}&nbsp;USD</span>-->
                         </div>
                     </div>
 
-                    <div class="ss-black-bg ss-white-font">
-                        <div class="row ss-black-bg">
+                    <div class=" ss-white-font">
+                        <div class="row">
                             <div class="col-xs-4 col-sm-2"><strong class="pull-right ss-font-class1">Amenities:</strong> </div>
                             <div class="col-xs-7 col-sm-7 ss-font-class2">
                                 {{hotel.amenities}} &nbsp;
@@ -131,7 +133,7 @@
                             <div class="col-xs-1 col-sm-3"></div>
                         </div>
 
-                        <div class="row ss-black-bg ">
+                        <div class="row  ">
                             <div class="col-xs-4 col-sm-2"><strong class="pull-right ss-font-class1">Contact:</strong> </div>
                             <div class="col-xs-7 col-sm-7 ss-font-class2">
                                 PHONE: &nbsp; {{hotel.phone}}
@@ -139,7 +141,7 @@
                             <div class="col-xs-1 col-sm-3"></div>
                         </div>
 
-                        <div class="row ss-black-bg ">
+                        <div class="row  ">
                             <div class="col-xs-4 col-sm-2"></div>
                             <div class="col-xs-7 col-sm-7 ss-font-class2">
                                 FAX: &nbsp; {{hotel.fax}}
@@ -147,7 +149,7 @@
                             <div class="col-xs-1 col-sm-3"></div>
                         </div>
 
-                        <div class="row ss-black-bg ss-collapsible-div-bottom-padding">
+                        <div class="row ss-collapsible-div-bottom-padding">
                             <div class="col-xs-4 col-sm-2"><strong class="pull-right ss-font-class1">Total Price:</strong> </div>
                             <div class="col-xs-7 col-sm-7 ss-font-class2">
                                 {{hotel.total_price}} USD
@@ -156,28 +158,45 @@
                         </div>
 
                         <div class="row ss-font-class1">
-                            <div class="col-sm-2 col-xs-1"></div>
+                            <div class="col-sm-2"></div>
                             <div class="col-sm-3 col-xs-5 text-center">
                                 Checkin Dates
                             </div>
                             <div class="col-sm-3 col-xs-5 text-center">
                                 Checkout Dates
                             </div>
-                            <div class="col-sm-4 col-xs-1"></div>
+                            <div class="col-xs-2 col-sm-3 pull-left">
+                                <a class="visible-xs" data-toggle="collapse" data-target="#hotelDetails{{$index}}">
+                                    <div class="pull-left">
+                                    <span class="text-center ss-arrow-bottom-padding">
+                                        <i class="fa fa-plus-circle pull-right ss-white-font ss-cross-font-size" aria-hidden="true"></i>
+                                    </span>
+                                    </div>
+                                </a>
+
+                                <a  class="hidden-xs btn btn-block btn-success" data-toggle="collapse" data-target="#hotelDetails{{$index}}">
+                                    <span class="text-center">
+                                        Add new booking
+                                        <!--<i class="fa fa-plus-circle pull-right ss-white-font ss-cross-font-size" aria-hidden="true"></i>-->
+                                    </span>
+                                </a>
+
+                            </div>
+                            <div class="col-sm-1"></div>
                         </div>
 
-                        <div ng-repeat="booking in hotel.BookedDates" class="row ss-black-bg ss-white-font ss-font-class2">
-                            <div class="col-sm-2 col-xs-1"></div>
+                        <div ng-repeat="booking in hotel.BookedDates" class="row ss-white-font ss-font-class2">
+                            <div class="col-sm-2"></div>
                             <div class="col-sm-3 col-xs-5 text-center">
                                 {{booking.checkIn}}
                             </div>
                             <div class="col-sm-3 col-xs-5 text-center">
                                 {{booking.checkOut}}
                             </div>
-                            <div class="col-sm-4 col-xs-1"></div>
+                            <div class="col-sm-4 col-xs-2"></div>
                         </div>
 
-                        <div id="hotelDetails{{$index}}" class="collapse row ss-black-bg">
+                        <div id="hotelDetails{{$index}}" class="collapse row">
 
                             <div class="col-sm-2"></div>
 

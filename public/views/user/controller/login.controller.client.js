@@ -7,14 +7,23 @@
         var vm = this;
 
         vm.login = login;
+        vm.setToRecoveryMode = setToRecoveryMode;
 
         function init() {
+            vm.passwordRecoverymode = false;
         }
         init();
 
         function login(user) {
+            if (!user.password) {
+                user.password = "";
+            }
+            if (!user.passwordRecoveryAnswer) {
+                user.passwordRecoveryAnswer = "";
+            }
+
             UserService
-                .findUserByCredentials(user.username, user.password)
+                .findUserByCredentials(user.username, user.password, user.passwordRecoveryAnswer)
                 .success(function (user) {
                     if(user) {
                         if (user.userType === "ADMIN") {
@@ -26,8 +35,11 @@
                         }
                     } else {
                         vm.error = "User not found";
+                        vm.user.password = null;
                     }
                 });
+
+
 
             // UserService
             //     .login(user)
@@ -40,5 +52,25 @@
             //         }
             //     );
         }
+
+        function setToRecoveryMode (user) {
+            vm.passwordRecoverymode = true;
+            getSecurityQuestion(user);
+        }
+
+        function getSecurityQuestion (user) {
+            UserService
+                .findSecurityQuestionByUsername(user.username)
+                .success(function (securityQuestion) {
+                    if(user) {
+                        vm.user.passwordRecoveryQuestion = securityQuestion;
+                        // vm.user.passwordRecoveryAnswer = null;
+                        // vm.user.password = null;
+                    } else {
+                        vm.error = "User not found";
+                    }
+                });
+        }
+
     }
 })();
