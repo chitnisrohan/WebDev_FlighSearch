@@ -111,7 +111,12 @@
                             <!--</a>-->
                             <!--</li>-->
                             <!--</ul>-->
-                            <div class="page1">
+                            <div ng-if="model.noNitifications" style="padding: 10px">
+                                <h4 class="wbdv-font-color-white">
+                                    There are no Notifications.
+                                </h4>
+                            </div>
+                            <div ng-if="!model.noNitifications" class="page1">
                                 <ul class="list-group" style="margin-top: 10px">
                                     <!--<li class="list-group-item" style="background-color: #0f0f0f; opacity: 0.9">-->
                                         <!--<div class="row">-->
@@ -143,12 +148,7 @@
                                         <!--</div>-->
                                     <!--</li>-->
                                     <li class="list-group-item" style="background-color: #0f0f0f; opacity: 0.9">
-                                        <div ng-if="model.noNitifications">
-                                            <h4 class="wbdv-font-color-white">
-                                                There are no Notifications.
-                                            </h4>
-                                        </div>
-                                        <div ng-if="!model.noNitifications" class="row hidden-xs hidden-sm">
+                                        <div class="row hidden-xs hidden-sm">
                                             <div class="col-md-4 rc-small-top-margin text-center">
                                                 <h3 class="wbdv-font-color-white">Journey</h3>
                                             </div>

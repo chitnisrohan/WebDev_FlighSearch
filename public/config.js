@@ -60,7 +60,10 @@
             .when("/user/:uid" , {
                 templateUrl: "views/user/templates/profile.view.client.html",
                 controller: "ProfileController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve : {
+                    checkLogin : checkLogin
+                }
             })
             .when("/user-hotelowner/:uid" , {
                 templateUrl: "views/user/templates/hotel-owner.profile.view.client.html",
@@ -103,5 +106,22 @@
                 controller: "UserNotificationController",
                 controllerAs: "model"
             });
+
+        function checkLogin($q, UserService, $location) {
+            var deferred = $q.defer();
+            UserService
+                .checkLogin()
+                .success(
+                    function (user) {
+                        if(user != '0') {
+                            deferred.resolve();
+                        } else {
+                            deferred.reject();
+                            $location.url("/login");
+                        }
+                    }
+                );
+            return deferred.promise;
+        }
     }
 })();

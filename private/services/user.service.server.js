@@ -7,6 +7,9 @@ module.exports = function (app, model) {
     app.delete("/api/user/:userId", deleteUser);
     app.post("/api/user", createUser);
     app.get("/api/allUsers", findAllUsers);
+    app.post("/api/checkLogin", checkLogin);
+    app.post("/api/logout", logout);
+    app.get("/api/findCurrentUser",findCurrentUser);
 
 
 
@@ -40,6 +43,11 @@ module.exports = function (app, model) {
         res.json(user);
     }
 
+    function logout(req, res) {
+        req.logout();
+        res.sendStatus(200);
+    }
+
     function serializeUser(user, done) {
         done(null, user);
     }
@@ -59,6 +67,16 @@ module.exports = function (app, model) {
     }
 
 
+
+
+
+    function findCurrentUser(req, res) {
+        res.json(req.user);
+    }
+
+    function checkLogin(req, res) {
+        res.send(req.isAuthenticated() ? req.user : '0');
+    }
 
     function findSecurityQuestionByUsername (req, res) {
         var username = req.query.username;

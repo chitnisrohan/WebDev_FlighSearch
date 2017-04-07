@@ -112,27 +112,32 @@
                     <div class="row">
                         <!--<div class="col-sm-1"></div>-->
                         <div style="opacity: 0.9">
-                            <div class="page1 col-xs-12 col-md-12">
+                            <div class="page1 col-md-12">
                                 <ul class="list-group" style="margin-top: 10px">
-                                    <li class="list-group-item hidden-xs" style="background-color: #0f0f0f; opacity: 0.9">
-                                        <div class="row">
-                                            <div class="text-center col-xs-4 col-sm-4 rc-small-top-margin wbdv-font-color-white">
+                                    <li class="list-group-item" style="background-color: #0f0f0f; opacity: 0.9">
+                                        <div ng-if="model.isHistory">
+                                            <h4 class="wbdv-font-color-white">
+                                                You have not responded to any user alerts.
+                                            </h4>
+                                        </div>
+                                        <div ng-if="!model.isHistory" class="row">
+                                            <div class="text-center col-sm-4 rc-small-top-margin wbdv-font-color-white">
                                                 <h4>Username</h4>
                                             </div>
-                                            <div class="text-center col-xs-6 col-sm-6 rc-small-top-margin wbdv-font-color-white">
+                                            <div class="text-center col-sm-6 rc-small-top-margin wbdv-font-color-white">
                                                 <h4>Message</h4>
                                             </div>
-                                            <div class="text-center col-xs-2 col-sm-2 rc-small-top-margin wbdv-font-color-white">
+                                            <div class="text-center col-sm-2 rc-small-top-margin wbdv-font-color-white">
                                                 <h4>Delete</h4>
                                             </div>
                                         </div>
                                     </li>
                                     <li ng-repeat="historymessage in model.history" class="list-group-item" style="background-color: #0f0f0f; opacity: 0.9">
                                         <div class="row">
-                                            <div class="col-md-4 rc-small-top-margin">
+                                            <div class="col-md-4 rc-small-top-margin text-center">
                                                 <h4 class="wbdv-font-color-white">{{historymessage.username}}</h4>
                                             </div>
-                                            <div class="col-md-6 rc-small-top-margin">
+                                            <div class="col-md-6 rc-small-top-margin text-center">
                                                 <h4 class="wbdv-font-color-white">
                                                     {{historymessage.message}}
                                                 </h4>

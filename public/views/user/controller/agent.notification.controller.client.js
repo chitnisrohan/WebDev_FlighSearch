@@ -25,7 +25,6 @@
                 .then(
                     function (user) {
                         vm.agentName = user.data.firstName + " " + user.data.lastName;
-                        console.log(vm.agentName);
                     },
                     function (err) {
                         vm.error = "User does not exist";
@@ -51,6 +50,7 @@
                             }
                         }
                         vm.alerts = alerts2;
+                        vm.isAlerts = vm.alerts.length === 0;
                         vm.alertsBackup = angular.copy(vm.alerts);
                     },
                     function (err) {

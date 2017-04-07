@@ -18,6 +18,7 @@
                 .then(
                     function (alerts) {
                         vm.alerts = alerts;
+                        vm.isAlerts = vm.alerts.data.length === 0;
                     },
                     function (err) {
                         vm.error = "Error loading alerts";

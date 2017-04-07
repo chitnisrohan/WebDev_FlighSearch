@@ -12,16 +12,28 @@
         vm.goToHistory = goToHistory;
         vm.goToNotifications = goToNotifications;
         vm.AreYouSure = AreYouSure;
+        vm.logout = logout;
 
         function init() {
             UserService
-                .findUserById(userId)
+                // .findUserById(userId)
+                .findCurrentUser()
                 .success(function (user) {
                     vm.user = user;
                     vm.userType = user.userType;
                 });
         }
         init();
+        
+        function logout() {
+            UserService
+                .logout()
+                .then(
+                    function () {
+                        $location.url("/");
+                    }
+                );
+        }
         
         function AreYouSure() {
             if (confirm("Are you sure?") == true) {

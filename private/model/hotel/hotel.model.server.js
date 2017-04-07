@@ -14,10 +14,23 @@ module.exports = function () {
         deleteHotel: deleteHotel,
         findHotels: findHotels,
         findHotelById: findHotelById,
-        updateHotel: updateHotel
-
+        updateHotel: updateHotel,
+        findAllHotels : findAllHotels
     };
     return api;
+
+    function findAllHotels() {
+        var deferred = Q.defer();
+        HotelModel
+            .find({}, function (err, hotels) {
+                    if (err) {
+                            deferred.abort(err);
+                        } else {
+                            deferred.resolve(hotels);
+                        }
+                });
+        return deferred.promise;
+    }
 
 
     function setModel(_model) {

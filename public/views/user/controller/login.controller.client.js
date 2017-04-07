@@ -22,35 +22,47 @@
                 user.passwordRecoveryAnswer = "";
             }
 
-            UserService
-                .findUserByCredentials(user.username, user.password, user.passwordRecoveryAnswer)
-                .success(function (user) {
-                    if(user) {
-                        if (user.userType === "ADMIN") {
-                            $location.url("/user/"+user._id+"/adminProfile");
-                        } else if (user.userType === "HOTELOWNER") {
-                            $location.url('/user-hotelowner/' + user._id);
-                        } else {
-                            $location.url("/user/"+user._id+"/flightSearch");
-                        }
-                    } else {
-                        vm.error = "User not found";
-                        vm.user.password = null;
-                    }
-                });
-
-
-
             // UserService
-            //     .login(user)
-            //     .then(
-            //         function (user) {
-            //             console.log(user);
-            //         },
-            //         function (err) {
-            //             console.log(err);
+            //     .findUserByCredentials(user.username, user.password, user.passwordRecoveryAnswer)
+            //     .success(function (user) {
+            //         if(user) {
+            //             if (user.userType === "ADMIN") {
+            //                 $location.url("/user/"+user._id+"/adminProfile");
+            //             } else if (user.userType === "HOTELOWNER") {
+            //                 $location.url('/user-hotelowner/' + user._id);
+            //             } else {
+            //                 $location.url("/user/"+user._id+"/flightSearch");
+            //             }
+            //         } else {
+            //             vm.error = "User not found";
+            //             vm.user.password = null;
             //         }
-            //     );
+            //     });
+
+
+
+            UserService
+                .login(user)
+                .then(
+                    function (user) {
+                        console.log(user);
+                        if(user) {
+                            if (user.data.userType === "ADMIN") {
+                                $location.url("/user/"+user.data._id+"/adminProfile");
+                            } else if (user.data.userType === "HOTELOWNER") {
+                                $location.url('/user-hotelowner/' + user.data._id);
+                            } else {
+                                $location.url("/user/"+user.data._id+"/flightSearch");
+                            }
+                        } else {
+                            vm.error = "User not found";
+                            vm.user.password = null;
+                        }
+                    },
+                    function (err) {
+                        console.log(err);
+                    }
+                );
         }
 
         function setToRecoveryMode (user) {

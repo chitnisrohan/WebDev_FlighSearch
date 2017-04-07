@@ -18,6 +18,7 @@
                 .then(
                     function (history) {
                         vm.history = history.data;
+                        vm.isHistory = vm.history.length === 0;
                     },
                     function () {
                         vm.error = "Could not load history. Please try again";

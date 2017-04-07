@@ -112,7 +112,13 @@
                             <!--</li>-->
                             <!--</ul>-->
                             <div class="col-md-1"></div>
-                            <div class="page1 col-md-10">
+                            <div ng-if="model.isAlerts" class="rc-user-history-list-background"
+                            style="padding: 10px">
+                                <h4 class="wbdv-font-color-white">
+                                    You have not created any alerts &nbsp; !
+                                </h4>
+                            </div>
+                            <div ng-if="!model.isAlerts" class="page1 col-md-10">
                                 <ul class="list-group rc-user-history-top-margin">
                                     <li class="list-group-item hidden-xs rc-user-history-list-background">
                                         <div class="row">
