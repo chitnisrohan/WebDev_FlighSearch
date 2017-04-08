@@ -7,7 +7,7 @@
                 <!--<div class="col-xs-12 col-sm-10">-->
                 <div class="col-md-12">
 
-                    <div class="dropdown pull-right">
+                    <div class="dropdown pull-right" ng-if="model.isUserLoggedIn">
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         <span class="glyphicon glyphicon-align-justify ss-white-font"
                               style="margin-top: 15px; margin-right: 10px"></span>
@@ -22,6 +22,18 @@
                             <li><a href="#/" class="">Logout</a></li>
                         </ul>
                     </div>
+                    <div class="dropdown pull-right" ng-if="!model.isUserLoggedIn">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span class="glyphicon glyphicon-align-justify ss-white-font"
+                              style="margin-top: 15px; margin-right: 10px"></span>
+                            <!--<span class="caret"></span>-->
+                        </a>
+                        <ul class="dropdown-menu rc-dropdown-small-font">
+                            <li><a ng-click="model.goToFlightSearch()" class="">Search Flights</a></li>
+                            <li><a href="#/login" class="">Login</a></li>
+                        </ul>
+                    </div>
+
 
                     <!--<div class="dropdown pull-right">-->
                         <!--<button class="btn dropdown-toggle ss-btn-highlight-off ss-btn-top-margin"-->
@@ -54,15 +66,15 @@
                     <strong class="navbar-brand pull-left wbdv-font-family wbdv-banner-font hidden-xs">
                         Hotel Search
                     </strong>
-                    <div ng-if="!model.isUserLoggedIn">
-                        <i class="fa fa-user-circle-o wbdv-banner-font visible-xs pull-right"
-                           aria-hidden="true"
-                            id = "rc-margin-for-logo-flight-search"></i>
-                        <strong class="wbdv-banner-font hidden-xs pull-right"
-                                id = "rc-flight-search-login-margin-right">
-                            Login
-                        </strong>
-                    </div>
+                    <!--<div ng-if="!model.isUserLoggedIn">-->
+                        <!--<i class="fa fa-user-circle-o wbdv-banner-font visible-xs pull-right"-->
+                           <!--aria-hidden="true"-->
+                            <!--id = "rc-margin-for-logo-flight-search"></i>-->
+                        <!--<strong class="wbdv-banner-font hidden-xs pull-right"-->
+                                <!--id = "rc-flight-search-login-margin-right">-->
+                            <!--Login-->
+                        <!--</strong>-->
+                    <!--</div>-->
                 </div>
             </div>
         </div>

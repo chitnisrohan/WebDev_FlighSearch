@@ -30,13 +30,12 @@
                                     $location.url('/user-hotelowner/' + user._id);
                                 }
                                 else
-                                    $location.url("/user/" + user._id);
+                                    $location.url("/user/profile");
                             });
                     });
             } else {
                 vm.error = "passwords do not match";
             }
         }
-
     }
 })();

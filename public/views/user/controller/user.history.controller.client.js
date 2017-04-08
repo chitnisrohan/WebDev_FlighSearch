@@ -3,9 +3,9 @@
         .module("FlightSearchApp")
         .controller("UserHistoryController", UserHistoryController);
 
-    function UserHistoryController($location, $routeParams, MessageService) {
+    function UserHistoryController($location, $routeParams, MessageService, UserService) {
         var vm = this;
-        var userId = $routeParams['uid'];
+        var userId; //= $routeParams['uid'];
 
         vm.deleteAlert = deleteAlert;
         vm.goToFlightSearch = goToFlightSearch;
@@ -13,30 +13,35 @@
         vm.goToUserNotification = goToUserNotification;
 
         function init() {
-            MessageService
-                .findAlertsForUser(userId)
-                .then(
-                    function (alerts) {
-                        vm.alerts = alerts;
-                        vm.isAlerts = vm.alerts.data.length === 0;
-                    },
-                    function (err) {
-                        vm.error = "Error loading alerts";
-                    }
-                )
+            UserService
+                .findCurrentUser()
+                .success(function (user) {
+                    userId = user._id;
+                    MessageService
+                        .findAlertsForUser(userId)
+                        .then(
+                            function (alerts) {
+                                vm.alerts = alerts;
+                                vm.isAlerts = vm.alerts.data.length === 0;
+                            },
+                            function (err) {
+                                vm.error = "Error loading alerts";
+                            }
+                        );
+                });
         }
         init();
 
         function goToUserNotification() {
-            $location.url("/user/" + userId + "/userNotification");
+            $location.url("/user/userNotification");
         }
 
         function goToFlightSearch() {
-            $location.url("/user/" + userId + "/flightSearch");
+            $location.url("/user/flightSearch");
         }
 
         function goToProfile() {
-            $location.url("/user/" + userId);
+            $location.url("/user/profile");
         }
 
         function deleteAlert(alert) {

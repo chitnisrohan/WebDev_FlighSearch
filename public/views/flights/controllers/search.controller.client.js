@@ -5,7 +5,7 @@
     
     function SearchController($routeParams, $location, FlightService, UserService) {
         var vm = this;
-        var userId = $routeParams['uid'];
+        var userId; // = $routeParams['uid'];
 
         vm.searchFlight = searchFlight;
         vm.setUpAlert = setUpAlert;
@@ -19,17 +19,22 @@
             selectedOptions : {id : '1',name :'ECONOMY'}} ;
 
             UserService
-                .findUserById(userId)
+                .findCurrentUser()
                 .success(function (user) {
-                    // vm.user = user;
+                    userId = user._id;
+                    if(user) {
+                        vm.isLoggedIn = true;
+                    } else {
+                        vm.isLoggedIn = false;
+                    }
                     vm.userType = user.userType;
                 });
 
-            if (userId != '0' && userId) {
-                vm.isLoggedIn = true;
-            } else {
-                vm.isLoggedIn = false;
-            }
+            // if (userId != '0' && userId) {
+            //     vm.isLoggedIn = true;
+            // } else {
+            //     vm.isLoggedIn = false;
+            // }
 
 
             // Get the <datalist> and <input> elements.
@@ -93,9 +98,9 @@
 
         function goToHistory() {
             if (vm.userType === "USER") {
-                $location.url("/user/"+ userId +"/userHistory");
+                $location.url("/user/userHistory");
             } else if (vm.userType === "AGENT") {
-                $location.url("/user/"+ userId +"/agentHistory");
+                $location.url("/user/agentHistory");
             }
         }
 
@@ -132,20 +137,20 @@
                     journey.destination = vm.allCities[cityInfo].code;
                 }
             }
-            var loggenInUser;
-            if (userId) {
-                loggenInUser = userId;
-            } else {
-                loggenInUser = 0;
-            }
+            // var loggenInUser;
+            // if (userId) {
+            //     loggenInUser = userId;
+            // } else {
+            //     loggenInUser = 0;
+            // }
             if (typeof journey.returnDate != "undefined") {
-                searchUrl = "user/"+loggenInUser+"/flight/search/SRC/"+journey.source+"/DEST/"+journey.destination
+                searchUrl = "/flight/search/SRC/"+journey.source+"/DEST/"+journey.destination
                     +"/DEPART/"+journey.departDate.toISOString().substring(0, 10)
                     +"/RETURN/"+journey.returnDate.toISOString().substring(0, 10)
                     +"/ADULTS/"+journey.noOfAdults+"/CHILD/"+
                     journey.noOfChildren+"/CLASS/"+vm.classOptions.selectedOptions.name;
             } else {
-                searchUrl = "user/"+loggenInUser+"/flight/search/SRC/"+journey.source+"/DEST/"+journey.destination
+                searchUrl = "/flight/search/SRC/"+journey.source+"/DEST/"+journey.destination
                     +"/DEPART/"+journey.departDate.toISOString().substring(0, 10)
                     +"/RETURN/"+0
                     +"/ADULTS/"+journey.noOfAdults+"/CHILD/"+

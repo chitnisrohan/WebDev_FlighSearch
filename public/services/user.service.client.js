@@ -38,6 +38,7 @@
         }
 
         function createUser(newUser) {
+            console.log(newUser);
             return $http.post("/api/user", newUser);
         }
 

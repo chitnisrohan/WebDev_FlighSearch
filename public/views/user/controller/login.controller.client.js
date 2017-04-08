@@ -45,14 +45,13 @@
                 .login(user)
                 .then(
                     function (user) {
-                        console.log(user);
                         if(user) {
                             if (user.data.userType === "ADMIN") {
-                                $location.url("/user/"+user.data._id+"/adminProfile");
+                                $location.url("/user/allUsers");
                             } else if (user.data.userType === "HOTELOWNER") {
                                 $location.url('/user-hotelowner/' + user.data._id);
                             } else {
-                                $location.url("/user/"+user.data._id+"/flightSearch");
+                                $location.url("/user/flightSearch");
                             }
                         } else {
                             vm.error = "User not found";

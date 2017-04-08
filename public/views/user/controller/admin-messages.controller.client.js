@@ -3,25 +3,29 @@
         .module("FlightSearchApp")
         .controller("AdminMessagesController", AdminMessagesController);
 
-    function AdminMessagesController($routeParams, $location, MessageService) {
+    function AdminMessagesController($routeParams, $location, MessageService, UserService) {
         var vm = this;
-        var adminUserId = "58dee67efb263b7c7dd7b2c8";
 
         vm.goToHotels = goToHotels;
         vm.goToProfile = goToProfile;
         vm.deleteMessage = deleteMessage;
+        vm.logout = logout;
 
         function init() {
-            MessageService
-                .findAllMessages()
-                .then(
-                    function (messages) {
-                        vm.messages = messages.data;
-                    },
-                    function (err) {
-                        vm.error = "Could not load users. Please try again";
-                    }
-                );
+            UserService
+                .findCurrentUser()
+                .success(function (user) {
+                    MessageService
+                        .findAllMessages()
+                        .then(
+                            function (messages) {
+                                vm.messages = messages.data;
+                            },
+                            function (err) {
+                                vm.error = "Could not load users. Please try again";
+                            }
+                        );
+                });
         }
         init();
 
@@ -39,11 +43,21 @@
         }
 
         function goToHotels() {
-            $location.url("/user/58dee67efb263b7c7dd7b2c8/allHotels");
+            $location.url("/user/allHotels");
         }
 
         function goToProfile() {
-            $location.url("/user/58dee67efb263b7c7dd7b2c8/adminProfile");
+            $location.url("/user/allUsers");
+        }
+
+        function logout() {
+            UserService
+                .logout()
+                .then(
+                    function () {
+                        $location.url("/");
+                    }
+                );
         }
 
     }

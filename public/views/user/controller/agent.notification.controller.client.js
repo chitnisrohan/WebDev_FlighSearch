@@ -5,7 +5,7 @@
 
     function AgentNotificationController($location, $routeParams, MessageService, UserService) {
         var vm = this;
-        var agentId = $routeParams['uid'];
+        var agentId; // = $routeParams['uid'];
 
         vm.filterAlerts = filterAlerts;
         vm.clearFilterAlerts = clearFilterAlerts;
@@ -14,6 +14,7 @@
         vm.goToFlightSearch = goToFlightSearch;
         vm.goToProfile = goToProfile;
         vm.goToAgentHistory = goToAgentHistory;
+        vm.logout = logout;
 
 
         function init() {
@@ -21,10 +22,37 @@
             // can be removed on adding passportJS
             // get agent name from id
             UserService
-                .findUserById(agentId)
+                .findCurrentUser()
                 .then(
                     function (user) {
+                        agentId = user._id;
                         vm.agentName = user.data.firstName + " " + user.data.lastName;
+
+                        MessageService
+                            .findAlerts()
+                            .then(
+                                function (alerts) {
+                                    var alerts2 = [];
+                                    for (var a in alerts.data) {
+                                        var alert = alerts.data[a];
+                                        var agentList = alert.NotVisibleForAgents;
+                                        var agentList2 = [];
+                                        for (var agentIdWhoResponded in alert.AgentsResponded) {
+                                            agentList2.push(alert.AgentsResponded[agentIdWhoResponded]._id);
+                                        }
+                                        if (agentList.includes(agentId) || agentList2.includes(agentId)) {
+                                        } else {
+                                            alerts2.push(alert);
+                                        }
+                                    }
+                                    vm.alerts = alerts2;
+                                    vm.isAlerts = vm.alerts.length === 0;
+                                    vm.alertsBackup = angular.copy(vm.alerts);
+                                },
+                                function (err) {
+                                    vm.error = "Could not get alerts. Please try again";
+                                }
+                            );
                     },
                     function (err) {
                         vm.error = "User does not exist";
@@ -32,31 +60,6 @@
                 );
 
 
-            MessageService
-                .findAlerts()
-                .then(
-                    function (alerts) {
-                        var alerts2 = [];
-                        for (var a in alerts.data) {
-                            var alert = alerts.data[a];
-                            var agentList = alert.NotVisibleForAgents;
-                            var agentList2 = [];
-                            for (var agentIdWhoResponded in alert.AgentsResponded) {
-                                agentList2.push(alert.AgentsResponded[agentIdWhoResponded]._id);
-                            }
-                            if (agentList.includes(agentId) || agentList2.includes(agentId)) {
-                            } else {
-                                alerts2.push(alert);
-                            }
-                        }
-                        vm.alerts = alerts2;
-                        vm.isAlerts = vm.alerts.length === 0;
-                        vm.alertsBackup = angular.copy(vm.alerts);
-                    },
-                    function (err) {
-                        vm.error = "Could not get alerts. Please try again";
-                    }
-                );
         }
         init();
 
@@ -91,15 +94,15 @@
         }
 
         function goToAgentHistory() {
-            $location.url("user/"+agentId+"/agentHistory");
+            $location.url("user/agentHistory");
         }
 
         function goToProfile() {
-            $location.url("user/"+agentId);
+            $location.url("user/profile");
         }
 
         function goToFlightSearch() {
-            $location.url("user/"+agentId+"/flightSearch");
+            $location.url("user/flightSearch");
         }
 
         function clearFilterAlerts() {
@@ -148,6 +151,16 @@
 
             }
             vm.alerts = showAlerts;
+        }
+
+        function logout() {
+            UserService
+                .logout()
+                .then(
+                    function () {
+                        $location.url("/");
+                    }
+                );
         }
 
 

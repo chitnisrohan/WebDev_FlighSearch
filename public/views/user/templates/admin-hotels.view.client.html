@@ -1,5 +1,5 @@
 <div class="rc-no-padding rc-background-profile">
-    <nav class="nav ss-black-navbar ss-navbar-padding" style="opacity: 0.7">
+    <nav class="nav ss-black-navbar ss-navbar-padding rc-navbar-style navbar-fixed-top">
         <div class="container-fluid">
             <div class="row">
                 <!--<div class="col-sm-1"></div>-->
@@ -7,6 +7,20 @@
                 <div class="col-md-3">
                 </div>
                 <div class="col-md-9 rc-drop-menu">
+                    <div class="dropdown pull-right">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span class="glyphicon glyphicon-align-justify ss-white-font"
+                              style="margin-top: 15px; margin-right: 10px"></span>
+                            <!--<span class="caret"></span>-->
+                        </a>
+                        <ul class="dropdown-menu rc-dropdown-small-font">
+                            <li><a ng-click="model.goToMessages()" class="">Messages</a></li>
+                            <li><a ng-click="model.goToProfile()">Users</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a ng-click="model.logout()" class="">Logout</a></li>
+                        </ul>
+                    </div>
+
                     <!--<div class="row">-->
                     <!--<div class="col-sm-2"></div>-->
                     <!--<div class="col-sm-8">-->
@@ -62,10 +76,10 @@
         </div>
     </nav>
 
-    <div class="container-fluid">
+    <div class="container-fluid rc-top-margin-page">
         <div class="row ">
             <!--<div class="col-sm-1"></div>-->
-            <div class="col-md-3 ss-whitefont hidden-sm hidden-xs ss-black-bg-high" style="opacity: 0.7">
+            <div class="col-md-3 ss-whitefont hidden-sm hidden-xs ss-black-bg-high">
                 <ul class="list-group list-unstyled ss-black-bg">
                     <li class="list-group-item  ss-black-bg ss-no-border">
                         <a ng-click="model.goToProfile()"

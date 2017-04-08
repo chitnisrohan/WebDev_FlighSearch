@@ -17,35 +17,47 @@
                 controller: "HotelSearchController",
                 controllerAs: "model"
             })
-            .when("/user/58dee67efb263b7c7dd7b2c8/adminProfile", {
+            .when("/user/allUsers", {
                 templateUrl: "views/user/templates/admin-users.view.client.html",
                 controller: "AdminProfileController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve : {
+                    checkLogin : checkLogin
+                }
             })
-            .when("/user/58dee67efb263b7c7dd7b2c8/allHotels",{
+            .when("/user/allHotels",{
                 templateUrl: "views/user/templates/admin-hotels.view.client.html",
                 controller: "AdminHotelsController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve : {
+                    checkLogin : checkLogin
+                }
             })
-            .when("/user/58dee67efb263b7c7dd7b2c8/allMessages",{
+            .when("/user/allMessages",{
                 templateUrl: "views/user/templates/admin-messages.view.client.html",
                 controller: "AdminMessagesController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve : {
+                    checkLogin : checkLogin
+                }
             })
             .when("/hotels/SearchResults/location/:loc/checkin/:cin/checkout/:cout" , {
                 templateUrl: "views/hotels/templates/hotel-search.results.view.client.html",
                 controller: "HotelSearchResultsController",
                 controllerAs: "model"
             })
-            .when("/user/:uid/flightSearch", {
+            .when("/user/flightSearch", {
                 templateUrl: "views/flights/templates/search.view.client.html",
                 controller: "SearchController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve : {
+                    checkLogin : checkLogin
+                }
             })
-            .when("/user/:uid/flight/search/SRC/:src/DEST/:dest/DEPART/:dept/RETURN/:ret/ADULTS/:adults/CHILD/:child/CLASS/:class", {
+            .when("/flight/search/SRC/:src/DEST/:dest/DEPART/:dept/RETURN/:ret/ADULTS/:adults/CHILD/:child/CLASS/:class", {
                 templateUrl: "views/flights/templates/search.results.view.client.html",
                 controller: "SearchResultController",
-                controllerAs: "model"
+                controllerAs: "model",
             })
             .when("/login", {
                 templateUrl: "views/user/templates/login.view.client.html",
@@ -57,7 +69,7 @@
                 controller: "RegisterController",
                 controllerAs: "model"
             })
-            .when("/user/:uid" , {
+            .when("/user/profile" , {
                 templateUrl: "views/user/templates/profile.view.client.html",
                 controller: "ProfileController",
                 controllerAs: "model",
@@ -70,7 +82,6 @@
                 controller: "HotelOwnerProfileController",
                 controllerAs: "model"
             })
-
             .when("/user-hotelowner/:uid/hotel" , {
                 templateUrl: "views/user/templates/hotel-owner.hotelslist.view.client.html",
                 controller: "HotelOwnerListController",
@@ -86,25 +97,37 @@
                 controller: "EditHotelController",
                 controllerAs: "model"
             })
-            .when("/user/:uid/agentNotification" , {
+            .when("/user/agentNotification" , {
                 templateUrl: "views/user/templates/agent.notification.view.client.html",
                 controller: "AgentNotificationController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve : {
+                    checkLogin : checkLogin
+                }
             })
-            .when("/user/:uid/userHistory" , {
+            .when("/user/userHistory" , {
                 templateUrl: "views/user/templates/user.history.view.client.html",
                 controller: "UserHistoryController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve : {
+                    checkLogin : checkLogin
+                }
             })
-            .when("/user/:uid/agentHistory" , {
+            .when("/user/agentHistory" , {
                 templateUrl: "views/user/templates/agent.history.view.client.html",
                 controller: "AgentHistoryController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve : {
+                    checkLogin : checkLogin
+                }
             })
-            .when("/user/:uid/userNotification" , {
+            .when("/user/userNotification" , {
                 templateUrl: "views/user/templates/user.notification.view.client.html",
                 controller: "UserNotificationController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve : {
+                    checkLogin : checkLogin
+                }
             });
 
         function checkLogin($q, UserService, $location) {

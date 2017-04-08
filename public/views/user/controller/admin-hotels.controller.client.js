@@ -5,24 +5,28 @@
 
     function AdminHotelsController($routeParams, $location, UserService, HotelService) {
         var vm = this;
-        var adminUserId = "58dee67efb263b7c7dd7b2c8";
 
         vm.goToMessages = goToMessages;
         vm.goToProfile = goToProfile;
         vm.deleteHotel = deleteHotel;
+        vm.logout = logout;
 
         function init() {
-            HotelService
-                .findAllHotels()
-                .then(
-                    function (hotels) {
-                        vm.hotels = hotels.data;
-                        console.log(hotels.data);
-                    },
-                    function (err) {
-                        vm.error = "Could not load hotels. Please try again";
-                    }
-                );
+            UserService
+                .findCurrentUser()
+                .success(function (user) {
+                    HotelService
+                        .findAllHotels()
+                        .then(
+                            function (hotels) {
+                                vm.hotels = hotels.data;
+                                console.log(hotels.data);
+                            },
+                            function (err) {
+                                vm.error = "Could not load hotels. Please try again";
+                            }
+                        );
+                });
         }
         init();
         
@@ -40,12 +44,21 @@
         }
 
         function goToMessages() {
-            $location.url("/user/58dee67efb263b7c7dd7b2c8/allMessages");
+            $location.url("/user/allMessages");
         }
 
         function goToProfile() {
-            $location.url("/user/58dee67efb263b7c7dd7b2c8/adminProfile");
+            $location.url("/user/allUsers");
         }
 
+        function logout() {
+            UserService
+                .logout()
+                .then(
+                    function () {
+                        $location.url("/");
+                    }
+                );
+        }
     }
 })();

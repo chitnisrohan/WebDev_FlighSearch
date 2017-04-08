@@ -162,7 +162,9 @@ module.exports = function (app, model) {
             .createUser(newUser)
             .then(
                 function (newUser) {
-                    res.send(newUser);
+                    req.login(newUser, function (err) {
+                        res.json(newUser);
+                    });
                 },
                 function (err) {
                     res.sendStatus(400).send(err);
@@ -171,14 +173,17 @@ module.exports = function (app, model) {
     }
 
     function findUser(req, res) {
-        if(req.query.username && req.query.password != "") {
-            findUserByCredential(req, res);
-        } else {
-            if (req.query.username && req.query.passwordRecoveryAnswer){
-                findUserByRecoveryCredentials(req,res);
-            }
-            else {
-                findUserByUsername(req, res);
+        if (typeof req.query.password == "undefined" && typeof req.query.passwordRecoveryAnswer == "undefined") {
+            findUserByUsername(req, res);
+        }
+        else {
+            if(req.query.username && req.query.password != "") {
+                findUserByCredential(req, res);
+            } else {
+
+                if (req.query.username && req.query.passwordRecoveryAnswer){
+                    findUserByRecoveryCredentials(req,res);
+                }
             }
         }
     }

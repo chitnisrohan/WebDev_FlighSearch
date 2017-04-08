@@ -10,18 +10,23 @@
         vm.goToHotels = goToHotels;
         vm.goToMessages = goToMessages;
         vm.deleteUser = deleteUser;
+        vm.logout = logout;
 
         function init() {
             UserService
-                .findAllUsers()
-                .then(
-                    function (users) {
-                        vm.users = users.data;
-                    },
-                    function (err) {
-                        vm.error = "Could not load users. Please try again";
-                    }
-                );
+                .findCurrentUser()
+                .success(function (user) {
+                    UserService
+                        .findAllUsers()
+                        .then(
+                            function (users) {
+                                vm.users = users.data;
+                            },
+                            function (err) {
+                                vm.error = "Could not load users. Please try again";
+                            }
+                        );
+                });
         }
         init();
         
@@ -39,11 +44,21 @@
         }
 
         function goToHotels() {
-            $location.url("/user/58dee67efb263b7c7dd7b2c8/allHotels");
+            $location.url("/user/allHotels");
         }
 
         function goToMessages() {
-            $location.url("/user/58dee67efb263b7c7dd7b2c8/allMessages");
+            $location.url("/user/allMessages");
+        }
+
+        function logout() {
+            UserService
+                .logout()
+                .then(
+                    function () {
+                        $location.url("/");
+                    }
+                );
         }
 
     }

@@ -5,7 +5,8 @@
 
     function ProfileController($routeParams, $location, UserService) {
         var vm = this;
-        var userId = $routeParams['uid'];
+        // var userId = $routeParams['uid'];
+        var userId;
 
         vm.update = update;
         vm.goToFlightSearch = goToFlightSearch;
@@ -19,6 +20,7 @@
                 // .findUserById(userId)
                 .findCurrentUser()
                 .success(function (user) {
+                    userId = user._id;
                     vm.user = user;
                     vm.userType = user.userType;
                 });
@@ -53,21 +55,21 @@
 
         function goToNotifications() {
             if (vm.userType === "USER") {
-                $location.url("/user/"+ userId +"/userNotification");
+                $location.url("/user/userNotification");
             } else if (vm.userType === "AGENT") {
-                $location.url("/user/"+ userId +"/agentNotification");
+                $location.url("/user/agentNotification");
             }
         }
 
         function goToFlightSearch() {
-            $location.url("/user/" + userId + "/flightSearch");
+            $location.url("/user/flightSearch");
         }
 
         function goToHistory() {
             if (vm.userType === "USER") {
-                $location.url("/user/"+ userId +"/userHistory");
+                $location.url("/user/userHistory");
             } else if (vm.userType === "AGENT") {
-                $location.url("/user/"+ userId +"/agentHistory");
+                $location.url("/user/agentHistory");
             }
         }
 
@@ -82,7 +84,6 @@
                     }
                 });
         }
-
 
     }
 })();
