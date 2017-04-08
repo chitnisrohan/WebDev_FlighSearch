@@ -50,7 +50,10 @@
                                 <input ng-model="model.hotelBookingReq.location"
                                        class="form-control"
                                        placeholder="IATA Code of desired location"
-                                       id="location">
+                                       id="location"
+                                       list="locationList"
+                                       required>
+                                <datalist id="locationList"></datalist>
                             </div>
 
                             <div class="col-sm-4 form-group">
@@ -58,14 +61,16 @@
                                 <input ng-model="model.hotelBookingReq.checkinDate"
                                        type="date"
                                        class="form-control"
-                                       id="checkin">
+                                       id="checkin"
+                                       required>
                             </div>
                             <div class="col-sm-4 form-group">
                                 <label class="wbdv-font-color-white" for="checkout">Check out</label>
                                 <input ng-model="model.hotelBookingReq.checkoutDate"
                                        type="date"
                                        class="form-control"
-                                       id="checkout">
+                                       id="checkout"
+                                       required>
                             </div>
 
                             <!--<div class="col-sm-3 form-group">-->
@@ -78,10 +83,8 @@
                             <!--</div>-->
                         </div>
                         <div id="searchButton" class="form-group">
-                            <a class="btn btn-block wbdv-button"
-                               ng-click="model.gotoHotelResultsPage(model.hotelBookingReq)">
-                                Search
-                            </a>
+                            <input type="submit" value="Search" class="btn btn-block wbdv-button"
+                                   ng-click="model.gotoHotelResultsPage(model.hotelBookingReq)">
                         </div>
                     </form>
                 </div>

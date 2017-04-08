@@ -47,7 +47,7 @@
         <div class="col-xs-12 col-sm-10 wbdv-black-shade">
             <div class="page1">
                 <h1 class="wbdv-font-color-white">Search Flights</h1>
-                <form>
+                <form name="flightSearchForm">
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
@@ -57,7 +57,11 @@
                                        class="form-control"
                                        id="from"
                                        placeholder="From"
-                                       list="cityFrom">
+                                       list="cityFrom"
+                                required>
+                                <span ng-if="flightSearchForm.$error.required[0].$error.required && flightSearchForm.$error.$submitted">
+                                    Source required
+                                </span>
                                 <datalist id="cityFrom"></datalist>
                             </div>
                         </div>
@@ -69,7 +73,8 @@
                                        class="form-control"
                                        id="to"
                                        placeholder="To"
-                                       list="cityTo">
+                                       list="cityTo"
+                                required>
                                 <datalist id="cityTo"></datalist>
                             </div>
                         </div>
@@ -81,7 +86,8 @@
                                    type="date"
                                    class="form-control"
                                    id="depart"
-                                   placeholder="Departure Date">
+                                   placeholder="Departure Date"
+                            required>
                         </div>
                         <div class="col-sm-3 form-group">
                             <label class="wbdv-font-color-white" for="return">Return</label>
@@ -95,39 +101,48 @@
                             <label class="wbdv-font-color-white" for="adults">Adults</label>
                             <input ng-model="model.flight.noOfAdults"
                                    type="number"
-                                   min="0"
                                    value="1"
+                                   min="1"
                                    class="form-control"
                                    id="adults"
-                                   placeholder="Number of Adults">
+                                   placeholder="Number of Adults"
+                            required/>
                         </div>
                         <div class="col-sm-2 form-group">
                             <label class="wbdv-font-color-white" for="child">Children</label>
                             <input ng-model="model.flight.noOfChildren"
                                    type="number"
-                                   min="0"
                                    value="0"
+                                   min="0"
                                    class="form-control"
                                    id="child"
-                                   placeholder="Number of Children">
+                                   placeholder="Number of Children"
+                            required/>
                         </div>
                         <div class="col-sm-2 form-group">
                             <label class="wbdv-font-color-white" for="flightClass">Class</label>
                             <div class="dropdown" id="flightClass">
-                                <select class="btn btn-block selectpicker"
-                                ng-model="model.flight.selectedClass">
-                                    <option value="ECONOMY" selected>ECONOMY</option>
-                                    <option value="FIRST">FIRST</option>
-                                    <option value="BUSINESS">BUSINESS</option>
-                                </select>
+                                <select class="btn btn-block" name="mySelect" id="mySelect"
+                                        ng-options="option.name for option in model.classOptions.availableOptions track by option.id"
+                                        ng-model="model.classOptions.selectedOptions"></select>
+                                <!--<select class="btn btn-block selectpicker"-->
+                                <!--ng-model="model.flight.selectedClass">-->
+                                    <!--<option value="ECONOMY" selected="selected">ECONOMY</option>-->
+                                    <!--<option value="FIRST">FIRST</option>-->
+                                    <!--<option value="BUSINESS">BUSINESS</option>-->
+                                <!--</select>-->
                             </div>
                         </div>
                     </div>
                     <div id="searchButton" class="form-group">
-                        <a class="btn btn-block wbdv-button"
-                           ng-click="model.searchFlight(model.flight)">
-                            Search
-                        </a>
+                        <input class="btn btn-block wbdv-button"
+                               type="submit"
+                               ng-click="model.searchFlight(model.flight)"
+                               value="Search">
+                        <!--<a class="btn btn-block wbdv-button"-->
+                           <!--ng-click="model.searchFlight(model.flight)">-->
+                            <!--Search-->
+                        <!--</a>-->
                     </div>
                     <div ng-if="model.isLoggedIn && model.userType==='USER'" id="setUpAlertButton" class="form-group">
                         <a class="btn btn-block wbdv-button"

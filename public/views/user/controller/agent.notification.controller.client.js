@@ -103,7 +103,7 @@
         }
 
         function clearFilterAlerts() {
-            vm.alerts = vm.alertsBackup;
+            vm.alerts = angular.copy(vm.alertsBackup);
         }
 
         function filterAlerts(alertFilter) {
@@ -111,22 +111,38 @@
             var showAlerts = [];
             // alertFilter.dates.includes(a.departDate) ||
             // alertFilter.dates.includes(a.returnDate)
-            for (singleAlert in vm.alerts.data) {
-                var a = vm.alerts.data[singleAlert];
+            for (singleAlert in vm.alerts) {
+                var a = vm.alerts[singleAlert];
                 if (alertFilter.dates) {
-                    if (a.source === alertFilter.source ||
-                        a.destination === alertFilter.destination ||
-                        a.userid === alertFilter.username ||
-                        a.departDate.indexOf(alertFilter.dates) !== -1 ||
-                        a.returnDate.indexOf(alertFilter.dates) !== -1
-                    ) {
-                        showAlerts.push(a);
+                    if (a.returnDate) {
+                        console.log(a.username);
+                        console.log(alertFilter.username);
+                        if (a.source === alertFilter.source ||
+                            a.destination === alertFilter.destination ||
+                            a.username.indexOf(alertFilter.username) !== -1 ||
+                            a.departDate.indexOf(alertFilter.dates) !== -1 ||
+                            a.returnDate.indexOf(alertFilter.dates) !== -1
+                        ) {
+                            showAlerts.push(a);
+                        } else {
+                        }
                     } else {
+                        if (a.source === alertFilter.source ||
+                            a.destination === alertFilter.destination ||
+                            a.username.indexOf(alertFilter.username) !== -1 ||
+                            a.departDate.indexOf(alertFilter.dates) !== -1
+                        ) {
+                            showAlerts.push(a);
+                        } else {
+                        }
                     }
+
                 } else {
+                    console.log(a.username);
+                    console.log(alertFilter.username);
                     if (a.source === alertFilter.source ||
                         a.destination === alertFilter.destination ||
-                        a.userid === alertFilter.username
+                        a.username.indexOf(alertFilter.username) !== -1
                     ) {
                         showAlerts.push(a);
                     } else {
@@ -135,7 +151,7 @@
                 }
 
             }
-            vm.alerts.data = showAlerts;
+            vm.alerts = showAlerts;
         }
 
 

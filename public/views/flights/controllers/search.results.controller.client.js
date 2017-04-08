@@ -105,17 +105,21 @@
 
 
         function findCityName(cityCode) {
-            var city = vm.allCities.filter(function (item) {
-                return item.code === cityCode;
-            });
-            if (city.length > 0) {
-                return city[0].name;
-            } else {
-                findAllAirportCodeArray();
-                var Airport = vm.allAirports.filter(function (item) {
+            if (vm.allCities) {
+                var city = vm.allCities.filter(function (item) {
                     return item.code === cityCode;
                 });
-                return Airport[0].name;
+                if (city.length > 0) {
+                    return city[0].name;
+                } else {
+                    findAllAirportCodeArray();
+                    if (vm.allAirports) {
+                        var Airport = vm.allAirports.filter(function (item) {
+                            return item.code === cityCode;
+                        });
+                        return Airport[0].name;
+                    }
+                }
             }
         }
 

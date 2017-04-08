@@ -13,6 +13,11 @@
         vm.goToRegister = goToRegister;
 
         function init() {
+
+            vm.classOptions = {availableOptions : [{id : '1',name :'ECONOMY'},
+                {id : '2',name :'FIRST'},{id : '3',name :'BUSINESS'}],
+            selectedOptions : {id : '1',name :'ECONOMY'}} ;
+
             UserService
                 .findUserById(userId)
                 .success(function (user) {
@@ -75,6 +80,10 @@
 //    request.open('GET', 'http://cors.io/?u=http://iatacodes.org/api/v6/autocomplete?api_key=7cf86b00-61f2-47df-a5d0-d56b5bf819bb&query=boston', true);
             request.send();
 
+            // vm.flight.noOfAdults = 1;
+            // vm.flight.noOfChildren = 0;
+
+
         }
         init();
 
@@ -108,6 +117,12 @@
         }
 
         function searchFlight(journey) {
+            if (!journey.noOfAdults) {
+                journey.noOfAdults = 1;
+            }
+            if (!journey.noOfChildren) {
+                journey.noOfChildren = 0;
+            }
             var searchUrl;
             for (var cityInfo in vm.allCities) {
                 if (vm.allCities[cityInfo].name == journey.source) {
@@ -128,13 +143,13 @@
                     +"/DEPART/"+journey.departDate.toISOString().substring(0, 10)
                     +"/RETURN/"+journey.returnDate.toISOString().substring(0, 10)
                     +"/ADULTS/"+journey.noOfAdults+"/CHILD/"+
-                    journey.noOfChildren+"/CLASS/"+journey.selectedClass;
+                    journey.noOfChildren+"/CLASS/"+vm.classOptions.selectedOptions.name;
             } else {
                 searchUrl = "user/"+loggenInUser+"/flight/search/SRC/"+journey.source+"/DEST/"+journey.destination
                     +"/DEPART/"+journey.departDate.toISOString().substring(0, 10)
                     +"/RETURN/"+0
                     +"/ADULTS/"+journey.noOfAdults+"/CHILD/"+
-                    journey.noOfChildren+"/CLASS/"+journey.selectedClass;
+                    journey.noOfChildren+"/CLASS/"+vm.classOptions.selectedOptions.name;
             }
             $location.url(searchUrl);
         }
