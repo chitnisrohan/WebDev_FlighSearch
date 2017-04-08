@@ -11,6 +11,7 @@
         vm.goToFlightSearch = goToFlightSearch;
         vm.goToProfile = goToProfile;
         vm.goToUserHistory = goToUserHistory;
+        vm.logout = logout;
 
         function init() {
             UserService
@@ -72,6 +73,16 @@
                     },
                     function (err) {
                         vm.error = "Could not delete notification. Please try again";
+                    }
+                );
+        }
+
+        function logout() {
+            UserService
+                .logout()
+                .then(
+                    function () {
+                        $location.url("/");
                     }
                 );
         }

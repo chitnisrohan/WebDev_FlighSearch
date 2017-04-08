@@ -11,6 +11,7 @@
         vm.goToFlightSearch = goToFlightSearch;
         vm.goToProfile = goToProfile;
         vm.goToUserNotification = goToUserNotification;
+        vm.logout = logout;
 
         function init() {
             UserService
@@ -55,6 +56,16 @@
                         vm.error = "Could not delete alert";
                     }
                 )
+        }
+
+        function logout() {
+            UserService
+                .logout()
+                .then(
+                    function () {
+                        $location.url("/");
+                    }
+                );
         }
     }
 })();
