@@ -115,8 +115,6 @@
                 var a = vm.alerts[singleAlert];
                 if (alertFilter.dates) {
                     if (a.returnDate) {
-                        console.log(a.username);
-                        console.log(alertFilter.username);
                         if (a.source === alertFilter.source ||
                             a.destination === alertFilter.destination ||
                             a.username.indexOf(alertFilter.username) !== -1 ||
@@ -138,8 +136,6 @@
                     }
 
                 } else {
-                    console.log(a.username);
-                    console.log(alertFilter.username);
                     if (a.source === alertFilter.source ||
                         a.destination === alertFilter.destination ||
                         a.username.indexOf(alertFilter.username) !== -1
