@@ -27,7 +27,7 @@
                             .createUser(newUser)
                             .success(function (user) {
                                 if(user.userType === "HOTELOWNER"){
-                                    $location.url('/user-hotelowner/' + user._id);
+                                    $location.url('/user-hotelowner/profile');
                                 }
                                 else
                                     $location.url("/user/profile");
