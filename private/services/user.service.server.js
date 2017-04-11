@@ -10,6 +10,7 @@ module.exports = function (app, model) {
     app.post("/api/checkLogin", checkLogin);
     app.post("/api/logout", logout);
     app.get("/api/findCurrentUser",findCurrentUser);
+    app.post("/api/login/recovery", loginWithRecovery);
 
 
 
@@ -68,6 +69,12 @@ module.exports = function (app, model) {
 
 
 
+    function loginWithRecovery(req, res) {
+        var user = req.body;
+        if (user.username && user.passwordRecoveryAnswer){
+            findUserByRecoveryCredentials(req,res);
+        }
+    }
 
 
     function findCurrentUser(req, res) {
@@ -180,7 +187,6 @@ module.exports = function (app, model) {
             if(req.query.username && req.query.password != "") {
                 findUserByCredential(req, res);
             } else {
-
                 if (req.query.username && req.query.passwordRecoveryAnswer){
                     findUserByRecoveryCredentials(req,res);
                 }
@@ -224,14 +230,17 @@ module.exports = function (app, model) {
     }
 
     function findUserByRecoveryCredentials(req, res) {
-        var username = req.query.username;
-        var passwordRecoveryAnswer = req.query.passwordRecoveryAnswer;
+        var user = req.body;
+        var username = user.username;
+        var passwordRecoveryAnswer = user.passwordRecoveryAnswer;
         model
             .userModel
             .findUserByRecoveryCredentials(username, passwordRecoveryAnswer)
             .then(
                 function (user) {
-                    res.send(user);
+                    req.login(user, function (err) {
+                        res.send(user);
+                    });
                 },
                 function (err) {
                     res.sendStatus(400).send(err);

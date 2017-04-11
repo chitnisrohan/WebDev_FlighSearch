@@ -55,6 +55,9 @@
         }
 
         function login(user) {
+            if (user.passwordRecoveryAnswer) {
+                return $http.post("/api/login/recovery", user);
+            }
             return $http.post("/api/login", user);
         }
 
