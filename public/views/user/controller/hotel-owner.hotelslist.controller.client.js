@@ -3,9 +3,9 @@
         .module("FlightSearchApp")
         .controller("HotelOwnerListController", HotelOwnerListController);
 
-    function HotelOwnerListController($routeParams, $location, HotelService) {
+    function HotelOwnerListController($routeParams, $location, HotelService, UserService) {
         var vm = this;
-        var userId = $routeParams['uid'];
+        var userId;
 
         vm.goToNewHotel = goToNewHotel;
         vm.goToHotelOwnerProfile = goToHotelOwnerProfile;
@@ -13,37 +13,41 @@
         vm.deleteHotel = deleteHotel;
         vm.bookHotelDates = bookHotelDates;
         vm.gotoEditHotelPage = gotoEditHotelPage;
+        vm.logout = logout;
 
         function init() {
-            HotelService
-                .findHotelsByOwner(userId)
-                .success(function (hotels) {
-                    vm.hotels = hotels;
-                    console.log(hotels);
+            UserService
+                .findCurrentUser()
+                .success(function (user) {
+                    userId = user._id;
+                    vm.user = user;
+                    vm.userType = user.userType;
+                    HotelService
+                        .findHotelsByOwner(userId)
+                        .success(function (hotels) {
+                            vm.hotels = hotels;
+                            console.log(hotels);
+                        });
+                    vm.bookingDates = [];
+                    vm.counter = 0;
                 });
-            vm.bookingDates = [];
-            vm.counter = 0;
         }
         init();
 
 
         function goToNewHotel () {
-            $location.url('/user-hotelowner/' + userId +'/hotel/new');
+            $location.url('/user-hotelowner/hotel/new');
         }
 
         function goToHotelOwnerProfile () {
-            $location.url('/user-hotelowner/' + userId);
+            $location.url('/user-hotelowner/profile');
         }
 
         function gotoEditHotelPage (hotelId) {
-            $location.url('/user-hotelowner/' + userId + '/hotel/' + hotelId);
+            $location.url('/user-hotelowner/hotel/' + hotelId);
         }
 
         function updateHotelAvailibility (editedDetails, hotelId) {
-            // var available_from = editedDetails.available_from.toISOString().substring(0,10);
-            // var available_till = editedDetails.available_till.toISOString().substring(0,10);
-            // editedDetails.available_from = available_from;
-            // editedDetails.available_till = available_till;
 
             var bookingDate = {checkIn : editedDetails.checkIn.toISOString().substring(0,10),
                 checkOut : editedDetails.checkOut.toISOString().substring(0,10)};
@@ -78,12 +82,6 @@
         }
 
         function bookHotelDates(CheckinDate, CheckoutDate) {
-            // var idForCheckIn = "CheckIn"+vm.counter;
-            // var idForCheckOut = "CheckOut"+vm.counter;
-            // var a = document.getElementById("CheckIn"+vm.counter).value;
-            // var b = document.getElementById("CheckOut"+vm.counter).value;
-            // vm.bookingDates.push({checkin : a, checkout : b});
-
             var newdiv_from = document.createElement('div');
             newdiv_from.innerHTML = "<br><input type='date' class='form-control' ng-model='model.editedDetails.checkIn'>";
             document.getElementById(CheckinDate).appendChild(newdiv_from);
@@ -91,6 +89,16 @@
             newdiv_to.innerHTML = "<br><input type='date' class='form-control' ng-model='model.editedDetails.checkOut'>";
             document.getElementById(CheckoutDate).appendChild(newdiv_to);
 
+        }
+
+        function logout() {
+            UserService
+                .logout()
+                .then(
+                    function () {
+                        $location.url("/");
+                    }
+                );
         }
 
     }

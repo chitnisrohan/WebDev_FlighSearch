@@ -6,11 +6,10 @@
     function HotelSearchResultsController($routeParams, HotelService) {
         var vm = this;
 
-        vm.findCityName = findCityName;
-
         vm.hotelLoc = $routeParams['loc'];
         vm.cinDate = $routeParams['cin'];
         vm.coutDate = $routeParams['cout'];
+        vm.findCityName = findCityName;
 
         function init() {
             findAllCityCodeArray();
@@ -21,6 +20,7 @@
                 .getHotels(vm.hotelReq)
                 .success(function (hotels) {
                     vm.apiHotels = hotels;
+                    vm.hotelReq.location = findCityName(vm.hotelLoc);
                     HotelService
                         .getRegisteredHotels(vm.hotelReq)
                         .success(function (hotels) {
@@ -92,9 +92,6 @@
                 }
             }
         }
-
-
-
 
     }
 })();

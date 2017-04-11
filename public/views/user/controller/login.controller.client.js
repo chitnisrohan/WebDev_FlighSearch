@@ -49,7 +49,7 @@
                             if (user.data.userType === "ADMIN") {
                                 $location.url("/user/allUsers");
                             } else if (user.data.userType === "HOTELOWNER") {
-                                $location.url('/user-hotelowner/' + user.data._id);
+                                $location.url('/user-hotelowner/profile');
                             } else {
                                 $location.url("/user/flightSearch");
                             }

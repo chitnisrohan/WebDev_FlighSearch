@@ -11,6 +11,7 @@
         vm.setUpAlert = setUpAlert;
         vm.goToHistory = goToHistory;
         vm.goToRegister = goToRegister;
+        vm.goToHotelSearch = goToHotelSearch;
 
         function init() {
 
@@ -94,6 +95,14 @@
 
         function goToRegister(userType) {
             $location.url("/register/" + userType);
+        }
+
+        function goToHotelSearch () {
+            if(vm.isLoggedIn){
+                $location.url('/user/hotelSearch');
+            }else{
+                $location.url('/hotelSearch');
+            }
         }
 
         function goToHistory() {

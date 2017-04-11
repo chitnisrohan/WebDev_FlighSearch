@@ -5,15 +5,16 @@
 
     function HotelOwnerProfileController($routeParams, $location, UserService) {
         var vm = this;
-        var userId = $routeParams['uid'];
+        var userId;
 
         vm.update = update;
         vm.goToNewHotel = goToNewHotel;
         vm.goToHotelsList = goToHotelsList;
+        vm.logout = logout;
 
         function init() {
             UserService
-                .findUserById(userId)
+                .findCurrentUser()
                 .success(function (user) {
                     vm.user = user;
                     vm.userType = user.userType;
@@ -35,11 +36,21 @@
         }
 
         function goToNewHotel() {
-            $location.url('/user-hotelowner/' + userId +'/hotel/new');
+            $location.url('/user-hotelowner/hotel/new');
         }
 
         function goToHotelsList() {
-            $location.url('/user-hotelowner/' + userId +'/hotel');
+            $location.url('/user-hotelowner/hotel');
+        }
+
+        function logout() {
+            UserService
+                .logout()
+                .then(
+                    function () {
+                        $location.url("/");
+                    }
+                );
         }
 
 

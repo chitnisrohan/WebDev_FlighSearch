@@ -3,12 +3,26 @@
         .module("FlightSearchApp")
         .controller("HotelSearchController", HotelSearchController);
 
-    function HotelSearchController($location, HotelService) {
+    function HotelSearchController($location, UserService) {
         var vm = this;
         vm.gotoHotelResultsPage = gotoHotelResultsPage;
         vm.goToOwnerRegisterPage = goToOwnerRegisterPage;
+        vm.goToHistory = goToHistory;
+        vm.goToRegister = goToRegister;
 
         function init () {
+
+            UserService
+                .findCurrentUser()
+                .success(function (user) {
+                    userId = user._id;
+                    if(user) {
+                        vm.isLoggedIn = true;
+                    } else {
+                        vm.isLoggedIn = false;
+                    }
+                    vm.userType = user.userType;
+                });
 
             // Get the <datalist> and <input> elements.
             var dataList = document.getElementById('locationList');
@@ -60,6 +74,18 @@
 
         function goToOwnerRegisterPage (userType) {
             $location.url("/register/" + userType);
+        }
+
+        function goToRegister(userType) {
+            $location.url("/register/" + userType);
+        }
+
+        function goToHistory() {
+            if (vm.userType === "USER") {
+                $location.url("/user/userHistory");
+            } else if (vm.userType === "AGENT") {
+                $location.url("/user/agentHistory");
+            }
         }
     }
 })();

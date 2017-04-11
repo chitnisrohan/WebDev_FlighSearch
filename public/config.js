@@ -17,6 +17,14 @@
                 controller: "HotelSearchController",
                 controllerAs: "model"
             })
+            .when("/user/hotelSearch", {
+                templateUrl: "views/hotels/templates/hotel-search.view.client.html",
+                controller: "HotelSearchController",
+                controllerAs: "model",
+                resolve : {
+                    checkLogin : checkLogin
+                }
+            })
             .when("/user/allUsers", {
                 templateUrl: "views/user/templates/admin-users.view.client.html",
                 controller: "AdminProfileController",
@@ -77,25 +85,37 @@
                     checkLogin : checkLogin
                 }
             })
-            .when("/user-hotelowner/:uid" , {
+            .when("/user-hotelowner/profile" , {
                 templateUrl: "views/user/templates/hotel-owner.profile.view.client.html",
                 controller: "HotelOwnerProfileController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve : {
+                    checkLogin : checkLogin
+                }
             })
-            .when("/user-hotelowner/:uid/hotel" , {
+            .when("/user-hotelowner/hotel" , {
                 templateUrl: "views/user/templates/hotel-owner.hotelslist.view.client.html",
                 controller: "HotelOwnerListController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve : {
+                    checkLogin : checkLogin
+                }
             })
-            .when("/user-hotelowner/:uid/hotel/new" , {
+            .when("/user-hotelowner/hotel/new" , {
                 templateUrl: "views/user/templates/hotel-owner.newhotel.view.client.html",
                 controller: "NewHotelController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve : {
+                    checkLogin : checkLogin
+                }
             })
-            .when("/user-hotelowner/:uid/hotel/:hid" , {
+            .when("/user-hotelowner/hotel/:hid" , {
                 templateUrl: "views/user/templates/hotel-owner.edithotel.view.client.html",
                 controller: "EditHotelController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve : {
+                    checkLogin : checkLogin
+                }
             })
             .when("/user/agentNotification" , {
                 templateUrl: "views/user/templates/agent.notification.view.client.html",

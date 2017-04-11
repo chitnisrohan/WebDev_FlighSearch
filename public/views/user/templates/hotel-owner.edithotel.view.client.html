@@ -11,11 +11,10 @@
                             <span class="glyphicon glyphicon-align-justify ss-white-font"></span>
                         </button>
                         <ul class="dropdown-menu rc-z-index-dropdown rc-drop-menu">
-                            <li><a ng-click="model.goToFlightSearch()" class="rc-drop-menu">Search Flights</a></li>
-                            <li><a class="rc-drop-menu">Profile</a></li>
-                            <li><a ng-click="model.goToHistory()" class="rc-drop-menu">History</a></li>
-                            <li><a ng-click="model.goToNotifications()" class="rc-drop-menu">Notifications</a></li>
-                            <li><a href="#/" class="rc-drop-menu">Logout</a></li>
+                            <li><a ng-click="model.goToHotelOwnerProfile()" class="rc-drop-menu">Profile</a></li>
+                            <li><a ng-click="model.goToHotelsList()" class="rc-drop-menu">My Hotels</a></li>
+                            <li><a ng-click="model.goToNewHotel()" class="rc-drop-menu">New Hotel</a></li>
+                            <li><a ng-click="model.logout()" class="rc-drop-menu">Logout</a></li>
                         </ul>
                     </div>
 
@@ -55,7 +54,8 @@
                     </li>
 
                     <li class="list-group-item  ss-black-bg ss-no-border">
-                        <a class="ss-whitefont wbdv-banner-font rc-link-left-margin rc-text-decoration">
+                        <a ng-click="model.goToNewHotel()"
+                           class="ss-whitefont wbdv-banner-font rc-link-left-margin rc-text-decoration">
                             <i class="rc-link-left-margin rc-link-right-margin fa fa-plus"
                                aria-hidden="true"></i>
                             New Hotel
