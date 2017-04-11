@@ -1,9 +1,41 @@
 <div class="rc-no-padding rc-background-hotel-search-result">
     <!--rc-background-user-history-->
-    <nav class="nav ss-black-navbar ss-navbar-padding">
+    <nav class="nav ss-black-navbar ss-navbar-padding rc-navbar-style">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
+
+                    <div class="dropdown pull-right" ng-if="model.isLoggedIn">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span class="glyphicon glyphicon-align-justify ss-white-font"
+                              style="margin-top: 15px; margin-right: 10px"></span>
+                            <!--<span class="caret"></span>-->
+                        </a>
+                        <ul class="dropdown-menu rc-dropdown-small-font">
+                            <li><a ng-click="model.goToFlightSearch()" class="">Search Flights</a></li>
+                            <li><a ng-click="model.goToHotelSearch()" class="">Search Hotels</a></li>
+                            <li><a ng-click="model.goToProfile()">Profile</a></li>
+                            <li><a ng-click="model.goToHistory()" class="">History</a></li>
+                            <li><a ng-click="model.goToNotifications()">Notifications</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a ng-click="model.logout()" class="">Logout</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown pull-right" ng-if="!model.isLoggedIn">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span class="glyphicon glyphicon-align-justify ss-white-font"
+                              style="margin-top: 15px; margin-right: 10px"></span>
+                            <!--<span class="caret"></span>-->
+                        </a>
+                        <ul class="dropdown-menu rc-dropdown-small-font">
+                            <li><a ng-click="model.goToFlightSearch()" class="">Search Flights</a></li>
+                            <li><a ng-click="model.goToHotelSearch()" class="">Search Hotels</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#/login" class="">Login</a></li>
+                        </ul>
+                    </div>
+
+
                     <strong class="navbar-brand visible-xs rc-agent-notify-font-size
                     wbdv-font-color-white pull-left">
                         New Flight Search
@@ -17,13 +49,6 @@
                     </strong>
                     <strong class="navbar-brand pull-left wbdv-font-family wbdv-banner-font hidden-xs">
                         Hotel Search
-                    </strong>
-                    <i class="fa fa-user-circle-o wbdv-banner-font visible-xs pull-right"
-                       aria-hidden="true"
-                       id = "rc-margin-for-logo-flight-search"></i>
-                    <strong class="wbdv-banner-font hidden-xs pull-right"
-                            id = "rc-flight-search-login-margin-right">
-                        Login
                     </strong>
                 </div>
             </div>

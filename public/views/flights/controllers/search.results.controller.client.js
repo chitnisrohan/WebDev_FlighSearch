@@ -26,6 +26,7 @@
         vm.findCityName = findCityName;
         vm.findAllAirportCodeArray = findAllAirportCodeArray;
         vm.logout = logout;
+        vm.goToHotelSearch = goToHotelSearch;
 
         function init() {
 
@@ -134,6 +135,14 @@
                 $location.url("/user/flightSearch");
             } else {
                 $location.url("/");
+            }
+        }
+
+        function goToHotelSearch() {
+            if (vm.isUserLoggedIn) {
+                $location.url("/user/hotelSearch");
+            } else {
+                $location.url("/hotelSearch");
             }
         }
 
