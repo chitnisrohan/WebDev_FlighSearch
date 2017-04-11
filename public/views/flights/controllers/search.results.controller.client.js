@@ -6,7 +6,7 @@
     function SearchResultController($location, FlightService, $routeParams, UserService) {
         //flight/search/SRC/:src/DEST/:dest/DEPART/:dept/RETURN/:ret/ADULTS/:adults/CHILD/:child/CLASS/:class
         var vm = this;
-        var userId; // = $routeParams['uid'];
+        var userId;
         var source = $routeParams['src'];
         var destination = $routeParams['dest'];
         var departDate = $routeParams['dept'];
@@ -25,6 +25,7 @@
         vm.goToProfile = goToProfile;
         vm.findCityName = findCityName;
         vm.findAllAirportCodeArray = findAllAirportCodeArray;
+        vm.logout = logout;
 
         function init() {
 
@@ -129,7 +130,11 @@
 
 
         function goToFlightSearch() {
-            $location.url("/user/flightSearch");
+            if (vm.isUserLoggedIn) {
+                $location.url("/user/flightSearch");
+            } else {
+                $location.url("/");
+            }
         }
 
         function goToNotifications() {
@@ -184,6 +189,16 @@
             if (typeof time != "undefined") {
                 return time.split("T")[1];
             }
+        }
+
+        function logout() {
+            UserService
+                .logout()
+                .then(
+                    function () {
+                        $location.url("/");
+                    }
+                );
         }
     }
 })();

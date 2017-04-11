@@ -19,7 +19,7 @@
                             <li><a ng-click="model.goToHistory()" class="">History</a></li>
                             <li><a ng-click="model.goToNotifications()">Notifications</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#/" class="">Logout</a></li>
+                            <li><a ng-click="model.logout()" class="">Logout</a></li>
                         </ul>
                     </div>
                     <div class="dropdown pull-right" ng-if="!model.isUserLoggedIn">
