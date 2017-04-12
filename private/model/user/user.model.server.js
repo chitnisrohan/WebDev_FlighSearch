@@ -16,9 +16,23 @@ module.exports = function () {
         finAllUsers : finAllUsers,
         deleteUser : deleteUser,
         findUserByRecoveryCredentials: findUserByRecoveryCredentials,
-        findSecurityQuestionByUsername: findSecurityQuestionByUsername
+        findSecurityQuestionByUsername: findSecurityQuestionByUsername,
+        findUserByGoogleId : findUserByGoogleId
     };
     return api;
+
+    function findUserByGoogleId(profileId) {
+        var deferred = Q.defer();
+        UserModel
+            .findOne({'google.id' : profileId}, function (err, user) {
+                if (err) {
+                    deferred.reject(err);
+                } else {
+                    deferred.resolve(user);
+                }
+            });
+        return deferred.promise;
+    }
 
     function findUserByRecoveryCredentials(username, passwordRecoveryAnswer) {
         var deferred = Q.defer();

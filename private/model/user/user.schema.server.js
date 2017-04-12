@@ -7,6 +7,10 @@ module.exports = function() {
         firstName: String,
         lastName: String,
         email: String,
+        google : {
+            id : String,
+            token : String
+        },
         phone: String,
         passwordRecoveryQuestion: String,
         passwordRecoveryAnswer: String,
