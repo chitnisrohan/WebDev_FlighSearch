@@ -94,11 +94,11 @@
                         </div>
                         <div class="form-group wbdv-left-right-margin">
                             <label for="RecoveryQuestion">Recovery Question</label>
-                            <input ng-model="model.user.passwordRecoveryQuestion"
-                                   type="text"
-                                   class="form-control"
-                                   id="RecoveryQuestion"
-                                   placeholder="Make a recovery question for account recovery">
+                            <div class="dropdown" id="RecoveryQuestion">
+                                <select class="btn btn-block rc-font-color-black" id="myQuestion"
+                                        ng-options="option.name for option in model.questionOptions.availableQuestions track by option.id"
+                                        ng-model="model.questionOptions.passwordRecoveryQuestion"></select>
+                            </div>
                         </div>
                         <div class="form-group wbdv-left-right-margin">
                             <label for="RecoveryAnswer">Recovery Answer</label>
@@ -106,7 +106,8 @@
                                    type="text"
                                    class="form-control"
                                    id="RecoveryAnswer"
-                                   placeholder="Expected answer for your recovery question">
+                                   placeholder="Expected answer for your recovery question"
+                            required>
                         </div>
                         <div class="wbdv-left-right-margin">
                             <a class="btn btn-primary btn-block ss-button-margin"
