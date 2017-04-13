@@ -2,7 +2,6 @@ var express = require('express');
 var passport = require('passport');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
-var bcrypt = require("bcrypt-nodejs");
 
 var app = express();
 
