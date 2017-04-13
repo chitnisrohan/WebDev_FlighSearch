@@ -12,8 +12,7 @@
                     <!--<div class="col-sm-8">-->
                     <div class="dropdown pull-right">
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <span class="glyphicon glyphicon-align-justify ss-white-font"
-                              style="margin-top: 15px; margin-right: 10px"></span>
+                        <span class="glyphicon glyphicon-align-justify ss-white-font rc-sandwitch-margin"></span>
                             <!--<span class="caret"></span>-->
                         </a>
                         <ul class="dropdown-menu rc-dropdown-small-font">
@@ -95,7 +94,7 @@
             </div>
             <div class="col-sm-3"></div>
             <div class="col-md-9">
-                <div class="container-fluid wbdv-margin-top" style="background-color: #0f0f0f; opacity: 0.9">
+                <div class="container-fluid wbdv-margin-top rc-agent-history-list-item-opacity">
                     <div class="row">
                         <!--<div class="col-sm-1"></div>-->
                         <div class="col-xs-12 col-sm-12">
@@ -111,43 +110,14 @@
                             <!--</a>-->
                             <!--</li>-->
                             <!--</ul>-->
-                            <div ng-if="model.noNitifications" style="padding: 10px">
+                            <div ng-if="model.noNitifications" class="rc-no-message-padding">
                                 <h4 class="wbdv-font-color-white">
                                     There are no Notifications.
                                 </h4>
                             </div>
                             <div ng-if="!model.noNitifications" class="page1">
-                                <ul class="list-group" style="margin-top: 10px">
-                                    <!--<li class="list-group-item" style="background-color: #0f0f0f; opacity: 0.9">-->
-                                        <!--<div class="row">-->
-                                            <!--<div class="col-md-2 rc-small-top-margin">-->
-                                                <!--<input type="text"-->
-                                                       <!--class="form-control"-->
-                                                       <!--placeholder="Username">-->
-                                            <!--</div>-->
-                                            <!--<div class="col-md-2 rc-small-top-margin">-->
-                                                <!--<input type="text"-->
-                                                       <!--class="form-control"-->
-                                                       <!--placeholder="Source">-->
-                                            <!--</div>-->
-                                            <!--<div class="col-md-2 rc-small-top-margin">-->
-                                                <!--<input type="text"-->
-                                                       <!--class="form-control"-->
-                                                       <!--placeholder="Destination">-->
-                                            <!--</div>-->
-                                            <!--<div class="col-md-2 rc-small-top-margin">-->
-                                                <!--<input type="text"-->
-                                                       <!--class="form-control"-->
-                                                       <!--placeholder="Date">-->
-                                            <!--</div>-->
-                                            <!--<div id="filterMessageButton" class="col-md-4 rc-small-top-margin">-->
-                                                <!--<a href="#" class="btn btn-default form-control">-->
-                                                    <!--Filter-->
-                                                <!--</a>-->
-                                            <!--</div>-->
-                                        <!--</div>-->
-                                    <!--</li>-->
-                                    <li class="list-group-item" style="background-color: #0f0f0f; opacity: 0.9">
+                                <ul class="list-group rc-agent-history-list-top-margin">
+                                    <li class="list-group-item rc-agent-history-list-item-opacity">
                                         <div class="row hidden-xs hidden-sm">
                                             <div class="col-md-4 rc-small-top-margin text-center">
                                                 <h3 class="wbdv-font-color-white">Journey</h3>
@@ -158,8 +128,7 @@
                                         </div>
                                     </li>
                                     <li ng-repeat="notification in model.notifications"
-                                        class="list-group-item"
-                                        style="background-color: #0f0f0f; opacity: 0.9">
+                                        class="list-group-item rc-agent-history-list-item-opacity">
                                         <div class="row">
                                             <div class="col-md-4 rc-small-top-margin">
                                                 <h4 class="visible-xs visible-sm wbdv-font-color-white">

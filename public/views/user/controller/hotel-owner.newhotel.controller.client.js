@@ -68,6 +68,7 @@
         }
 
         function addHotel(newhotel) {
+            newhotel.username = vm.user.firstName + " " + vm.user.lastName;
             HotelService
                 .addHotel(newhotel, userId)
                 .success(function (hotel) {

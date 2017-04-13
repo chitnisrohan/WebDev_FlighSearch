@@ -9,8 +9,7 @@
                 <div class="col-md-9 rc-drop-menu">
                     <div class="dropdown pull-right">
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <span class="glyphicon glyphicon-align-justify ss-white-font"
-                              style="margin-top: 15px; margin-right: 10px"></span>
+                        <span class="glyphicon glyphicon-align-justify ss-white-font rc-sandwitch-margin"></span>
                             <!--<span class="caret"></span>-->
                         </a>
                         <ul class="dropdown-menu rc-dropdown-small-font">
@@ -127,7 +126,7 @@
                             <div class="row">
                                 <div class="col-sm-5 text-center rc-small-top-margin">
                                     <h4 class="wbdv-font-color-white">
-                                        UserName : {{message.userid}}
+                                        UserName : {{message.username}}
                                         <br>
                                         Journey : {{message.source}}&nbsp; to&nbsp; {{message.destination}}&nbsp;
                                         <br>
@@ -142,7 +141,7 @@
                                         <li ng-repeat="reply in message.AgentsResponded"
                                             class="list-group-item rc-user-history-list-background">
                                             <h4 class="wbdv-font-color-white">
-                                                {{reply._id}}
+                                                {{reply.agentName}}
                                                 <br>
                                                 {{reply.message}}
                                             </h4>

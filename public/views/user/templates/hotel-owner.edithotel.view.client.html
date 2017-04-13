@@ -1,5 +1,5 @@
 <div class="rc-no-padding rc-background-profile">
-    <nav class="nav ss-black-navbar ss-navbar-padding navbar-fixed-top">
+    <nav class="nav ss-black-navbar ss-navbar-padding navbar-fixed-top rc-navbar-style">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-3">
@@ -14,6 +14,7 @@
                             <li><a ng-click="model.goToHotelOwnerProfile()" class="rc-drop-menu">Profile</a></li>
                             <li><a ng-click="model.goToHotelsList()" class="rc-drop-menu">My Hotels</a></li>
                             <li><a ng-click="model.goToNewHotel()" class="rc-drop-menu">New Hotel</a></li>
+                            <li role="separator" class="divider"></li>
                             <li><a ng-click="model.logout()" class="rc-drop-menu">Logout</a></li>
                         </ul>
                     </div>
@@ -32,7 +33,7 @@
 
     <div class="container-fluid rc-top-margin-page">
         <div class="row ">
-            <div class="col-sm-3 ss-whitefont hidden-xs ss-black-bg-high" style="opacity: 0.7">
+            <div class="col-sm-3 ss-whitefont hidden-xs ss-black-bg-high">
                 <ul class="list-group list-unstyled ss-black-bg">
 
                     <li class="list-group-item ss-black-bg ss-no-border">
@@ -77,12 +78,12 @@
                 <!--<div class="row">-->
                 <!--<div class="col-sm-2"></div>-->
                 <!--<div id="loginform" class="col-sm-8 fa-border">-->
-                <div id="loginform" style="opacity: 0.9">
+                <div id="loginform">
                     <form>
                         <br>
                         <div class="row">
-                            <div class="col-xs-1"></div>
-                            <div class="col-xs-10">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-10">
                                 <div class="form-group wbdv-font-color-white col-xs-12">
                                     <label for="hotelname" class="rc-form-font-size">Name of Hotel</label>
                                     <input ng-model="model.hotel.property_name"
@@ -148,14 +149,14 @@
                                 </div>
 
                                 <div class="col-xs-12">
-                                    <a class="btn ss-wbdv-button rc-form-font-size btn-block ss-button-margin"
+                                    <a class="btn wbdv-button rc-form-font-size btn-block ss-button-margin"
                                        ng-click="model.updateHotel()">
                                         Update Hotel Details
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xs-1"></div>
+                        <div class="col-sm-1"></div>
                     </form>
                 </div>
             </div>

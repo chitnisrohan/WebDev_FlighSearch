@@ -13,7 +13,7 @@ module.exports = function (app, model) {
     app.post("/api/login/recovery", loginWithRecovery);
 
 
-
+    var bcrypt = require("bcrypt-nodejs");
     var passport = require('passport');
     var LocalStrategy = require('passport-local').Strategy;
     var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
@@ -37,13 +37,14 @@ module.exports = function (app, model) {
     function localStrategy(username, password, done) {
         model
             .userModel
-            .findUserByCredentials(username, password)
+            .findUserByUsername(username)
             .then(
                 function(user) {
                     if (!user) {
                         return done(null, false);
+                    } else if (user && bcrypt.compareSync(password, user.password)) {
+                        return done(null, user);
                     }
-                    return done(null, user);
                 },
                 function(err) {
                     if (err) { return done(err); }

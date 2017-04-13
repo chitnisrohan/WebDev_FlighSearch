@@ -39,9 +39,6 @@ module.exports = function () {
 
     function updateHotel (hotelId, hotel) {
         var deferred = Q.defer();
-        console.log(hotelId);
-        console.log(hotel);
-
         HotelModel
             .update({"_id":hotelId}, {property_name: hotel.property_name,
                 addressline1: hotel.addressline1,

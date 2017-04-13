@@ -3,6 +3,7 @@ module.exports = function () {
     var mongoose = require("mongoose");
     var UserSchema = require("./user.schema.server.js")();
     var UserModel = mongoose.model("NewUserModel", UserSchema);
+    var bcrypt = require("bcrypt-nodejs");
 
     var Q = require("q");
 
@@ -224,6 +225,7 @@ module.exports = function () {
 
 
     function createUser(user) {
+        user.password = bcrypt.hashSync(user.password);
         var deferred = Q.defer();
         UserModel
             .create(user, function (err, user) {

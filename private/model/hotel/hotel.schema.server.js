@@ -3,6 +3,7 @@ module.exports = function() {
 
     var HotelSchema = mongoose.Schema({
         _user : {type: mongoose.Schema.Types.ObjectId, ref:'UserModel'},
+        username : String,
         property_name: String,
         addressline1: String,
         city: String,
