@@ -12,6 +12,7 @@
         vm.goToProfile = goToProfile;
         vm.goToAgentNotification = goToAgentNotification;
         vm.logout = logout;
+        vm.goToHotelSearch = goToHotelSearch;
 
 
         function init() {
@@ -56,6 +57,10 @@
                         vm.error = "Could not delete message. Please try again";
                     }
                 );
+        }
+
+        function goToHotelSearch() {
+            $location.url("/user/hotelSearch");
         }
 
         function logout() {

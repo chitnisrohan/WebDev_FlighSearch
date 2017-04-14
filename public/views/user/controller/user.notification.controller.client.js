@@ -12,6 +12,7 @@
         vm.goToProfile = goToProfile;
         vm.goToUserHistory = goToUserHistory;
         vm.logout = logout;
+        vm.goToHotelSearch = goToHotelSearch;
 
         function init() {
             UserService
@@ -75,6 +76,10 @@
                         vm.error = "Could not delete notification. Please try again";
                     }
                 );
+        }
+
+        function goToHotelSearch() {
+            $location.url("/user/hotelSearch");
         }
 
         function logout() {

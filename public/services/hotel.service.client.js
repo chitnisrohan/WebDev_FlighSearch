@@ -5,7 +5,7 @@
 
     function HotelService($http) {
 
-        var ss_API_KEY = "5NPbEYxDOHBtMEMVCrAYRZuqqOVygdgv";
+        var ss_API_KEY = process.env.HOTEL_KEY;
         var hotel_urlbase = "https://api.sandbox.amadeus.com/v1.2/hotels/search-airport?apikey=" + ss_API_KEY +
             "&location=LOCATION_REQ&check_in=CHECKIN_REQ&check_out=CHECKOUT_REQ"
 
@@ -18,10 +18,21 @@
             "deleteHotel": deleteHotel,
             "getRegisteredHotels" : getRegisteredHotels,
             "findHotelById": findHotelById,
-            "updateHotel": updateHotel
-            // "getHotelSearchUrl": getHotelSearchUrl
+            "updateHotel": updateHotel,
+            "saveHotelIdOnServer": saveHotelIdOnServer,
+            "getHotelId": getHotelId
         };
         return api;
+
+        function saveHotelIdOnServer(hotelIdObject){
+            console.log('In client service store' + hotelIdObject._id);
+            return $http.post('/api/hotel/saveId', hotelIdObject);
+        }
+
+        function getHotelId () {
+            console.log('In client service retrieve');
+            return $http.get('/api/hotel/getid');
+        }
 
         function findHotelById (hotelId) {
             return $http.get('/api/hotel/' + hotelId);

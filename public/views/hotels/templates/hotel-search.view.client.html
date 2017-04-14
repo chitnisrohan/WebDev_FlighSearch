@@ -41,7 +41,7 @@
             <div class="col-xs-12 col-sm-10 rc-black-background">
                 <div class="page1">
                     <h1 class="wbdv-font-color-white">Search Hotels</h1>
-                    <form>
+                    <form name="hotelSearchPage">
                         <div class="row">
                         </div>
                         <div class="row">
@@ -72,19 +72,10 @@
                                        id="checkout"
                                        required>
                             </div>
-
-                            <!--<div class="col-sm-3 form-group">-->
-                            <!--<label class="wbdv-font-color-white" for="maxRate">Maximum Rate</label>-->
-                            <!--<input ng-model="model.hotelBookingReq.maxRate"-->
-                            <!--type="number"-->
-                            <!--class="form-control"-->
-                            <!--placeholder="Maximum rate"-->
-                            <!--id="maxRate">-->
-                            <!--</div>-->
                         </div>
                         <div id="searchButton" class="form-group">
                             <input type="submit" value="Search" class="btn btn-block wbdv-button"
-                                   ng-click="model.gotoHotelResultsPage(model.hotelBookingReq)">
+                                   ng-click="hotelSearchPage.$valid && model.gotoHotelResultsPage(model.hotelBookingReq)">
                         </div>
                     </form>
                 </div>

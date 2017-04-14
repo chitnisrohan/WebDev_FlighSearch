@@ -35,55 +35,71 @@
                 <div class="row wbdv-font-color-white">
                     <div class="col-sm-2"></div>
                     <div id="loginform" class="col-xs-12 col-sm-8 fa-border rc-black-background">
-                        <div ng-show="model.error" class="alert alert-danger" role="alert">
-                            {{model.error}}
+                        <div class="alert alert-danger text-center fade in" ng-show="model.error">
+                            <strong>{{model.error}}</strong>
                         </div>
-                        <div class="form-group wbdv-left-right-margin">
-                            <label for="username">Username</label>
-                            <input ng-model="model.user.username"
-                                   type="text"
-                                   class="form-control"
-                                   id="username"
-                                   placeholder="Username">
-                        </div>
-                        <div ng-if="!model.passwordRecoverymode" class="form-group wbdv-left-right-margin">
-                            <label for="password">Password</label>
-                            <input ng-model="model.user.password"
-                                   type="password"
-                                   class="form-control"
-                                   id="password"
-                                   placeholder="Password">
-                        </div>
-
-                        <div ng-if="model.passwordRecoverymode" class="form-group wbdv-left-right-margin">
-                            <label>Account Recovery Question</label>
-                            <div>
-                                {{model.user.passwordRecoveryQuestion}}
+                        <form name = "loginpage">
+                            <div class="form-group wbdv-left-right-margin">
+                                <label for="username">Username</label>
+                                <input ng-model="model.user.username"
+                                       type="text"
+                                       class="form-control"
+                                       id="username"
+                                       placeholder="Username"
+                                       autofocus
+                                       required>
                             </div>
-                            <!--<input ng-model="model.user.username"-->
-                            <!--type="text"-->
-                            <!--class="form-control"-->
-                            <!--id="recoveryQuestion">-->
-                        </div>
-                        <div ng-if="model.passwordRecoverymode" class="form-group wbdv-left-right-margin">
-                            <label for="recoveryAnswer">Your Answer</label>
-                            <input ng-model="model.user.passwordRecoveryAnswer"
-                                   type="text"
-                                   class="form-control"
-                                   id="recoveryAnswer"
-                                   placeholder="Enter your response">
-                        </div>
+                            <div ng-if="!model.passwordRecoverymode" class="form-group wbdv-left-right-margin">
+                                <label for="password">Password</label>
+                                <input ng-model="model.user.password"
+                                       type="password"
+                                       class="form-control"
+                                       id="password"
+                                       placeholder="Password"
+                                       required>
+                            </div>
 
-                        <div class="wbdv-left-right-margin">
-                            <a class="btn btn-primary btn-block ss-button-margin"
-                               ng-click="model.login(model.user)">
-                                Login
-                            </a>
-                            <a href="/auth/google" class="btn btn-danger btn-block">
-                                <span class="fa fa-google-plus"></span>
-                                &nbsp;&nbsp;Login with Google
-                            </a>
-                        </div>
+                            <div ng-if="model.passwordRecoverymode" class="form-group wbdv-left-right-margin">
+                                <label>Account Recovery Question</label>
+                                <div>
+                                    {{model.user.passwordRecoveryQuestion}}
+                                </div>
+                                <!--<input ng-model="model.user.username"-->
+                                <!--type="text"-->
+                                <!--class="form-control"-->
+                                <!--id="recoveryQuestion">-->
+                            </div>
+                            <div ng-if="model.passwordRecoverymode" class="form-group wbdv-left-right-margin">
+                                <label for="recoveryAnswer">Your Answer</label>
+                                <input ng-model="model.user.passwordRecoveryAnswer"
+                                       type="text"
+                                       class="form-control"
+                                       id="recoveryAnswer"
+                                       placeholder="Enter your response"
+                                       required>
+                            </div>
+
+                            <div class="wbdv-left-right-margin">
+                                <!--<div class="form-group wbdv-left-right-margin">-->
+                                <input class="btn btn-primary btn-block ss-button-margin"
+                                       type="submit"
+                                       ng-click="loginpage.$valid && model.login(model.user)"
+                                       value="Login">
+                                <!--</div>-->
+                                <!--<div class="form-group wbdv-left-right-margin">-->
+                                <!--<input class="btn btn-primary btn-block ss-button-margin"-->
+                                <!--type="submit"-->
+                                <!--ng-click="model.registerUser(model.user)"-->
+                                <!--value="Register">-->
+                                <!--</div>-->
+
+                                <a href="/auth/google" class="btn btn-danger btn-block">
+                                    <span class="fa fa-google-plus"></span>
+                                    &nbsp;&nbsp;Login with Google
+                                </a>
+
+                            </div>
+                        </form>
                         <a ng-if="!model.passwordRecoverymode" ng-click="model.setToRecoveryMode(model.user)"
                            class="wbdv-left-right-margin pull-left wbdv-font-color-white">Forgot Passowrd?</a>
                         <a class="wbdv-left-right-margin pull-right wbdv-font-color-white"

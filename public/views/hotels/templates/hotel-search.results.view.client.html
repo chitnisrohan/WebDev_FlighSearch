@@ -32,22 +32,24 @@
                             <li><a href="#/login" class="">Login</a></li>
                         </ul>
                     </div>
-
-
-                    <strong class="navbar-brand visible-xs rc-agent-notify-font-size
-                    wbdv-font-color-white pull-left">
-                        New Flight Search
-                    </strong>
-                    <strong class="navbar-brand pull-left wbdv-font-family wbdv-banner-font hidden-xs">
-                        New Flight Search
-                    </strong>
-                    <strong class="navbar-brand visible-xs rc-agent-notify-font-size
-                    wbdv-font-color-white pull-left">
-                        Hotel Search
-                    </strong>
-                    <strong class="navbar-brand pull-left wbdv-font-family wbdv-banner-font hidden-xs">
-                        Hotel Search
-                    </strong>
+                    <a ng-click="model.goToFlightSearch()">
+                        <strong class="navbar-brand visible-xs rc-agent-notify-font-size
+                        wbdv-font-color-white pull-left">
+                            New Flight Search
+                        </strong>
+                        <strong class="navbar-brand pull-left wbdv-font-family wbdv-banner-font hidden-xs">
+                            New Flight Search
+                        </strong>
+                    </a>
+                    <a ng-click="model.goToHotelSearch()">
+                        <strong class="navbar-brand visible-xs rc-agent-notify-font-size
+                        wbdv-font-color-white pull-left">
+                            Hotel Search
+                        </strong>
+                        <strong class="navbar-brand pull-left wbdv-font-family wbdv-banner-font hidden-xs">
+                            Hotel Search
+                        </strong>
+                    </a>
                 </div>
             </div>
         </div>

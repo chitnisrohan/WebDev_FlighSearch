@@ -1,5 +1,8 @@
 module.exports = function (app, model) {
 
+    var hotelId = {};
+
+    app.get('/api/hotel/getid', getHotelId);
     app.post('/api/user-hotelowner/:userId/hotel', addHotel);
     app.get('/api/user-hotelowner/:userId/hotel', findHotelByOwner);
     app.put('/api/hotel/:hotelId/updateAvailability', updateHotelAvailability);
@@ -8,6 +11,17 @@ module.exports = function (app, model) {
     app.get('/api/allHotels', findAllHotels);
     app.get('/api/hotel/:hotelId', findHotelById);
     app.put('/api/hotel/:hotelId', updateHotel);
+    app.post('/api/hotel/saveId',saveHotelIdOnServer);
+
+    function saveHotelIdOnServer (req, res) {
+        var hotelIdObject = req.body;
+        hotelId._id = hotelIdObject._id;
+        res.json(true);
+    }
+
+    function getHotelId (req, res) {
+        res.json(hotelId);
+    }
 
 
     function findHotelById (req, res) {
@@ -27,8 +41,6 @@ module.exports = function (app, model) {
     function updateHotel (req, res) {
         var hotelId = req.params['hotelId'];
         var hotel = req.body;
-        console.log(hotelId);
-        console.log(hotel);
         model
             .hotelModel
             .updateHotel(hotelId, hotel)

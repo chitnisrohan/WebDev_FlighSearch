@@ -15,6 +15,7 @@
         vm.goToProfile = goToProfile;
         vm.goToAgentHistory = goToAgentHistory;
         vm.logout = logout;
+        vm.goToHotelSearch = goToHotelSearch;
 
 
         function init() {
@@ -151,6 +152,10 @@
 
             }
             vm.alerts = showAlerts;
+        }
+
+        function goToHotelSearch() {
+            $location.url("/user/hotelSearch");
         }
 
         function logout() {

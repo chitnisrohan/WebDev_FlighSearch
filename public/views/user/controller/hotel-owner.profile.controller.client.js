@@ -28,9 +28,11 @@
                 .updateUser(userId, newUser)
                 .success(function (user) {
                     if(user == null) {
-                        vm.error = "unable to update user";
+                        vm.error = "Unable to update user !!";
+                        vm.show = true;
                     } else {
-                        vm.message = "user successfully updated"
+                        vm.message = "User successfully updated !!";
+                        vm.show = true;
                     }
                 });
         }

@@ -1,4 +1,4 @@
-<div class="rc-no-padding rc-background-profile">
+<div class="rc-no-padding rc-background-hotelList">
     <nav class="nav ss-black-navbar navbar-fixed-top ss-navbar-padding rc-navbar-style">
         <div class="container-fluid">
             <div class="row">
@@ -38,8 +38,9 @@
     <div class="container-fluid rc-top-margin-page">
         <div class="row ">
             <!--<div class="col-sm-1"></div>-->
-            <div class="col-sm-3 ss-whitefont hidden-xs ss-black-bg-high">
+            <div class="col-sm-3 ss-whitefont hidden-xs ss-black-bg-high ss-black-bg-high-hotelList">
                 <ul class="list-group list-unstyled ss-black-bg">
+
                     <li class="list-group-item ss-black-bg ss-no-border">
                         <a ng-click="model.goToHotelOwnerProfile()"
                            class="ss-whitefont wbdv-banner-font rc-link-left-margin rc-text-decoration">
@@ -79,7 +80,7 @@
                     {{model.message}}
                 </div>
 
-                <div ng-repeat="hotel in model.hotels" class="ss-black-bg ss-top-margin">
+                <div ng-repeat="hotel in model.hotels" class="ss-black-bg ss-top-margin ss-black-bg-high-hotelList">
                     <!--<div class="row ss-white-font">-->
                     <!--<span class="ss-white-font"> <i class="fa fa-times pull-right" aria-hidden="true"></i></span>-->
                     <!--&lt;!&ndash;<i class="fa fa-pencil-square-o pull-right ss-white-font" aria-hidden="true"></i>&ndash;&gt;-->
@@ -89,42 +90,67 @@
 
                         <div class="col-sm-1"> </div>
 
-                        <div class="col-xs-7 col-sm-7 ss-white-font ss-top-margin ss-div-padding">
-                            <div>
+                        <div class="col-xs-7 col-sm-7 ss-white-font ss-top-margin ss-div-padding ss-left-padding-hotel-name">
+                            <div class="ss-hotel-name-color">
                                 <strong class="ss-hotel-name-font-size">{{hotel.property_name}}</strong>
 
                             </div>
-                            <div>
-                                <strong class="ss-font-class1">Address: &nbsp;</strong>
-                                <span class="ss-font-class2"> {{hotel.addressline1}},&nbsp;
-                                {{hotel.city}},&nbsp;
-                                {{hotel.region}},&nbsp;
-                                {{hotel.postal_code}} </span>
-                            </div>
+
+
                         </div>
 
-                        <div class="col-xs-5 col-sm-4 ss-top-margin ss-div-padding text-center ss-price-center">
+                        <div class="visible-xs col-xs-5 col-sm-4 ss-top-margin ss-div-padding text-center ss-price-center">
                             <!--<i class="fa fa-times pull-right ss-white-font ss-cross-font-size" aria-hidden="true"></i>-->
                             <a ng-click="model.deleteHotel(hotel._id)">
                                 <div>
                                     <span class="text-center ss-arrow-bottom-padding">
-                                        <i class="fa fa-times pull-right ss-white-font ss-cross-font-size" aria-hidden="true"></i>
+                                        <i class="fa fa-times pull-right ss-cross-font-size2 ss-red-button"
+                                           aria-hidden="true"></i>
                                     </span>
                                 </div>
                             </a>
                             <a ng-click="model.gotoEditHotelPage(hotel._id)">
-                                    <span class="text-center ss-arrow-bottom-padding">
-                                        <i class="fa fa-pencil-square-o pull-right ss-white-font ss-cross-font-size" aria-hidden="true"></i>
+                                    <span class=" pull-right ss-arrow-bottom-padding glyphicon glyphicon-pencil ss-cross-font-size">
+                                        <!--<i class="fa fa-pencil pull-right ss-white-font ss-cross-font-size" aria-hidden="true"></i>-->
                                     </span>
                             </a>
 
                             <!--<span class="label label-warning">{{hotel.total_price}}&nbsp;USD</span>-->
                         </div>
+
+                        <div class="hidden-xs col-xs-5 col-sm-4 ss-top-margin ss-div-padding text-center ss-price-center">
+                            <!--<i class="fa fa-times pull-right ss-white-font ss-cross-font-size" aria-hidden="true"></i>-->
+                            <div class="col-sm-6">
+                                <a class="btn btn-block btn-primary ss-btn-font" ng-click="model.gotoEditHotelPage(hotel._id)">Edit
+                                </a>
+                            </div>
+                            <div class="col-sm-6">
+                                <a class="btn btn-block btn-danger ss-btn-font" ng-click="model.deleteHotel(hotel._id)">Delete
+                                </a>
+                            </div>
+                            <!--<span class="label label-warning">{{hotel.total_price}}&nbsp;USD</span>-->
+                        </div>
                     </div>
+                    <hr>
 
                     <div class=" ss-white-font">
                         <div class="row">
-                            <div class="col-xs-4 col-sm-2"><strong class="pull-right ss-font-class1">Amenities:</strong> </div>
+                            <div class="col-xs-4 col-sm-2">
+                                <strong class="pull-right ss-font-class1">
+                                    Address&nbsp;:
+                                </strong>
+                            </div>
+                            <div class="col-xs-7 col-sm-7 ss-font-class2">
+                                <span class="ss-font-class2"> {{hotel.addressline1}},&nbsp;
+                                {{hotel.city}},&nbsp;
+                                {{hotel.region}},&nbsp;
+                                {{hotel.postal_code}} </span>
+                            </div>
+                            <div class="col-xs-1 col-sm-3"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4 col-sm-2">
+                                <strong class="pull-right ss-font-class1">Amenities&nbsp;:</strong> </div>
                             <div class="col-xs-7 col-sm-7 ss-font-class2">
                                 {{hotel.amenities}} &nbsp;
                             </div>
@@ -132,7 +158,8 @@
                         </div>
 
                         <div class="row  ">
-                            <div class="col-xs-4 col-sm-2"><strong class="pull-right ss-font-class1">Contact:</strong> </div>
+                            <div class="col-xs-4 col-sm-2"><strong class="pull-right ss-font-class1">
+                                Contact&nbsp;:</strong> </div>
                             <div class="col-xs-7 col-sm-7 ss-font-class2">
                                 PHONE: &nbsp; {{hotel.phone}}
                             </div>
@@ -148,28 +175,31 @@
                         </div>
 
                         <div class="row ss-collapsible-div-bottom-padding">
-                            <div class="col-xs-4 col-sm-2"><strong class="pull-right ss-font-class1">Total Price:</strong> </div>
+                            <div class="col-xs-4 col-sm-2"><strong class="pull-right ss-font-class1">
+                                Total Price&nbsp;:</strong> </div>
                             <div class="col-xs-7 col-sm-7 ss-font-class2">
                                 {{hotel.total_price}} USD
                             </div>
                             <div class="col-xs-1 col-sm-3"></div>
                         </div>
 
+                        <hr>
+
                         <div class="row ss-font-class1">
-                            <div class="col-sm-2"></div>
+                            <div class="col-sm-1"></div>
                             <div class="col-xs-5 col-sm-3 text-center">
                                 Checkin Dates
                             </div>
                             <div class="col-xs-5 col-sm-3 text-center">
                                 Checkout Dates
                             </div>
-                            <div class="col-xs-2 col-sm-3 pull-left">
+                            <div class="col-sm-1"></div>
+                            <div class="col-xs-2 col-sm-3 text-center">
                                 <a class="visible-xs" data-toggle="collapse" data-target="#hotelDetails{{$index}}">
-                                    <div class="pull-left">
-                                    <span class="ss-arrow-bottom-padding">
-                                        <i class="fa fa-plus-circle pull-right ss-white-font ss-cross-font-size" aria-hidden="true"></i>
-                                    </span>
-                                    </div>
+                                        <span class="">
+                                            <i class="fa fa-plus-circle ss-white-font ss-cross-font-size3" aria-hidden="true"></i>
+                                        </span>
+
                                 </a>
 
                                 <a  class="hidden-xs btn btn-block btn-success" data-toggle="collapse" data-target="#hotelDetails{{$index}}">
@@ -183,42 +213,52 @@
                             <div class="col-sm-1"></div>
                         </div>
 
-                        <div ng-repeat="booking in hotel.BookedDates" class="row ss-white-font ss-font-class2">
-                            <div class="col-sm-2"></div>
+                        <!--<div class="text-center alert-info" ng-if="hotel.BookedDates">-->
+                        <!--No bookings currently !-->
+                        <!--</div>-->
+
+                        <div ng-repeat="booking in hotel.BookedDates"
+                             class="row ss-white-font ss-font-class2 ss-collapsible-div-bottom-padding">
+                            <div class="col-sm-1"></div>
                             <div class="col-sm-3 col-xs-5 text-center">
                                 {{booking.checkIn}}
                             </div>
                             <div class="col-sm-3 col-xs-5 text-center">
                                 {{booking.checkOut}}
                             </div>
-                            <div class="col-sm-4 col-xs-2"></div>
+                            <!--<div class="col-sm-1"></div>-->
+                            <div class="col-sm-5 col-xs-2"></div>
+                            <!--<div class="col-sm-1"></div>-->
                         </div>
 
                         <div id="hotelDetails{{$index}}" class="collapse row">
 
-                            <div class="col-sm-2"></div>
+                            <div class="col-sm-1"></div>
+                            <form name="updateBookings">
 
-                            <div id="CheckinDate" class="col-sm-3">
-                                <input ng-model="model.editedDetails.checkIn"
-                                       type="date"
-                                       class="form-control"
-                                       id="checkIn0">
-                            </div>
+                                <div id="CheckinDate" class="col-sm-3">
+                                    <input ng-model="model.editedDetails.checkIn"
+                                           type="date"
+                                           class="form-control"
+                                           id="checkIn0"
+                                           required>
+                                </div>
 
-                            <div id="CheckoutDate" class="col-sm-3">
-                                <!--<label for="availableTill" class="rc-form-font-size">Available Till:</label>-->
-                                <input ng-model="model.editedDetails.checkOut"
-                                       type="date"
-                                       class="form-control"
-                                       id="checkOut0">
-                            </div>
-
-                            <div class="col-sm-3">
-                                <a class="btn wbdv-button btn-block"
-                                   ng-click="model.updateHotelAvailibility(model.editedDetails, hotel._id)">
-                                    Update Hotel Details
-                                </a>
-                            </div>
+                                <div id="CheckoutDate" class="col-sm-3">
+                                    <!--<label for="availableTill" class="rc-form-font-size">Available Till:</label>-->
+                                    <input ng-model="model.editedDetails.checkOut"
+                                           type="date"
+                                           class="form-control"
+                                           id="checkOut0"
+                                           required>
+                                </div>
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-3">
+                                    <input type="submit" class="btn wbdv-button btn-block"
+                                           value="Update Hotel Details"
+                                           ng-click="updateBookings.$valid &&model.updateHotelAvailibility(model.editedDetails, hotel._id)">
+                                </div>
+                            </form>
 
                             <div class="col-sm-1"></div>
 

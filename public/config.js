@@ -109,7 +109,7 @@
                     checkLogin : checkLogin
                 }
             })
-            .when("/user-hotelowner/hotel/:hid" , {
+            .when("/user-hotelowner/hotel/edit" , {
                 templateUrl: "views/user/templates/hotel-owner.edithotel.view.client.html",
                 controller: "EditHotelController",
                 controllerAs: "model",

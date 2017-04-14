@@ -17,8 +17,10 @@
                     </a>
                     <ul class="dropdown-menu rc-dropdown-small-font">
                         <li><a ng-click="model.goToFlightSearch()" class="">Search Flights</a></li>
+                        <li><a ng-click="model.goToHotelSearch()">Search Hotels</a></li>
                         <li><a ng-click="model.goToProfile()">Profile</a></li>
                         <li><a ng-click="model.goToAgentHistory()">History</a></li>
+                        <li><a>Notifications</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a ng-click="model.logout()" class="">Logout</a></li>
                     </ul>
@@ -65,6 +67,14 @@
                         <i class="rc-link-left-margin rc-link-right-margin fa fa-plane"
                            aria-hidden="true"></i>
                         Search Flights
+                    </a>
+                </li>
+                <li class="list-group-item  ss-black-bg ss-no-border">
+                    <a ng-click="model.goToHotelSearch()"
+                       class="ss-whitefont wbdv-banner-font rc-link-left-margin rc-text-decoration">
+                        <i class="rc-link-left-margin rc-link-right-margin fa fa-bed"
+                           aria-hidden="true"></i>
+                        Search Hotels
                     </a>
                 </li>
                 <li class="list-group-item ss-black-bg ss-no-border">

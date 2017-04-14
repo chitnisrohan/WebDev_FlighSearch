@@ -22,10 +22,15 @@
                     vm.user = user;
                     vm.userType = user.userType;
                     HotelService
-                        .findHotelById(hotelId)
-                        .success(function (hotel) {
-                            vm.hotel = hotel;
-                            // console.log(hotel);
+                        .getHotelId()
+                        .success(function (hotelId) {
+                            vm.hotelId = hotelId._id;
+                            console.log('In controller' + hotelId._id);
+                            HotelService
+                                .findHotelById(hotelId._id)
+                                .success(function (hotel) {
+                                    vm.hotel = hotel;
+                                })
                         })
 
                 });
@@ -55,19 +60,9 @@
             $location.url('/user-hotelowner/hotel');
         }
 
-        // function addHotel(newhotel) {
-        //     HotelService
-        //         .addHotel(newhotel, userId)
-        //         .success(function (hotel) {
-        //             if(hotel){
-        //                 $location.url('/user-hotelowner/' + userId +'/hotel');
-        //             }
-        //         })
-        // }
-
         function updateHotel () {
             HotelService
-                .updateHotel(hotelId, vm.hotel)
+                .updateHotel(vm.hotelId, vm.hotel)
                 .success(function (hotel) {
                     if(hotel==null){
                         vm.error = 'Unable to update hotel. Please contact the admin !';

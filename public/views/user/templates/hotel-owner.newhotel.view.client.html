@@ -68,19 +68,23 @@
                 <!--<div class="row">-->
                 <!--<div class="col-sm-2"></div>-->
                 <!--<div id="loginform" class="col-sm-8 fa-border">-->
+
                 <div id="loginform">
-                    <form>
-                        <br>
-                        <div class="row">
-                            <div class="col-sm-1"></div>
-                            <div class="col-sm-10">
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-10">
+                            <form name="HotelNew">
                                 <div class="form-group wbdv-font-color-white col-xs-12">
                                     <label for="hotelname" class="rc-form-font-size">Name of Hotel</label>
-                                    <input ng-model="model.newhotel.property_name"
+                                    <input name="propertyName"
+                                           ng-model="model.newhotel.property_name"
                                            type="text"
                                            class="form-control"
                                            id="hotelname"
-                                           placeholder="Name of your hotel">
+                                           placeholder="Name of your hotel"
+                                           autofocus
+                                           required>
                                 </div>
 
                                 <div class="form-group wbdv-font-color-white col-sm-6">
@@ -91,7 +95,8 @@
                                            type="text"
                                            class="form-control"
                                            id="line1"
-                                           placeholder="Line 1">
+                                           placeholder="Line 1"
+                                           required>
                                     <input ng-model="model.newhotel.city"
                                            type="text"
                                            class="form-control ss-inputarea-top-margin"
@@ -103,11 +108,13 @@
                                     <input ng-model="model.newhotel.region"
                                            type="text"
                                            class="form-control ss-inputarea-top-margin"
-                                           placeholder="Region">
+                                           placeholder="Region"
+                                           required>
                                     <input ng-model="model.newhotel.postal_code"
                                            type="text"
                                            class="form-control ss-inputarea-top-margin"
-                                           placeholder="Postal Code">
+                                           placeholder="Postal Code"
+                                           required>
                                 </div>
 
                                 <div class="col-sm-6 ss-white-font">
@@ -116,14 +123,16 @@
                                            type="text"
                                            class="form-control"
                                            id="price"
-                                           placeholder="Total Price">
+                                           placeholder="Total Price"
+                                           required>
 
                                     <label for="phone" class="rc-form-font-size ss-top-margin-form">Contact Details</label>
                                     <input ng-model="model.newhotel.phone"
                                            type="text"
                                            id="phone"
                                            class="form-control ss-inputarea-top-margin"
-                                           placeholder="Phone">
+                                           placeholder="Phone"
+                                           required>
 
                                     <input ng-model="model.newhotel.fax"
                                            type="text"
@@ -139,19 +148,26 @@
                                            type="text"
                                            class="form-control"
                                            id="amenities"
-                                           placeholder="Elevators, Hotspots, Free high speed internet connection, etc.">
+                                           placeholder="Elevators, Hotspots, Free high speed internet connection, etc."
+                                           required>
                                 </div>
 
+                                <!--<div class="col-xs-12">-->
+                                <!--<a class="btn wbdv-button rc-form-font-size btn-block ss-button-margin"-->
+                                <!--ng-click="model.addHotel(model.newhotel)">-->
+                                <!--Add this Hotel-->
+                                <!--</a>-->
+                                <!--</div>-->
                                 <div class="col-xs-12">
-                                    <a class="btn wbdv-button rc-form-font-size btn-block ss-button-margin"
-                                       ng-click="model.addHotel(model.newhotel)">
-                                        Add this Hotel
-                                    </a>
+                                    <input class="wbdv-button rc-form-font-size btn btn-block ss-button-margin"
+                                           type="submit"
+                                           ng-click="HotelNew.$valid && model.addHotel(model.newhotel)"
+                                           value="Add this Hotel">
                                 </div>
-                            </div>
+                            </form>
                         </div>
-                        <div class="col-sm-1"></div>
-                    </form>
+                    </div>
+                    <div class="col-sm-1"></div>
                 </div>
             </div>
         </div>

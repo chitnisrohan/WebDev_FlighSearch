@@ -54,12 +54,12 @@
                                 $location.url("/user/flightSearch");
                             }
                         } else {
-                            vm.error = "User not found";
+                            vm.error = "User not found !! Please check your credentials.";
                             vm.user.password = null;
                         }
                     },
                     function (err) {
-                        console.log(err);
+                        vm.error = "User not found !! Please check your credentials.";
                     }
                 );
         }

@@ -12,6 +12,7 @@
         vm.goToProfile = goToProfile;
         vm.goToUserNotification = goToUserNotification;
         vm.logout = logout;
+        vm.goToHotelSearch = goToHotelSearch;
 
         function init() {
             UserService
@@ -56,6 +57,10 @@
                         vm.error = "Could not delete alert";
                     }
                 )
+        }
+
+        function goToHotelSearch() {
+            $location.url("/user/hotelSearch");
         }
 
         function logout() {

@@ -77,6 +77,12 @@
             <!--<div class="col-sm-2"></div>-->
             <!--<div id="loginform" class="col-sm-8 fa-border">-->
             <div id="loginform">
+                <div class="alert alert-success text-center fade in" ng-show="model.message">
+                    <strong>{{model.message}}</strong>
+                </div>
+                <div class="alert alert-danger text-center fade in" ng-show="model.error">
+                    <strong>{{model.error}}</strong>
+                </div>
                 <form>
                     <br>
                     <div class="form-group wbdv-left-right-margin wbdv-font-color-white">
@@ -85,7 +91,8 @@
                                type="text"
                                class="form-control"
                                id="username"
-                               placeholder="Username">
+                               placeholder="Username"
+                        disabled>
                     </div>
                     <div class="form-group wbdv-left-right-margin wbdv-font-color-white">
                         <label for="firstName" class="rc-form-font-size">First Name</label>
@@ -118,14 +125,6 @@
                                class="form-control"
                                id="organization"
                                placeholder="Organization Name">
-                    </div>
-                    <div class="form-group wbdv-left-right-margin wbdv-font-color-white">
-                        <label for="password" class="rc-form-font-size">Password</label>
-                        <input ng-model="model.user.password"
-                               type="password"
-                               class="form-control"
-                               id="password"
-                               placeholder="Password">
                     </div>
                     <div class="wbdv-left-right-margin">
                         <a class="btn wbdv-button rc-form-font-size btn-block ss-button-margin"
