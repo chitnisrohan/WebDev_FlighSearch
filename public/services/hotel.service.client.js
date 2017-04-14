@@ -5,6 +5,9 @@
 
     function HotelService($http) {
 
+        var hotel_urlbase = "https://api.sandbox.amadeus.com/v1.2/hotels/search-airport?apikey=API_KEY&location=LOCATION_REQ&check_in=CHECKIN_REQ&check_out=CHECKOUT_REQ";
+
+
 
         var api = {
             "findAllHotels" : findAllHotels,
@@ -17,9 +20,14 @@
             "findHotelById": findHotelById,
             "updateHotel": updateHotel,
             "saveHotelIdOnServer": saveHotelIdOnServer,
-            "getHotelId": getHotelId
+            "getHotelId": getHotelId,
+            "getAPIKEY" : getAPIKEY
         };
         return api;
+
+        function getAPIKEY() {
+            return $http.get('/api/getAPIKey');
+        }
 
         function saveHotelIdOnServer(hotelIdObject){
             return $http.post('/api/hotel/saveId', hotelIdObject);
@@ -45,14 +53,13 @@
             return $http.put('/api/hotel/' + hotelId, hotel);
         }
 
-        function getHotels (hotelBookingReq) {
-            // var hotelSearchUrl = hotel_urlbase.replace("LOCATION_REQ", hotelBookingReq.location)
-            //     .replace("CHECKIN_REQ", hotelBookingReq.checkinDate)
-            //     .replace("CHECKOUT_REQ",hotelBookingReq.checkoutDate);
-            //
-            // return $http.get(hotelSearchUrl);
-            return $http.get('/api/hotelsFromAPI', hotelBookingReq);
-
+        function getHotels (hotelBookingReq, API_KEY) {
+            API_KEY = API_KEY.replace('"','').replace('"','');
+            var hotelSearchUrl = hotel_urlbase.replace("LOCATION_REQ", hotelBookingReq.location)
+                .replace("CHECKIN_REQ", hotelBookingReq.checkinDate)
+                .replace("API_KEY",API_KEY)
+                .replace("CHECKOUT_REQ",hotelBookingReq.checkoutDate);
+            return $http.get(hotelSearchUrl);
         }
 
         function addHotel(hotel, userId) {

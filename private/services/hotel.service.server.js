@@ -1,12 +1,7 @@
 module.exports = function (app, model) {
 
     var hotelId = {};
-    var ss_API_KEY = process.env.HOTEL_KEY;
-    var hotel_urlbase = "https://api.sandbox.amadeus.com/v1.2/hotels/search-airport?apikey=" + ss_API_KEY +
-        "&location=LOCATION_REQ&check_in=CHECKIN_REQ&check_out=CHECKOUT_REQ"
 
-
-    app.get('/api/hotelsFromAPI',getHotels);
     app.get('/api/hotel/getid', getHotelId);
     app.post('/api/user-hotelowner/:userId/hotel', addHotel);
     app.get('/api/user-hotelowner/:userId/hotel', findHotelByOwner);
@@ -17,16 +12,6 @@ module.exports = function (app, model) {
     app.get('/api/hotel/:hotelId', findHotelById);
     app.put('/api/hotel/:hotelId', updateHotel);
     app.post('/api/hotel/saveId',saveHotelIdOnServer);
-
-    function getHotels (req, res) {
-        var hotelBookingReq = req.body;
-        var hotelSearchUrl = hotel_urlbase.replace("LOCATION_REQ", hotelBookingReq.location)
-            .replace("CHECKIN_REQ", hotelBookingReq.checkinDate)
-            .replace("CHECKOUT_REQ",hotelBookingReq.checkoutDate);
-
-        return $http.get(hotelSearchUrl);
-
-    }
 
 
     function saveHotelIdOnServer (req, res) {
