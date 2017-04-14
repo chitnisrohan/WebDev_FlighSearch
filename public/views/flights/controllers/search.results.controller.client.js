@@ -57,13 +57,17 @@
                 , cabinClass : cabinClass};
             vm.userJourney = journey;
             FlightService
-                .getFlights(journey)
-                .success(function (flights) {
-                    vm.flightSearchResults = flights;
+                .getAPIKEY()
+                .success(function (API_KEY) {
+                    FlightService
+                        .getFlights(journey, API_KEY)
+                        .success(function (flights) {
+                            vm.flightSearchResults = flights;
+                        })
+                        .error(function (err) {
+                            vm.err = err;
+                        });
                 })
-                .error(function (err) {
-                    vm.err = err;
-                });
         }
         init();
 

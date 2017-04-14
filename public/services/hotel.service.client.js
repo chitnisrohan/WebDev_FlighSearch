@@ -5,9 +5,6 @@
 
     function HotelService($http) {
 
-        var ss_API_KEY = process.env.HOTEL_KEY;
-        var hotel_urlbase = "https://api.sandbox.amadeus.com/v1.2/hotels/search-airport?apikey=" + ss_API_KEY +
-            "&location=LOCATION_REQ&check_in=CHECKIN_REQ&check_out=CHECKOUT_REQ"
 
         var api = {
             "findAllHotels" : findAllHotels,
@@ -25,12 +22,10 @@
         return api;
 
         function saveHotelIdOnServer(hotelIdObject){
-            console.log('In client service store' + hotelIdObject._id);
             return $http.post('/api/hotel/saveId', hotelIdObject);
         }
 
         function getHotelId () {
-            console.log('In client service retrieve');
             return $http.get('/api/hotel/getid');
         }
 
@@ -51,11 +46,12 @@
         }
 
         function getHotels (hotelBookingReq) {
-            var hotelSearchUrl = hotel_urlbase.replace("LOCATION_REQ", hotelBookingReq.location)
-                .replace("CHECKIN_REQ", hotelBookingReq.checkinDate)
-                .replace("CHECKOUT_REQ",hotelBookingReq.checkoutDate);
-
-            return $http.get(hotelSearchUrl);
+            // var hotelSearchUrl = hotel_urlbase.replace("LOCATION_REQ", hotelBookingReq.location)
+            //     .replace("CHECKIN_REQ", hotelBookingReq.checkinDate)
+            //     .replace("CHECKOUT_REQ",hotelBookingReq.checkoutDate);
+            //
+            // return $http.get(hotelSearchUrl);
+            return $http.get('/api/hotelsFromAPI', hotelBookingReq);
 
         }
 
