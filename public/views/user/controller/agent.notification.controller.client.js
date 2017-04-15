@@ -26,7 +26,7 @@
                 .findCurrentUser()
                 .then(
                     function (user) {
-                        agentId = user._id;
+                        agentId = user.data._id;
                         vm.agentName = user.data.firstName + " " + user.data.lastName;
 
                         MessageService

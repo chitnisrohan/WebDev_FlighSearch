@@ -17,6 +17,7 @@
                 .findCurrentUser()
                 .success(function (user) {
                     vm.user = user;
+                    userId = user._id;
                     vm.userType = user.userType;
                 });
         }

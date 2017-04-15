@@ -742,18 +742,17 @@ hr{
 }
 
 .rc-background-hotelList {
-    background: url("/images/pexels-photo-338504.jpeg");
+    background: url("/images/pexels-photo-242698.jpeg");
     background-size: cover;
-/background-position: 100%;/
-/background:repeat;/
+/*/background-position: 100%;/*/
+/*/background:repeat;/*/
 position: absolute;
-/height: 100vh;/
+/*/height: 100vh;/*/
 top:0;
     left:0;
     min-width: 100%;
     min-height: 100%;
 }
-
 .ss-red-button {
     color: red;
 }
