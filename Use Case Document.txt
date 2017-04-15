@@ -10,7 +10,7 @@ Search Flight -
 Search Hotel -
 1. From landing page click on 'Hotel Search' tab
 2. Enter required fields
-3. Click Search button to view available hotels.
+3. Click Search button to view available hotels. (Hotel listing include hotels from third paty API as well as registered hotels in our database)
 
 User case 2 (User to Agent communication)-
 Create flight alerts -
@@ -52,7 +52,11 @@ Use Case 5 (Add new hotel booking) -
 2. Login with hotel owner profile (charlie/charlie).
 3. Go to My Hotels tab.
 4. Click on Add new booking button of respective hotel.
-5. 
+5. Enter checkin and checkout dates
+6. Click on Add Booking button
+7. New booking will be saved for that hotel.
+8. Now, If user searches Hotel for the dates for which this hotel is booked, then this hotel will not be listed.
+
 
 
 
