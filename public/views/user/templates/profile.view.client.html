@@ -15,6 +15,8 @@
                     </a>
                     <ul class="dropdown-menu rc-dropdown-small-font">
                         <li><a ng-click="model.goToFlightSearch()" class="">Search Flights</a></li>
+                        <li><a ng-click="model.goToHotelSearch()">Search Hotels</a></li>
+                        <li><a ng-click="model.goToProfile()">Profile</a></li>
                         <li><a ng-click="model.goToHistory()" class="">History</a></li>
                         <li><a ng-click="model.goToNotifications()">Notifications</a></li>
                         <li role="separator" class="divider"></li>
@@ -46,6 +48,14 @@
                         Search Flights
                     </a>
                 </li>
+                <li class="list-group-item  ss-black-bg ss-no-border">
+                    <a ng-click="model.goToHotelSearch()"
+                       class="ss-whitefont wbdv-banner-font rc-link-left-margin rc-text-decoration">
+                        <i class="rc-link-left-margin rc-link-right-margin fa fa-bed"
+                           aria-hidden="true"></i>
+                        Search Hotels
+                    </a>
+                </li>
                 <li class="list-group-item ss-black-bg ss-no-border selected-page">
                     <a class="ss-whitefont wbdv-banner-font rc-link-left-margin rc-text-decoration">
                         <i class="rc-link-left-margin rc-link-right-margin fa fa-user-circle-o"
@@ -56,7 +66,7 @@
                 <li class="list-group-item  ss-black-bg ss-no-border">
                     <a ng-click="model.goToHistory()"
                        class="ss-whitefont wbdv-banner-font rc-link-left-margin rc-text-decoration">
-                        <i class="rc-link-left-margin rc-link-right-margin fa fa-bell"
+                        <i class="rc-link-left-margin rc-link-right-margin fa fa-history"
                            aria-hidden="true"></i>
                         History
                     </a>

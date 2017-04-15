@@ -16,6 +16,7 @@
         vm.goToProfile = goToProfile;
         vm.goToNotifications = goToNotifications;
         vm.goToHotelSearch = goToHotelSearch;
+        vm.logout = logout;
 
         function init() {
             UserService
@@ -149,6 +150,16 @@
             } else if (vm.userType === "AGENT") {
                 $location.url("/user/agentHistory");
             }
+        }
+
+        function logout() {
+            UserService
+                .logout()
+                .then(
+                    function () {
+                        $location.url("/");
+                    }
+                );
         }
 
 

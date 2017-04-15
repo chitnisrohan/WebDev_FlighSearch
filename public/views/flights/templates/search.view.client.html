@@ -35,17 +35,17 @@
         </div>
     </div>
 </nav>
-    <div ng-show="model.message" class="alert alert-success" role="alert">
-        <h3 class="rc-font-color-black">{{model.message}}</h3>
-    </div>
-    <div ng-show="model.error" class="alert alert-danger" role="alert">
-        <h3 class="rc-font-color-black">{{model.error}}</h3>
-    </div>
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-1"></div>
         <div class="col-xs-12 col-sm-10 wbdv-black-shade">
             <div class="page1">
+                <div ng-show="model.message" class="alert alert-success text-center ss-box-padding" role="alert">
+                    {{model.message}}
+                </div>
+                <div ng-show="model.error" class="alert alert-danger text-center ss-box-padding" role="alert">
+                    {{model.error}}
+                </div>
                 <h1 class="wbdv-font-color-white">Search Flights</h1>
                 <form name="flightSearchPage">
                     <div class="row">
