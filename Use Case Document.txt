@@ -10,7 +10,7 @@ Search Flight -
 Search Hotel -
 1. From landing page click on 'Hotel Search' tab
 2. Enter required fields
-3. Click Search button to view available hotels. (Hotel listing include hotels from third paty API as well as registered hotels in our database)
+3. Click Search button to view available hotels. (Hotel listing include hotels from third party API as well as registered hotels in our database)
 
 User case 2 (User to Agent communication)-
 Create flight alerts -
@@ -25,7 +25,7 @@ Create flight alerts -
 
 
 Use Case 3 (Agent to User Communication) -
-Resopnd to User Alert -
+Respond to User Alert -
 1. From landing page go to Login page.
 2. Login with Agent profile (bob/bob).
 3. Go to My Account (top right corner). Go to Notification Tab. 
