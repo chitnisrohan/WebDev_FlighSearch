@@ -20,7 +20,6 @@
                         .then(
                             function (hotels) {
                                 vm.hotels = hotels.data;
-                                console.log(hotels.data);
                             },
                             function (err) {
                                 vm.error = "Could not load hotels. Please try again";

@@ -25,7 +25,6 @@
                         .getHotelId()
                         .success(function (hotelId) {
                             vm.hotelId = hotelId._id;
-                            console.log('In controller' + hotelId._id);
                             HotelService
                                 .findHotelById(hotelId._id)
                                 .success(function (hotel) {
